@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - 'feature/*'  # Triggers on pushes to feature/* branches
+
+jobs:
+  pr-creation:
+    name: Create PR
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Create Pull Request
+      - name: Create Pull Request
+        run: |
+          # Extract the full branch name from github.ref
+          FULL_BRANCH_NAME="${{ github.ref }}"
+          
+          # Strip the prefix to obtain the branch name
+          branch_name=$(echo "$FULL_BRANCH_NAME" | sed 's|refs/heads/||')
+
+          # Define the title for the pull request
+          pr_title="Feature changes from $branch_name"
+
+          # Specify the base branch (target branch for the pull request)
+          base_branch="Dev"
+
+          # Define the GitHub API endpoint for creating a pull request
+          api_url="https://api.github.com/repos/${{ github.repository }}/pulls"
+
+          # Send a POST request to the GitHub API to create a pull request
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -d "{\"title\":\"$pr_title\",\"head\":\"$branch_name\",\"base\":\"$base_branch\"}" \
+            "$api_url"
