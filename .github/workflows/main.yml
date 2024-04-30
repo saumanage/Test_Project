@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - 'WI/*'  # Triggers on pushes to feature/* branches
+      - 'WI-*'  # Triggers on pushes to feature/* branches
 
 jobs:
   pr-creation:
