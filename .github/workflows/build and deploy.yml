@@ -45,7 +45,6 @@ jobs:
           openssl req -new -key server.key -out server.csr -subj "/CN=Salesforce"
           openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
           cat server.key
-          ls -l /home/runner/server.key
 
       - name: Set JWT environment variable
         run: echo "SFDX_AUTH_JWT_KEY=$HOME/server.key" >> $GITHUB_ENV
