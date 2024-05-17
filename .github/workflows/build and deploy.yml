@@ -76,7 +76,7 @@ jobs:
           
       - name: Authenticate with Salesforce Dev Org
         env:
-          SFDX_LOGIN_URL: https://login.salesforce.com/
+          SFDX_LOGIN_URL: https://login.salesforce.com
           SFDX_USERNAME: sam.nathan3699@devops.com
           SFDX_CLIENT_ID: 3MVG9JJwBBbcN47LO.vTT_CuU2g_gOobvkFW3lcm5J9OhnKThVjeErP8nFpqlUBHxU4E6zhW86Kv.MLKY.XPE
           SFDX_CLIENT_SECRET: 6Cel800Dak000002ErMl888ak00000025ur4jIfzL90LirG8A6WrzdodLI3s7CGXJ66BntooLh64jRlLIVly92lhpOddyGwTGCFgwJp8q30
