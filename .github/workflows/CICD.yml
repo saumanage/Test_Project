@@ -38,4 +38,4 @@ jobs:
           
       - name: Deploy source code to DeployTestOrg Org
         run: |
-          sfdx force:source:deploy -p force-app -w 10 -u 
+          sfdx force:source:deploy -p force-app -w 10 -u sam.nathan3699@devops.com
