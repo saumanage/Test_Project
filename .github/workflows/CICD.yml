@@ -1,0 +1,41 @@
+
+name: Salesforce CICD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Authenticate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install -g sfdx-cli --global
+
+      - name: Use SOAP API for Deployment
+        run: |
+          sfdx config:set restDeploy=false --global
+
+      - name: Authorize Salesforce DeployTestOrg Org
+        run: |
+          sfdx force:auth:jwt:grant --clientid  --jwtkeyfile bin/key.pem --username  --instanceurl https://login.salesforce.com
+  
+      - name: Verify Salesforce Connection
+        id: verify_connection
+        run: |
+          sfdx force:org:display -u 
+          
+      - name: Deploy source code to DeployTestOrg Org
+        run: |
+          sfdx force:source:deploy -p force-app -w 10 -u 
