@@ -29,12 +29,12 @@ jobs:
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
-          sfdx force:auth:jwt:grant --clientid  --jwtkeyfile bin/key.pem --username  --instanceurl https://login.salesforce.com
+          sfdx force:auth:jwt:grant --clientid 3MVG9JJwBBbcN47LO.vTT_CuU2jKeXMcC0_Znpmjb7v00_qbt.eYvQJszQPDb2ySM2q5lveo78nQHIUpYk7qe --jwtkeyfile Bin/key.pem --username sam.nathan3699@devops.com --instanceurl https://login.salesforce.com
   
       - name: Verify Salesforce Connection
         id: verify_connection
         run: |
-          sfdx force:org:display -u 
+          sfdx force:org:display -u sam.nathan3699@devops.com
           
       - name: Deploy source code to DeployTestOrg Org
         run: |
