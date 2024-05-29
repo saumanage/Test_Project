@@ -12,8 +12,7 @@
             }
         }
     },
-   //sainath 
-   //sainath rge sys
+   
     "%vlocity_namespace%__Definition__c": "datadeploy.json",
     "%vlocity_namespace%__Description__c": "",
     "%vlocity_namespace%__GlobalKey__c": "datadeploy/data_deploy/1/1714593473963",
