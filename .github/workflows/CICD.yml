@@ -35,8 +35,7 @@ jobs:
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
-         sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI6vZIrCN_7_X5mdOeaTOSTMUO7Oym_kP7pfLV.ztJHYhNfKiRY0yLzBAwfp71k.VDbvsiFi --jwtkeyfile Bin/key.pem --username sxbandi@sentara.com.sentarahealth.cicd1 --instanceurl sxbandi@sentara.com.sentarahealth.cicd1
-  
+         sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI6vZIrCN_7_X5mdOeaTOSTMUO7Oym_kP7pfLV.ztJHYhNfKiRY0yLzBAwfp71k.VDbvsiFi --jwtkeyfile Bin/key.pem --username sxbandi@sentara.com.sentarahealth.cicd1 --instanceurl https://sentarahealth--cicd1.sandbox.my.salesforce.com
     
       - name: Verify Salesforce Connection
         id: verify_connection
