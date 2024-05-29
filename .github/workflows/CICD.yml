@@ -29,6 +29,10 @@ jobs:
       - name: Deploy Vlocity Components
         run: vlocity -job VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions_DataPack.json
 
+      - name: Deploy Vlocity Components
+        run: |
+          vlocity packDeploy -projectPath VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions -manifest VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions.json -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -jobInfo '{"manifestOnly": true, "maximumDeployCount": 1, "defaultMaxParallel": 10, "supportHeadersOnly": true, "useVlocityTriggers": true, "delete": false}'
+
       - name: Use SOAP API for Deployment
         run: |
           sfdx config:set restDeploy=false --global
@@ -44,4 +48,4 @@ jobs:
           
       - name: Deploy source code to DeployTestOrg Org
         run: |
-          sfdx force:source:deploy -p VlocityCard -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
+          sfdx force:source:deploy -p force-app -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
