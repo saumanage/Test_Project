@@ -23,6 +23,12 @@ jobs:
         run: |
           npm install -g sfdx-cli --global
 
+      - name: Install Vlocity
+        run: npm install -g vlocity
+  
+      - name: Build project
+        run: npm run build
+
       - name: Use SOAP API for Deployment
         run: |
           sfdx config:set restDeploy=false --global
