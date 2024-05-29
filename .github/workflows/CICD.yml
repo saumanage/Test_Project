@@ -44,4 +44,4 @@ jobs:
           
       - name: Deploy source code to DeployTestOrg Org
         run: |
-          sfdx force:source:deploy -p force-app -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
+          sfdx force:source:deploy -p VlocityCard -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
