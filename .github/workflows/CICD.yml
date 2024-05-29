@@ -22,12 +22,12 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           npm install -g sfdx-cli --global
-
-      - name: Install Vlocity
+    
+      - name: Install Vlocity Build Tool
         run: npm install -g vlocity
-  
-      - name: Build project
-        run: npm run build
+    
+      - name: Deploy Vlocity Components
+        run: vlocity -job VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions_DataPack.json
 
       - name: Use SOAP API for Deployment
         run: |
