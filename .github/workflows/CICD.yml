@@ -22,12 +22,12 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           npm install -g sfdx-cli --global
-
-      - name: Install Vlocity
+    
+      - name: Install Vlocity Build Tool
         run: npm install -g vlocity
-  
-      - name: Build project
-        run: npm run build
+    
+      - name: Deploy Vlocity Components
+        run: vlocity -job VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions_DataPack.json
 
       - name: Use SOAP API for Deployment
         run: |
@@ -35,13 +35,12 @@ jobs:
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
-          sfdx force:auth:jwt:grant --clientid 3MVG9JJwBBbcN47LO.vTT_CuU2jKeXMcC0_Znpmjb7v00_qbt.eYvQJszQPDb2ySM2q5lveo78nQHIUpYk7qe --jwtkeyfile Bin/key.pem --username sam.nathan3699@devops.com --instanceurl https://login.salesforce.com
-  
-      - name: Verify Salesforce Connection
+        
+          sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI6vZIrCN_7_X5mdOeaTOSTMUO7Oym_kP7pfLV.ztJHYhNfKiRY0yLzBAwfp71k.VDbvsiFi --jwtkeyfile Bin/key.pem --username sxbandi@sentara.com.sentarahealth.cicd1 --instanceurl https://sentarahealth--cicd1.sandbox.lightning.force.com
         id: verify_connection
         run: |
-          sfdx force:org:display -u sam.nathan3699@devops.com
+          sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
           
       - name: Deploy source code to DeployTestOrg Org
         run: |
-          sfdx force:source:deploy -p force-app -w 10 -u sam.nathan3699@devops.com
+          sfdx force:source:deploy -p force-app -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
