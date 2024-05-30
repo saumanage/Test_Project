@@ -1,0 +1,55 @@
+
+name: Salesforce CICD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Authenticate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install -g sfdx-cli --global
+    
+      - name: Install Vlocity Build Tool
+        run: npm install -g vlocity
+    
+      - name: Deploy Vlocity Components
+        run: vlocity -job VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions_DataPack.json
+
+      - name: Deploy Vlocity Components
+        run: |
+          vlocity packDeploy -projectPath VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions -manifest VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/deployactions/deployactions.json -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -jobInfo '{"manifestOnly": true, "maximumDeployCount": 1, "defaultMaxParallel": 10, "supportHeadersOnly": true, "useVlocityTriggers": true, "delete": false}'
+
+      - name: Use SOAP API for Deployment
+        run: |
+          sfdx config:set restDeploy=false --global
+
+      - name: Authorize Salesforce DeployTestOrg Org
+        run: |
+         sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI6vZIrCN_7_X5mdOeaTOSTMUO7Oym_kP7pfLV.ztJHYhNfKiRY0yLzBAwfp71k.VDbvsiFi --jwtkeyfile Bin/key.pem --username sxbandi@sentara.com.sentarahealth.cicd1 --instanceurl https://sentarahealth--cicd1.sandbox.my.salesforce.com
+    
+      - name: Verify Salesforce Connection
+        id: verify_connection
+        run: |
+          sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
+          
+      - name: Deploy Vlocity Components
+        env:
+          SFDX_PACKAGE_PATH: VlocityCard
+        run: |
+          export PATH=~/cli/sf/bin:$PATH
+          sf deploy metadata --source-path $SFDX_PACKAGE_PATH --target-org sxbandi@sentara.com.sentarahealth.cicd1
+          
