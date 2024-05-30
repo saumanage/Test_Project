@@ -42,8 +42,7 @@ jobs:
       - name: Deploy Vlocity Components using Manifest
         run: |
           vlocity -propertyfile datadeploy_DataPack.json
-          vlocity packDeploy -job VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/datadeploy/datadeploy_DataPack.json
-       
+          vlocity packDeploy -job VlocityCard
       #name: Deploy source code to DeployTestOrg Org
        #run: |
           #sfdx force:source:deploy -p force-app -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1
