@@ -38,6 +38,10 @@ jobs:
         id: verify_connection
         run: |
           sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
+
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packDeploy -projectPath ./VlocityCard
        
       - name: Deploy source code to DeployTestOrg Org
         run: |
