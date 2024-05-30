@@ -41,7 +41,7 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -projectPath ./VlocityCard
+          vlocity -job datadeploy_DataPack.json
        
       - name: Deploy source code to DeployTestOrg Org
         run: |
