@@ -1,0 +1,15 @@
+# DataPacksJob.yaml
+projectPath: ./VlocityCard
+defaultJob: Deploy
+jobs:
+  Deploy:
+    preJobApex:
+    postJobApex:
+    postDeployApex:
+    queries:
+    - VlocityUITemplate
+    - VlocityCard
+    - VlocityAction
+    - VlocityIntegrationProcedure
+    - VlocityDataRaptor
+    - VlocityOmniScript
