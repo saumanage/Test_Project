@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packExport -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -job DataPacksJob.yaml
+          vlocity packExport -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -job .github/workflows/DataPacksJob.yaml
 
       - name: Deploy Vlocity Components using Manifest
         run: |
