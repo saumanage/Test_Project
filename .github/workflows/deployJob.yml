@@ -1,0 +1,4 @@
+projectPath: ./VlocityCard
+queries: 
+  - VlocityDataPackType: DataRaptor 
+    query: Select Id from %vlocity_namespace%__DRBundle__c where Name = 'DataRaptor Migration' LIMIT 1
