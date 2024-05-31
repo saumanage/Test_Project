@@ -5,8 +5,8 @@
   "description": "Salesforce App",
   "scripts": {
     "build": "vlocity --job config/project-scratch-def.json",
-    "packExport": "vlocity packExport -job DataPacksJob.yaml",
-    "packDeploy": "vlocity packDeploy -job DataPacksJob.yaml",
+    "packExport": "vlocity packExport -job dataPacksJobs/Example.yaml",
+    "packDeploy": "vlocity packDeploy -job dataPacksJobs/Example.yaml",
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
     "test:unit": "sfdx-lwc-jest",
