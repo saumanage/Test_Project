@@ -1,4 +1,5 @@
 projectPath: ./VlocityCard
+expansionPath: "./VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/datadeploy"
 queries: 
-  - VlocityDataPackType: DataRaptor 
-    query: Select Id from %vlocity_namespace%__DRBundle__c where Name = 'DataRaptor Migration' LIMIT 1
+  - VlocityDataPackType: SObject
+    query: "SELECT Id FROM %vlocity_namespace%__VlocityCard__c WHERE %vlocity_namespace%__GlobalKey__c = 'datadeploy/data_deploy/1/1714593473963' LIMIT 1"
