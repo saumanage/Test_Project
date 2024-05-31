@@ -1,0 +1,28 @@
+<template>
+    <!-- <lightning-layout if:false={theme}>
+        <lightning-layout-item style="padding-right: 6px;"  size="6">
+            <lightning-input type="text" name="zipcode" label="Enter a ZipCode" value={zipCode} onchange={zipcodeSearch}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item style="padding-left: 6px;" size="6">
+            <lightning-input if:false={isCountyList} type="text" name="county" label="County" value={county}></lightning-input>
+            <lightning-combobox autocomplete="true" if:true={isCountyList} name="county" label="County" value={county} options={countyList} onchange={countyValueChange}>
+            </lightning-combobox>
+        </lightning-layout-item>
+    </lightning-layout> -->
+    <div class="nds-grid slds-grid">
+        <div class="nds-size_4-of-12 slds-size_4-of-12" style="padding-right: 6px;">
+            <span style="color: darkred;float: left;padding-top: 3px;">*</span>
+            <vlocity_ins-input theme={theme} name="zipcode" value={zipCode} onkeyup={zipcodeSearch}
+                label='Zip Code' type='text' readonly={zipReadOnly}>
+            </vlocity_ins-input>
+        </div>
+        <div class="nds-size_4-of-12 slds-size_4-of-12" style="padding-left: 6px;">
+            <vlocity_ins-input if:false={isCountyList} name="county" value={county} theme={theme} label='County' type='text' readonly={zipReadOnly} onchange={countyValueChange}>
+            </vlocity_ins-input>
+
+            <vlocity_ins-combobox disabled={zipReadOnly} if:true={isCountyList} options={countyList} theme={theme} label="County" name={county} value={county}
+                onchange={countyValueChange}>
+            </vlocity_ins-combobox>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,20 @@
+<template>
+    <template if:true={isRender}>
+        <template for:each={products} for:item="product" for:index="index">
+
+            <div key={product.Id} data-key={product.Id} data-name="products" data-id={index}
+                class="slds-col slds-size_1-of-1 nds-col nds-size_1-of-1 bottom-margin">
+                <c-q-e_-l-w-c-ins-os-grid-product-row hidden-actions={hiddenActions} onselected={selectProduct}
+                    product={product} show-config-inline={showConfigInline} onexpand={expandProduct}
+                    invalidate-cache={invalidateCache} show-product-tile={showProductTile} is-cart={isCart}
+                    show-config-button={showConfigButton} theme={theme} root-channel={rootChannel}
+                    reprice-action={repriceAction} onhiglightproduct={higlightProduct}
+                    review-cart-opened={reviewCartOpened} plan-type={planType} dependent-age={dependentAge}
+                    spouse-age={spouseAge} is-city-of-suffolk-group={isCityOfSuffolkGroup}>
+                </c-q-e_-l-w-c-ins-os-grid-product-row>
+
+            </div>
+
+        </template>
+    </template>
+</template>

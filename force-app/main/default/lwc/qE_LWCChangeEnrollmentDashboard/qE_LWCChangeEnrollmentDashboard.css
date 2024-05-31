@@ -1,0 +1,196 @@
+/* @font-face {
+    font-family: 'Source Sans Pro';
+} */
+
+html {
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.message {
+    color: #3a3a3a !important;
+    font-size: 14px !important;
+}
+
+.header {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    width: 60%;
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.data {
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.center {
+    text-align: left;
+    width: 60%;
+    font-weight: bold;
+    font-size: 16px;
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.column {
+    width: 100%;
+    float: left;
+    /* margin-left: 9%; */
+    padding-bottom: 2%;
+}
+
+
+/* For smartphones */
+
+@media screen and (max-width: 480px) {
+    .column {
+        width: 100%;
+        padding: 2px;
+        float: none;
+        margin-left: 0%;
+    }
+    .header {
+        text-align: left;
+        width: 100%;
+        margin-left: auto;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+    .center {
+        margin-left: auto;
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        font-size: 16px;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+}
+
+
+/* For phones and tablets low resolution landscape*/
+
+@media screen and (max-width: 767px) {
+    .column {
+        width: 100%;
+        padding-bottom: 10px;
+        float: none;
+        margin-left: 0%;
+    }
+    .message {
+        margin-left: auto;
+        width: 100%;
+        text-align: left;
+    }
+    .header {
+        text-align: left;
+        width: 100%;
+        margin-left: auto;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+    .center {
+        margin-left: auto;
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        font-size: 16px;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+}
+
+
+/* For tablets/ipad high resolution portrait*/
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .column {
+        width: 100%;
+        float: left;
+        margin-left: 5% !important;
+        padding-bottom: 1%;
+    }
+    .header {
+        margin-left: 5%;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+    .center {
+        margin-left: 5%;
+        font-weight: bold;
+        font-size: 16px;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+}
+
+
+/*For laptops and desktops */
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .column {
+        width: 100%;
+        float: left;
+        margin-left: 5% !important;
+        padding-bottom: 2%;
+    }
+    .message {
+        margin-left: 10% !important;
+    }
+    .header {
+        margin-left: 5%;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+    .center {
+        margin-left: 5%;
+        font-weight: bold;
+        font-size: 16px;
+        color: #3a3a3a !important;
+        font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+    }
+}
+
+.largeBold {
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.Bold {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+    display: inline-block;
+    color: #3a3a3a !important;
+    font-family: Source Sans, Source Sans Pro, Verdana, sans-serif !important;
+}
+
+.font14 {
+    font-size: 14px;
+}
+
+.font16 {
+    font-size: 16px;
+    font-weight: 500;
+    /* font-family: Source Sans Pro !important; */
+    color: #3a3a3a !important;
+}
+
+.dependant {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Source Sans Pro !important;
+    color: #3a3a3a !important;
+}
+
+.nds-step_label {
+    text-transform: capitalize;
+}

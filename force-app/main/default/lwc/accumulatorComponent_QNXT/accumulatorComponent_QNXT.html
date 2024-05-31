@@ -1,0 +1,95 @@
+<template>
+    <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+        <template if:true={deductibleData} for:each={deductibleData} for:item="deductible">
+            <lightning-accordion-section key={deductible.label} name={deductible.label} label={deductible.label}>            
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <br>
+                        <br>
+                        <input type="radio" id="IndividualIn-NetworkDeductible" name="options" onclick={handleRadio} value={deductible.label}>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>4 th Quarter Carryover Amount:</b>$ {deductible.q4CarryoverAmount}</p> 
+                        <p><b>Individual In-Network Deductible Limit:</b>$ {deductible.IndividualInNetworkLimit}</p>
+                        <p><b>Individual In-Network Deductible Applied:</b>$ {deductible.IndividualInNetworkApplied}</p>
+                        <p><b>Individual In-Network Deductible Remaining:</b> {deductible.IndividualInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Family In-Network Deductible Limit:</b>$ {deductible.FamilyInNetworkLimit}</p>
+                        <p><b>Family In-Network Deductible Applied:</b>$ {deductible.FamilyInNetworkApplied}</p>
+                        <p><b>Family In-Network Deductible Remaining:</b> {deductible.FamilyInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-button label="View Deductible Details" onclick={handleNext} variant="base" class="slds-text-align_right"></lightning-button>
+            </lightning-accordion-section>
+        </template>
+        <template if:true={inMOOPData} for:each={inMOOPData} for:item="inMOOP">
+            <lightning-accordion-section key={inMOOP.label} name={inMOOP.label} label={inMOOP.label}>             
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Individual In-Network Out-of-Pocket Limit:</b>$ {inMOOP.IndividualInNetworkLimit}</p>
+                        <p><input type="radio" id="IndividualInNetworkMOOP" name="options" onclick={handleRadio} value={inMOOP.label}><b>Individual In-Network Out-of-Pocket Applied:</b>$ {inMOOP.IndividualInNetworkApplied}</p>
+                        <p><b>Individual In-Network Out-of-Pocket Remaining:</b> {inMOOP.IndividualInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Family In-Network Out-of-Pocket Limit:</b>$ {inMOOP.FamilyInNetworkLimit}</p>
+                        <p><input type="radio" id="FamilyInNetworkMOOP" name="options" onclick={handleRadio} value={inMOOP.label}><b>Family In-Network Out-of-Pocket Applied:</b>$ {inMOOP.FamilyInNetworkApplied}</p>
+                        <p><b>Family In-Network Out-of-Pocket Remaining:</b> {inMOOP.FamilyInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+        </template>
+        <template if:true={outMOOPData} for:each={outMOOPData} for:item="outMOOP">
+            <lightning-accordion-section key={outMOOP.label} name={outMOOP.label} label={outMOOP.label}>            
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Individual Out-of-Network Out-of-Pocket Limit:</b>$ {outMOOP.IndividualOutNetworkLimit}</p>
+                        <p><input type="radio" id="IndividualOut-of-NetworkMOOP" name="options" onclick={handleRadio} value={outMOOP.label}><b>Individual Out-of-Network Out-of-Pocket Applied:</b>$ {outMOOP.IndividualOutNetworkApplied}</p>
+                        <p><b>Individual Out-of-Network Out-of-Pocket Remaining:</b> {outMOOP.IndividualOutNetworkRemaining}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Family Out-of-Network Out-of-Pocket Limit:</b>$ {outMOOP.FamilyOutNetworkLimit}</p>
+                        <p><input type="radio" id="FamilytOut-of-NetworkMOOP" name="options" onclick={handleRadio} value={outMOOP.label}><b>Family Out-of-Network Out-of-Pocket Applied:</b>$ {outMOOP.FamilyOutNetworkApplied}</p>
+                        <p><b>Family Out-of-Network Out-of-Pocket Remaining:</b> {outMOOP.FamilyOutNetworkRemaining}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+        </template>
+        <template if:true={maxOutData} for:each={maxOutData} for:item="maxOut">
+            <lightning-accordion-section key={maxOut.label} name={maxOut.label} label={maxOut.label}>            
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <br>
+                        <input type="radio" id="IndividualInNetworkMOOP2" name="options" onclick={handleRadio} value={maxOut.label}>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Individual In-Network Out-of-Pocket Limit:</b>$ {maxOut.IndividualInNetworkLimit}</p>
+                        <p><b>Individual In-Network Out-of-Pocket Applied:</b>$ {maxOut.IndividualInNetworkApplied}</p>
+                        <p><b>Individual In-Network Out-of-Pocket Remaining:</b> {maxOut.IndividualInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Family In-Network Out-of-Pocket Limit:</b>$ {maxOut.FamilyInNetworkLimit}</p>
+                        <p><b>Family In-Network Out-of-Pocket Applied:</b>$ {maxOut.FamilyInNetworkApplied}</p>
+                        <p><b>Family In-Network Out-of-Pocket Remaining:</b> {maxOut.FamilyInNetworkRemaining}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-button label="View MOOP Details" onclick={handleNext} variant="base" class="slds-text-align_right"></lightning-button>
+            </lightning-accordion-section>
+        </template>
+        <template if:true={benefitData} for:each={benefitData} for:item="benefit">
+            <lightning-accordion-section key={benefit.label} name={benefit.label} label="Benefit Max Limits">            
+                <lightning-layout>
+                    <lightning-layout-item padding="around-small">
+                        <p><b>Benefit Title:</b> {benefit.BenefitTitle}</p>
+                        <p><b>Benefit Description:</b> {benefit.BenefitDescription}</p>
+                        <p><b>Benefit Limit:</b>$ {benefit.BenefitLimit}</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                        <p><input type="radio" id="BenefitApplied" name="options" onclick={handleRadio} value={benefit.label}><b>Benefit Applied:</b>$ {benefit.BenefitApplied}</p>
+                        <p><b>Benefit Remaining:</b> {benefit.BenefitRemaining}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-accordion-section>
+        </template>
+    </lightning-accordion>
+</template>

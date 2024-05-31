@@ -1,0 +1,58 @@
+<template>
+    <div if:true={showComponent}>
+        <div if:true={plans} class="nds-grid nds-wrap">
+            <lightning-spinner if:false={isLoaded} alternative-text="Loading" size="medium"></lightning-spinner>
+            <div class="slds-grid vloc-ins-align-end">
+                <vlocity_ins-icon
+                        icon-name="utility:chevrondown"
+                        size="x-small"
+                        color="#0E406A"
+                        theme={theme}
+                        class="nds-p-around_xx-small slds-p-around_xx-small"
+                    ></vlocity_ins-icon>
+            <h2 class="vloc-ins-coverages-title">{planType} Coverage Selected</h2>
+            </div>
+            <div class="slds-box vloc-ins-plan-block ">
+                <div class="slds-grid slds-p-horizontal_medium vloc-ins-plan-container"><span class="vloc-ins-plan-label">Plans</span></div>
+                <div class="slds-grid">
+                    <template for:each={plans} for:item="plan">
+                        <div
+                            key={plan.Id}
+                            class="slds-col slds-size_1-of-1 nds-p-horizontal_x-small slds-p-horizontal_x-small"
+                        >
+                            <div class="slds-grid slds-p-horizontal_medium vloc-ins-align slds-m-top_medium vloc-ins-plan-content">
+                                <div class="slds-col slds-size_1-of-4">
+                                    {planType} Plan
+                                </div>
+                                <div class="slds-col slds-size_2-of-4">
+                                    <button class="slds-button" onclick={openProductModal}>{plan.Name}</button>
+                                </div>
+                                <div class="slds-col slds-size_1-of-4">
+                                    <span>
+                                        <lightning-formatted-number
+                                            value={plan.Price}
+                                            format-style="currency"
+                                            minimum-fraction-digits="2"
+                                            maximum-fraction-digits="2"
+                                        ></lightning-formatted-number>
+                                    <span class="vloc-lowercase">/Mo</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-p-horizontal_medium vloc-ins-plan-content">
+                                <div class="slds-col slds-size_1-of-4">
+                                    Dependents
+                                </div>
+                                <div class="slds-col slds-size_3-of-4">
+                                    {dependentsList}
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            
+        </div>
+        <vlocity_ins-ins-os-grid-product-modal theme={theme} root-channel={rootChannel}></vlocity_ins-ins-os-grid-product-modal>
+    </div>
+</template>

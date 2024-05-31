@@ -1,0 +1,105 @@
+<template>
+    <article class="slds-p-vertical_medium slds-border_bottom nds-p-vertical_medium nds-border_bottom">
+        <div class="slds-grid nds-grid">
+            <div class="slds-size_5-of-6 slds-grid nds-size_5-of-6 nds-grid">
+                <div class="slds-size_2-of-8 nds-size_2-of-8">
+                    <div class="slds-is-relative nds-is-relative">
+                        <vlocity_ins-button
+                            theme={theme}
+                            label={product.Name}
+                            onclick={openDetailsProduct}
+                            onmouseover={showNamePopover}
+                            onmouseout={hideNamePopover}
+                            extraclass="slds-truncate slds-text-heading_small nds-truncate nds-text-heading_small"
+                        ></vlocity_ins-button>
+                        <vlocity_ins-popover
+                            theme={theme}
+                            size="small"
+                            nubbinposition="bottom-left"
+                            class="vlovlocity_ins-ins-popover vlovlocity_ins-ins-popover-name"
+                        >
+                            <div slot="content">{product.Name}</div>
+                        </vlocity_ins-popover>
+                    </div>
+                    <div
+                        class="slds-truncate slds-text-heading_small nds-truncate nds-text-heading_small vlovlocity_ins-ins-product-price"
+                    >
+                        <lightning-formatted-number
+                            value={price}
+                            format-style="currency"
+                            minimum-fraction-digits="2"
+                            maximum-fraction-digits="2"
+                        ></lightning-formatted-number>
+                        <span class="vlovlocity_ins-ins-lowercase">/{labels.InsMonthAbrv}</span>
+                    </div>
+                </div>
+                <template for:each={parsedAttributes} for:item="attribute">
+                    <div if:false={attribute.hidden} class={attribute.widthClass} key={attribute.attributeId}>
+                        <vlocity_ins-ins-os-grid-product-attribute
+                            theme={theme}
+                            attribute={attribute}
+                            is-cart={isCart}
+                            root-channel={rootChannel}
+                        >
+                        </vlocity_ins-ins-os-grid-product-attribute>
+                    </div>
+                </template>
+            </div>
+            <div
+                class="slds-size_1-of-6 slds-grid slds-grid_vertical-align-center slds-grid_align-end nds-size_1-of-6 nds-grid nds-grid_vertical-align-center nds-grid_align-end"
+                if:false={reviewCartOpened}
+            >
+                <vlocity_ins-button
+                    if:true={showCompareAction}
+                    onclick={toggleCompare}
+                    variant="icon"
+                    extraclass={isSelectedForCompareClasses}
+                    icon-name="utility:multi_picklist"
+                    theme={theme}
+                    title={labels.InsCompare}
+                    disabled={isCompareDisabled}
+                >
+                </vlocity_ins-button>
+                <vlocity_ins-button
+                    if:true={showConfigInline}
+                    onclick={expandProduct}
+                    variant="icon"
+                    extraclass={compactButtonClasses}
+                    icon-name="utility:edit"
+                    theme={theme}
+                    title={labels.Edit}
+                >
+                </vlocity_ins-button>
+                <vlocity_ins-button
+                    if:true={showEditAction}
+                    onclick={clickModalCustomConfigPlan}
+                    variant="icon"
+                    extraclass={compactButtonClasses}
+                    icon-name="utility:edit"
+                    theme={theme}
+                    title={labels.Edit}
+                >
+                </vlocity_ins-button>
+                <!-- <vlocity_ins-button
+                    extraclass={isSelectedForCartClasses}
+                    onclick={selectProduct}
+                    onmouseenter={addHoverState}
+                    onmouseleave={removeHoverState}
+                    variant="icon"
+                    icon-name={isSelectedForCartIcon}
+                    theme={theme}
+                    title={isSelectedForCartLabel}
+                >
+                </vlocity_ins-button> -->
+            </div>
+        </div>
+    </article>
+    <div if:true={displayExpanded} class="slds-border_bottom nds-border_bottom">
+        <vlocity_ins-ins-os-grid-product-config
+            product={product}
+            root-channel={rootChannel}
+            theme={theme}
+            reprice-action={repriceAction}
+        ></vlocity_ins-ins-os-grid-product-config>
+    </div>
+</template>

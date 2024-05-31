@@ -1,0 +1,48 @@
+<template>
+    <template if:true={memberPlans}>
+        <lightning-card  variant="Narrow"  title="Member Plans" icon-name="standard:work_plan">
+            <lightning-input type="toggle"
+                        slot="actions"
+                        onchange={handleToggleChange}
+                        label="Display Prior Plans">
+            </lightning-input>
+            <lightning-accordion allow-multiple-sections-open>
+                <template for:each={memberPlans} for:item="memberPlan" for:index="index">
+                    <lightning-accordion-section key={memberPlan.Id} name={memberPlan.Id} label={memberPlan.Name}>                
+                        <lightning-record-view-form
+                            object-api-name="MemberPlan"
+                            record-id={memberPlan.Id}>
+                            <div class="slds-m-right_x-small">
+                                <lightning-button label="More Details" data-id={memberPlan.Id} onclick={openMemberPlan} class="slds-float_right"></lightning-button>
+                            </div>
+                            <div class="slds-box">
+                                <lightning-layout>
+                                    <lightning-layout-item size="6">
+                                        <lightning-output-field field-name="Name"></lightning-output-field>
+                                        <lightning-output-field field-name="MemberNumber"></lightning-output-field>
+                                        <lightning-output-field field-name="GroupNumber"></lightning-output-field>
+                                        <lightning-output-field field-name="Status"></lightning-output-field>
+                                        <div style="position:relative; left:3px;">
+                                            <label>Payer</label>
+                                            <lightning-output-field field-name="PayerId" variant="label-hidden"></lightning-output-field>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6">
+                                        <lightning-output-field field-name="EffectiveFrom"></lightning-output-field>
+                                        <lightning-output-field field-name="EffectiveTo"></lightning-output-field>
+                                        <lightning-output-field field-name="PrimarySecondaryTertiary"></lightning-output-field>
+                                        <lightning-output-field field-name="PlanId"></lightning-output-field>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </div>
+                        </lightning-record-view-form>     
+                        <c-benefit-component plan-id={memberPlan.Id}></c-benefit-component>
+                    </lightning-accordion-section>
+                </template>
+            </lightning-accordion>
+        </lightning-card>
+    </template>
+    <template if:true={error}>
+                <p>{error}</p>
+    </template>
+</template>

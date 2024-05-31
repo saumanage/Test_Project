@@ -1,0 +1,161 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form object-api-name="Case" columns="2" record-type-id={recordTypeId}>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <c-o-h-p-find-users
+                        selected-user-id={ownerIdVal}
+                        user-name={ownerName}>
+                    </c-o-h-p-find-users>
+                    <lightning-input-field field-name="Subject" variant="label-stacked" value={subjectVal}></lightning-input-field>
+                    <lightning-input-field field-name="AccountId" variant="label-stacked" value={accountIdVal}></lightning-input-field>
+                    <lightning-input-field field-name="OHP_Opportunity__c" variant="label-stacked" value={opptyIdVal}></lightning-input-field>
+                    <lightning-input-field field-name="DNIS__c" variant="label-stacked" value={dnisVal}></lightning-input-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input-field field-name="Origin" variant="label-stacked" value={originVal}></lightning-input-field>
+                    <div if:true={productOptions} class="slds-p-horizontal_xx-small slds-p-bottom_x-small"> <!-- start product field -->
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div class={dropdownClassesProduct} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                        <abbr title="required" class="slds-required">*</abbr><label class="slds-scope slds-form-element__label">Product</label>
+                                        <lightning-input
+                                            data-id="product"
+                                            label="Product"
+                                            variant="label-hidden"
+                                            type="search"
+                                            options={productOptions}
+                                            value={selectedProduct}
+                                            placeholder="type here to search"
+                                            onchange={filterOptions} 
+                                            onfocus={handleFocus}
+                                            onblur={handleBlur}
+                                        >
+                                        </lightning-input>
+                                    </div>
+                                    <!-- Display product option Results -->
+                                    <div id="productSearchResults" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                        <ul id="product" class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template if:true={filteredProductOptions.length}>
+                                                <template  for:each={filteredProductOptions} for:item="option" >
+                                                    <li role="presentation" class="slds-listbox__item" key={option.value}>
+                                                        <div title="product" data-value={option.value} data-label={option.label} onclick={handleSelectOption} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                            <span title="product" class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">{option.label}</span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                            <template if:true={noProductOptions}>
+                                                <li role="presentation" class="slds-align--absolute-center slds-listbox__item">
+                                                    <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">No options found.</span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end product field -->
+                    <div if:true={categoryOptions} class="slds-p-horizontal_xx-small slds-p-bottom_x-small"> <!-- start category field -->
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div class={dropdownClassesCategory} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                        <abbr title="required" class="slds-required">*</abbr><label class="slds-scope slds-form-element__label">Category</label>
+                                        <lightning-input
+                                            data-id="category"
+                                            label="Category"
+                                            variant="label-hidden"
+                                            type="search"
+                                            options={categoryOptions}
+                                            value={selectedCategory}
+                                            placeholder="type here to search"
+                                            onchange={filterOptions} 
+                                            onfocus={handleFocus}
+                                            onblur={handleBlur}
+                                        >
+                                        </lightning-input>
+                                    </div>
+                                    <!-- Display category option Results -->
+                                    <div id="categorySearchResults" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template if:true={filteredCategoryOptions.length}>
+                                                <template  for:each={filteredCategoryOptions} for:item="option" >
+                                                    <li role="presentation" class="slds-listbox__item" key={option.value}>
+                                                        <div title="category" data-value={option.value} data-label={option.label} onclick={handleSelectOption} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                            <span title="category" class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">{option.label}</span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                            <template if:true={noCategoryOptions}>
+                                                <li role="presentation" class="slds-align--absolute-center slds-listbox__item">
+                                                    <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">No options found.</span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end category field -->
+                    <div if:true={dispositionOptions} class="slds-p-horizontal_xx-small slds-p-bottom_x-small"> <!-- start disposition field -->
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div class={dropdownClassesDisposition} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                        <abbr title="required" class="slds-required">*</abbr><label class="slds-scope slds-form-element__label">Disposition</label>
+                                        <lightning-input
+                                            data-id="disposition"
+                                            label="Disposition"
+                                            variant="label-hidden"
+                                            type="search"
+                                            options={dispositionOptions}
+                                            value={selectedDisposition}
+                                            placeholder="type here to search"
+                                            onchange={filterOptions} 
+                                            onfocus={handleFocus}
+                                            onblur={handleBlur}
+                                            onabort={handleAbort}>
+                                        </lightning-input>
+                                    </div>
+                                    <!-- Display disposition option Results -->
+                                    <div id="dispositionSearchResults" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template if:true={filteredDispositionOptions.length}>
+                                                <template  for:each={filteredDispositionOptions} for:item="option" >
+                                                    <li role="presentation" class="slds-listbox__item" key={option.value}>
+                                                        <div title="disposition" data-value={option.value} data-label={option.label} onclick={handleSelectOption} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                            <span title="disposition" class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">{option.label}</span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                            <template if:true={noDispositionOptions}>
+                                                <li role="presentation" class="slds-align--absolute-center slds-listbox__item">
+                                                    <div class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-p-around--xx-small">No options found.</span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end disposition field-->
+                    <lightning-input-field field-name="OHP_Touch_Point__c" variant="label-stacked" value="Inbound"></lightning-input-field>
+                    <lightning-input-field field-name="Status" variant="label-stacked" value="Solved"></lightning-input-field>
+                </div>
+            </div>
+        </lightning-record-edit-form>
+        <div class="slds-clearfix slds-p-around_xx-small">
+            <lightning-button class="slds-float_right" label="Finish" variant="brand" onclick={handleFinish}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

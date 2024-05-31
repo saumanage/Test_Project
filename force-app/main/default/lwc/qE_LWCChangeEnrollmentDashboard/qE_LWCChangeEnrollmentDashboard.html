@@ -1,0 +1,86 @@
+<template>
+    <form name='loopform' class='nds-form-element nds-size_1-of-1 nds-m-bottom_large nds-p-around_small nds-rich-text-editor__output'>
+	<div class="nds-size_1-of-1 membermaintenance-change-summary" >
+		<div if:false={enrolledPlanListArr.length}>
+			<div class="message" style="text-align : center;"> {summary.reasonForChange.memberFullName} is not currently enrolled in any plans. Select Next to continue to plan selection.</div>
+		</div>
+		<div>
+			<div if:true={omniEnrolledPlanListArr}>
+				<div for:each={recordsArr} for:item="record" key={record.idx}>
+					<span class="center">Subscriber Name: </span> &nbsp;<span class="font16">{omniJsonData.reasonForChange.memberFullName}</span><br>
+					<!-- <span class="center" >Group:</span> &nbsp;<span class="font16">{omniJsonData.groupInfo.groupName}</span><br> -->
+					<span class="center" >Group:</span> &nbsp;<span class="font16">Test Group</span><br>
+					<span class="center">Subgroup:</span> &nbsp;<span class="font16">{record.subGroupName}</span><br>
+					<span class="center">Class:</span> &nbsp;<span class="font16">{record.className}</span><br>
+					<br/>
+				</div>
+			</div>
+
+			<div if:true={omniEnrolledPlanListArr}>
+				<div for:each={omniEnrolledPlanListArr} for:item="subs" key={subs.idx}>
+					<div for:each={subs.enrollments.records} for:item="plan" key={plan.idx}>
+						<div class="container">
+							<div class="column" if:true={plan.isMedical}>
+								<span class="Bold">Medical Plan: </span> &nbsp;<span class="font16">{plan.Name}</span><br>
+								<span class="Bold">Effective Date:</span> &nbsp;<span class="font16">{plan.EffectiveStartFormatted}</span>
+								<div if:true={dependentRepeatableArrDepId}>
+									<div for:each={dependentRepeatableArr} for:item="dependent" key={dependent.dependentId}>
+							            <c-q-e_-l-w-c-change-enroll-dep-block dependent={dependent} plan={plan}></c-q-e_-l-w-c-change-enroll-dep-block>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="column" if:true={plan.isDental}>
+								<span class="Bold">Dental Plan: </span> &nbsp;<span class="font16">{plan.Name}</span><br>
+								<span class="Bold">Effective Date:</span> &nbsp;<span class="font16">{plan.EffectiveStartFormatted}</span>
+								<div if:true={dependentRepeatableArrDepId}>
+									<div for:each={dependentRepeatableArr} for:item="dependent" key={dependent.dependentId}>
+										<c-q-e_-l-w-c-change-enroll-dep-block dependent={dependent} plan={plan}></c-q-e_-l-w-c-change-enroll-dep-block>
+									</div>
+								</div>
+							</div>
+	
+							<div class="column" if:true={plan.isPediatricDental}>
+								<span class="Bold">Pediatric Dental Plan: </span> &nbsp;<span class="font16">{plan.Name}</span> <br>
+								<span class="Bold">Effective Date:</span> &nbsp;<span class="font16">{plan.EffectiveStartFormatted}</span>
+								<div if:true={dependentRepeatableArrDepId}>
+									<div  for:each={dependentRepeatableArr} for:item="dependent" key={dependent.dependentId}>
+										<c-q-e_-l-w-c-change-enroll-dep-block dependent={dependent} plan={plan}></c-q-e_-l-w-c-change-enroll-dep-block>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="column" if:true={plan.isMedicalSavFSA}>
+								<span class="Bold">FSA Plan: </span> &nbsp;<span class="font16">{plan.Name}</span><br>
+								<span class="Bold">Effective Date:</span> &nbsp;<span class="font16">{plan.EffectiveStartFormatted}</span>
+								<div if:true={dependentRepeatableArrDepId}>
+									<div  for:each={dependentRepeatableArr} for:item="dependent" key={dependent.dependentId}>
+										<c-q-e_-l-w-c-change-enroll-dep-block dependent={dependent} plan={plan}></c-q-e_-l-w-c-change-enroll-dep-block>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="column" if:true={plan.isMedicalSavHSA}>
+								<span class="Bold">HSA Plan: </span> &nbsp;<span class="font16">{plan.Name}</span><br>
+								<span class="Bold">Effective Date: </span> &nbsp;<span class="font16">{plan.EffectiveStartFormatted}</span>
+								<div if:true={dependentRepeatableArrDepId}>
+									<div  for:each={dependentRepeatableArr} for:item="dependent" key={dependent.dependentId}>
+										<c-q-e_-l-w-c-change-enroll-dep-block dependent={dependent} plan={plan}></c-q-e_-l-w-c-change-enroll-dep-block>
+									</div>
+								</div>
+							</div>
+
+						</div> <!-- end of container -->
+
+					</div> <!-- end of for:each -->
+				</div> <!-- end of for:each -->
+			</div> <!-- end of if:true -->
+			
+		</div>
+	</div>
+
+</form>
+</template>

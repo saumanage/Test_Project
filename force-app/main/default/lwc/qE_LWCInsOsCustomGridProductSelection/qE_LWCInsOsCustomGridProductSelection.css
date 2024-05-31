@@ -1,0 +1,28 @@
+.vloc-serv-filters-container {
+    display: flex;
+    width: 45%;
+}
+
+.vloc-ins-inline-filters-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 55%;
+}
+
+.vloc-ins-sort-combo {
+    width: 35%;
+}
+
+.vloc-ins-bold-heading {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.vloc-ins-products-spinner {
+    min-height: 4rem;
+}
+.vloc-cart-button{
+    background-color: white !important;
+    border: none;
+    color: #00A0B7 !important;
+}

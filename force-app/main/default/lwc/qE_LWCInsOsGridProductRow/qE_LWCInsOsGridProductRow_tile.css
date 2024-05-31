@@ -1,0 +1,111 @@
+/*:host {
+    --bg-color: #f8fbfe;
+    --action-bg-color: #e5f2fe;
+    --renewal-bg-color: #158fb7;
+    --product-color-nds: #ff6d00;
+}*/
+
+.vloc-ins-product-tile-container {
+    margin-bottom: 0.625rem;
+    background-color: var(--bg-color);
+    align-items: stretch;
+}
+
+.slds-scope .slds-box {
+    padding: var(--lwc-spacingMedium,1rem);
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+    border-bottom: 1px solid #F2ECEC;
+    border-radius: 0px;
+    border: none !important;
+}
+
+.vloc-ins-renewal {
+    border: 5px solid var(--renewal-bg-color);
+    padding-top: 3.5rem;
+}
+
+.vloc-ins-renewal-banner {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.5rem;
+    color: white;
+    background-color: var(--renewal-bg-color);
+}
+
+.vloc-ins-renewal-label {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.vloc-ins-product-info {
+    background-color: var(--bg-color);
+}
+
+.vloc-ins-product-bold {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.vloc-ins-product-nds {
+    color: var(--product-color-nds);
+}
+
+.vloc-ins-lowercase {
+    text-transform: lowercase;
+}
+
+.vloc-ins-product-attributes {
+    margin-right: 0.75rem;
+    text-transform: uppercase;
+}
+
+/*.vloc-ins-product-attributes :not(:nth-child(n + 4)) {
+    border-bottom: 1px dotted lightgray;
+}*/
+
+/*.vloc-ins-product-attributes :not(:nth-child(3n + 1)) {
+    border-left: 1px dotted lightgray;
+    margin-left: -1px;
+}*/
+.vloc-ins-product-attributes :not(:nth-child(3n + 1)) {
+    margin-left: -1px;
+}
+
+.vloc-ins-action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--action-bg-color);
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.vloc-ins-product-actions {
+    text-align: center;
+    width: 70%;
+}
+
+.vloc-ins-product-features-text {
+    margin-left: 0.3125rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.vloc-ins-existing-plan{
+    border-bottom: 1px solid #24999C !important;
+    border-top: 1px solid #24999C !important;
+}
+.vloc-ins-existing-plan-label{
+    color: #24999C;
+}
+.slds-button_brand{
+    color: white !important;
+    background-color: #0E406A !important;
+    border-color: #0E406A !important;
+}
+.vloc-ins-button-features{
+    border: none !important;
+    color: #2B2826 !important;
+    font-size: 16px;
+}

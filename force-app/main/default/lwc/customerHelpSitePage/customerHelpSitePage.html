@@ -1,0 +1,474 @@
+<template>
+    <template if:false={submitShowSuccess}>
+        <template if:false={isPhoneLayout}>
+        <div class="logo-container slds-m-bottom_medium slds-m-left_small"> 
+            <img src={sentaraLogoUrl} alt="Logo" class="logo"/>
+        </div>
+        <div class="slds-m-left_medium slds-m-bottom_small heading_SubmitPublicPath allow-popups-to-escape-sandbox">
+            <a href="https://www.sentara.com/" onclick={handleUrlClick}>Sentara</a> > Patient Care Feedback
+        </div>
+            <!--Heading Text-->
+            <h1 class="heading_SubmitPublic slds-m-left_medium slds-m-bottom_small">Patient Care Feedback</h1>
+            <div class="headingTextStyling">
+                <div id="rn_StandaradTextStandardText_19" class="rn_StandardText slds-m-left_small">
+                    <SPAN>
+                        <DIV>
+                            <DIV>
+                                <h4>Thank you for contacting Sentara.&#160;We welcome your feedback and will respond to you within 1 - 2 business days.</h4>
+                            </DIV>
+                            <DIV>
+                                <SPAN>&#160;</SPAN>
+                            </DIV>
+                            <DIV>
+                                <h4>If you prefer, you can call us to share your compliment or concern at <a href="tel:18007368272">1-800-736-8272</a>, Monday – Friday &#160;8 a.m – 6 p.m.</h4>
+                            </DIV>
+                            <DIV>
+                                <SPAN>&#160;</SPAN>
+                            </DIV>
+                            <DIV>
+                                <h4 class="fontBold">
+                                Please Note:
+                                </h4>
+                                <h4>
+                                    <ul class="slds-list_dotted">
+                                        <li>We will respond during normal business hours Monday - Friday.</li>
+                                        <li>This form is intended for your comments or concerns. Please contact your doctor or healthcare provider with any specific medical questions.</li>
+                                        <li>For medical emergencies, call 911 or go to the nearest hospital.</li>
+                                    </ul>
+                                </h4>
+                            </DIV>
+                        </DIV>
+                    </SPAN>
+                
+                </div>
+            </div>
+            <!--Complaint Section-->
+            <div class="complaintSectiontextStyling">
+                <h2 class="topMarginHeading slds-m-top_medium slds-m-bottom_small slds-m-left_medium">
+                        Compliment or Concern
+                </h2>
+                <h4>
+                    <div class="slds-m-bottom_medium slds-m-left_medium"> 
+                            <lightning-combobox name="Complaint Location" label='Select Region'
+                                placeholder="Select a Region" 
+                                options={regionValues}  onchange={handlerRegionInput} required>
+                            </lightning-combobox>
+                            <lightning-combobox name="Complaint Location" label='Select a Facility'
+                                placeholder="Select a Facility" 
+                                options={hospitalValues}  onchange={handlerFacilityInput} required>
+                            </lightning-combobox>
+                    </div>
+                </h4>
+                <h4>
+                <div class="slds-m-left_medium">
+                    <lightning-radio-group name="Identification" label="Please identify yourself so we can follow up with you." 
+                    options={identificationOptions}  type="radio" onchange={hadleIdentificationOfCaller}>
+                    </lightning-radio-group>
+                </div>
+                <div class="slds-m-left_medium">
+                    <div></div>
+                    <lightning-textarea label="What is your compliment or concern?" required onchange={handleConcernInputChange} placeholder="Please state compliment or concern">
+                    </lightning-textarea>
+                </div>
+                </h4>
+                <h2 class="topMarginHeading slds-m-bottom_small slds-m-left_medium">
+                    Response Request
+                </h2>
+                <h4>
+                <div class="slds-m-bottom_medium slds-m-left_small">
+                    <lightning-combobox name="Reply Type" label='Please indicate how we should contact you'
+                        placeholder="Select" options={contactOptions}  onchange={handleReplyType} required>
+                    </lightning-combobox>
+                </div>
+                <template if:true={sentaraMayContact}>
+                    <div class="slds-m-left_small">
+                        <lightning-radio-group name="Sentera may contact" label="Sentara may contact me about sharing my compliment or story" 
+                            options={sentaraContactOption}  type="radio" onchange={handleInputChange}>
+                        </lightning-radio-group>
+                    </div>
+                </template>
+                </h4>
+            </div>
+            <!--Patient Info Section-->
+            <template if:true={showPatientInformation}>
+                <div class="complaintSectiontextStyling">
+                    <div>
+                        <h2 class="topMarginHeading slds-m-left_medium">
+                            Patient Information
+                        </h2> 
+                    </div>
+                    <h4>
+                        <div class="input-container">
+                            <div class="input-field slds-m-left_medium slds-m-top_medium">
+                                <lightning-input label='First Name' onchange={handleInputChange} required placeholder="First Name"></lightning-input>
+                            </div>
+                            <div class="input-field slds-m-left_medium slds-m-top_medium">
+                                <lightning-input label='Middle Initial' onchange={handleInputChange} placeholder="Middle Initial"></lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium">
+                            <lightning-input label='Last Name' onchange={handleInputChange} required placeholder="Last Name"></lightning-input>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label='Birth Date' type='text' value={formattedDate} onchange={handleInputChangeDate}  placeholder="MM/DD/YYYY" maxlength="10" required></lightning-input>
+                            <template if:true={monthError}>
+                                <div class="error">
+                                    Months cannot be greater than 12
+                                </div>
+                            </template>
+                            <template if:true={dateError}>
+                                <div class="error">
+                                    Date cannot be greater than 31
+                                </div>
+                            </template>   
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label='Phone Number' onchange={handleInputChange} required={isPhRequired} pattern="^\(\d{3}\)\s\d{3}-\d{4}$" placeholder="(xxx) xxx-xxxx"></lightning-input>
+                            <template if:false={isValidPatientPhone}>
+                                <div class="error">
+                                    Patient Phone is Invalid
+                                </div>
+                            </template>               
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label='Email' type='email' onchange={handleInputChange} required={isEmailRequired} placeholder="Email"></lightning-input>
+                            <template if:false={isValidPatientEmail}>
+                                <div class="error">
+                                    Patient Eamil is Invalid
+                                </div>
+                            </template>               
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label='Street Address' onchange={handleInputChange} placeholder="Street Address"></lightning-input>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label= 'City' onchange={handleInputChange} placeholder="City"></lightning-input>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-combobox name="State" label='State'
+                                placeholder="Location" options={stateValues}  onchange={handleInputChange} required> 
+                            </lightning-combobox>                
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label= 'ZIP Code' onchange={handleInputChange} required placeholder="ZIP Code"></lightning-input>
+                        </div>
+                    </h4>
+                </div>
+            </template>
+            <template if:true={showIncidentInformation}>
+                <div class="complaintSectiontextStyling">
+                    <div>
+                        <h2 class="topMarginHeading slds-m-left_medium">
+                            Visit/Incident Information
+                        </h2> 
+                    </div>
+                    <h4>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label='Visit/Incident Date' type='date' placeholder="Select Date" onchange={handleInputChange}  required></lightning-input>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium">
+                            <lightning-combobox name="Visit Time" label='Please indicate the visit or incident time'
+                            placeholder="Select Time" options={visitOptions}  onchange={handleInputChange} required>
+                            </lightning-combobox>
+                        </div>
+                    </h4>
+                </div>
+            </template>
+            <template if:true={showContactInformation}>
+                <div class="complaintSectiontextStyling">
+                    <div>
+                        <h2 class="topMarginHeading slds-m-left_medium">
+                            Contact Information
+                        </h2>
+                    </div>
+                    <h4>
+                        <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                            <lightning-input label= 'Full Name' onchange={handleConInfoInputChnage} required placeholder="Full Name"></lightning-input>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium">
+                            <lightning-input label= 'Phone' onchange={handleConInfoInputChnage} required={isPhRequiredOnContact} pattern="^\(\d{3}\)\s\d{3}-\d{4}$" placeholder="(xxx) xxx-xxxx"></lightning-input>
+                            <template if:false={isValidPhone}>
+                                <div class="error">
+                                    Phone Number is Invalid
+                                </div>
+                            </template>
+                        </div>
+                        <div class="slds-m-bottom_medium slds-m-left_medium">
+                            <lightning-input label= 'Email' onchange={handleConInfoInputChnage} required={isEmailRequiredOnContact} placeholder="Email"></lightning-input>
+                            <template if:false={isValidEmail}>
+                                <div class="error">
+                                    Eamil is Invalid
+                                </div>
+                            </template>
+                        </div>
+                    </h4>
+                </div>
+            </template>
+            <div class="complaintSectiontextStyling">
+                <button class="slds-m-left_medium pillShapeButton" onclick={handleSubmit} disabled={disableSubmitButton}>
+                    Submit
+                </button>
+            </div>
+        </template>
+    </template>
+    <template if:false={isPhoneLayout}>
+        <template if:true={submitShowSuccess}>
+            <div class="logo-container slds-m-bottom_medium slds-m-left_small"> 
+                <img src={sentaraLogoUrl} alt="Logo" class="logo"/>
+            </div>
+            <div class="slds-m-left_medium slds-m-bottom_small heading_SubmitPublicPath allow-popups-to-escape-sandbox">
+                <a href="https://www.sentara.com/" onclick={handleUrlClick}>Sentara</a> > Patient Care Feedback
+            </div>
+            <h1 class="heading_SubmitPublicNew1 slds-m-left_medium slds-m-bottom_small">Patient Care Feedback</h1>
+                <center>
+                    <div class="slds-m-bottom_medium slds-m-top_xx-large"> 
+                        <img src={checkBoxLogoUrl}/>
+                    </div>
+                    <h1 class="heading_SubmitPublicNew">Your Question has been Submitted</h1>
+                    <h4 class="slds-m-top_large">
+                        <p></p><p>Thank you for contacting Sentara.</p><p>Your compliment or concern is important to us and will be shared with a Sentara representative who will follow up you.</p><p>Sentara monitors patient care feedback submissions Monday through Friday 8 am - 6 pm.</p><p></p>
+                    </h4>
+                    <button class="slds-m-top_large slds-m-left_medium pillShapeButtonNew" onclick={handleUrlClick}>
+                    <h4><p class="slds-m-left_x_small">Return to www.sentara.com</p></h4>
+                    </button>
+                </center>
+        </template>
+    </template>
+
+    <!-- Phone Layout-->
+    <template if:false={submitShowSuccess}>
+        <template if:true={isPhoneLayout}>
+                <div class="logo-container slds-m-bottom_medium slds-m-left_small"> 
+                    <img src={sentaraLogoUrl} class="logoPh"/>
+                </div>
+                <div class="heading_SubmitPublicPathPh slds-m-left_medium slds-m-bottom_small">
+                <a href="https://www.sentara.com/" onclick={handleUrlClick}>Sentara</a> > Patient Care Feedback
+                </div>
+                    <h2 class="heading_SubmitPh heading_centerPhone slds-m-bottom_small">Patient Care Feedback</h2>
+                <div id="rn_StandaradTextStandardText_29" class="rn_StandardText slds-m-left_small">
+                    <SPAN>
+                        <DIV>
+                            <DIV>
+                                <h4>Thank you for contacting Sentara.&#160;We welcome your feedback and will respond to you within 1 - 2 business days.</h4>
+                            </DIV>
+                            <DIV>
+                                <SPAN>&#160;</SPAN>
+                            </DIV>
+                            <DIV>
+                                <h4>If you prefer, you can call us to share your compliment or concern at <a href="tel:18007368272">1-800-736-8272</a>, Monday – Friday &#160;8 a.m – 6 p.m.</h4>
+                            </DIV>
+                            <DIV>
+                                <SPAN>&#160;</SPAN>
+                            </DIV>
+                            <DIV>
+                                <h4 class="fontBold">
+                                    Please Note:
+                                </h4>
+                                <h4>
+                                    <ul class="slds-list_dotted">
+                                        <li>We will respond during normal business hours Monday - Friday.</li>
+                                        <li>This form is intended for your comments or concerns. Please contact your doctor or healthcare provider with any specific medical questions.</li>
+                                        <li>For medical emergencies, call 911 or go to the nearest hospital.</li>
+                                    </ul>
+                                </h4>
+                            </DIV>
+                        </DIV>
+                    </SPAN>
+                </div>
+                <h2 class="topMarginHeadingPh slds-m-top_small slds-m-left_medium">
+                        Compliment or Concern
+                </h2>
+                <h4>
+                    <div class="payformPh slds-m-right_small"> 
+                            <lightning-combobox name="Complaint Location" label='Select Region'
+                                placeholder="Select a Region" 
+                                options={regionValues}  onchange={handlerRegionInput} required>
+                            </lightning-combobox>
+                            <lightning-combobox name="Complaint Location" label='Select a Facility'
+                                placeholder="Select a Facility" 
+                                options={hospitalValues}  onchange={handlerFacilityInput} required>
+                            </lightning-combobox>
+                    </div>
+                </h4>
+                <h4>
+                    <div class="payformPh">
+                        <lightning-radio-group name="Identification" label="Please identify yourself so we can follow up with you." 
+                        options={identificationOptions}  type="radio" onchange={hadleIdentificationOfCaller}>
+                        </lightning-radio-group>
+                    </div>
+                    <div class="payformPh">
+                        <div></div>
+                        <lightning-textarea label="What is your compliment or concern?" onchange={handleConcernInputChange} required>
+                        </lightning-textarea>
+                    </div>
+                </h4>
+                <h2 class="topMarginHeadingPh slds-m-left_medium">
+                    Response Request
+                </h2>
+                <h4>
+                    <div class="payformPh">
+                        <lightning-combobox name="Reply Type" label='Please indicate how we should contact you'
+                            placeholder="--" options={contactOptions}  onchange={handleReplyType} required>
+                        </lightning-combobox>
+                    </div>
+                    <template if:true={sentaraMayContact}>
+                        <div class="slds-m-left_medium container">
+                            <lightning-radio-group name="Sentera may contact" label="Sentara may contact me about sharing my compliment or story" 
+                                options={sentaraContactOption}  type="radio" onchange={handleInputChange}>
+                            </lightning-radio-group>
+                        </div>
+                    </template>
+                </h4>
+                <template if:true={showPatientInformation}>
+                    <h2 class="topMarginHeadingPh slds-m-left_medium">
+                        Patient Information
+                    </h2>
+                    <h4>
+                        <div class="payformPh">
+                            <div class="slds-m-bottom_medium ">
+                                <lightning-input label='First Name' onchange={handleInputChange} required placeholder="First Name"></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Middle Initial' onchange={handleInputChange} placeholder="Middle Initial"></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Last Name' onchange={handleInputChange} required placeholder="Last Name"></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Birth Date' type='date' onchange={handleInputChange} placeholder="MM/DD/YYYY" required></lightning-input>
+                            </div>
+                            <!--div class="slds-m-bottom_medium">
+                                <lightning-input label='Birth Date' type='text' value={formattedDate} onchange={handleInputChangeDate}  placeholder="MM/DD/YYYY" maxlength="10" required></lightning-input>
+                                <template if:true={monthError}>
+                                    <div class="error">
+                                        Months cannot be greater than 12
+                                    </div>
+                                </template>
+                                <template if:true={dateError}>
+                                    <div class="error">
+                                        Date cannot be greater than 31
+                                    </div>
+                                </template>   
+                            </div-->
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Phone Number' onchange={handleInputChange} required={isPhRequired} pattern="^\(\d{3}\)\s\d{3}-\d{4}$" placeholder="(xxx) xxx-xxxx"></lightning-input>
+                                <template if:false={isValidPatientPhone}>
+                                    <div class="error">
+                                        Patient Phone is Invalid
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Email' type='email' onchange={handleInputChange} required={isEmailRequired} placeholder="Email"></lightning-input>
+                                <template if:false={isValidPatientEmail}>
+                                    <div class="error">
+                                        Patient Eamil is Invalid
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label='Street Address' onchange={handleInputChange} placeholder="Street Address"></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-input label= 'City' onchange={handleInputChange}></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium">
+                                <lightning-combobox name="State" label='State'
+                                    placeholder="State" options={stateValues}  onchange={handleInputChange} required>
+                                </lightning-combobox>
+                            </div>
+                            <div>
+                                <lightning-input label= 'ZIP Code' onchange={handleInputChange} required placeholder="ZIP"></lightning-input>
+                            </div>
+                        </div>
+                    </h4>   
+                </template>
+                <template if:true={showIncidentInformation}>
+                        <h2 class="topMarginHeadingPh slds-m-left_medium">
+                            Visit/Incident Information
+                        </h2> 
+                        <h4>
+                            <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                                <lightning-input label='Visit/Incident Date' type='date' placeholder="--" onchange={handleInputChange}  required></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium slds-m-left_medium">
+                                <lightning-combobox name="Visit Time" label='Please indicate the visit or incident time'
+                                placeholder="--" options={visitOptions}  onchange={handleInputChange} required>
+                                </lightning-combobox>
+                            </div>
+                        </h4>
+                </template>
+                <template if:true={showContactInformation}>
+                        <h2 class="topMarginHeadingPh slds-m-left_medium">
+                            Contact Information
+                        </h2>
+                        <h4>
+                            <div class="slds-m-bottom_medium slds-m-left_medium slds-m-top_medium">
+                                <lightning-input label= 'Full Name' onchange={handleConInfoInputChnage} required></lightning-input>
+                            </div>
+                            <div class="slds-m-bottom_medium slds-m-left_medium">
+                                <lightning-input label= 'Phone' onchange={handleConInfoInputChnage} required={isPhRequiredOnContact} pattern="^\(\d{3}\)\s\d{3}-\d{4}$" placeholder="(xxx) xxx-xxxx"></lightning-input>
+                                <template if:false={isValidPhone}>
+                                    <div class="error">
+                                        Phone Number is Invalid
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="slds-m-bottom_medium slds-m-left_medium">
+                                <lightning-input label= 'Email' onchange={handleConInfoInputChnage} required={isEmailRequiredOnContact}></lightning-input>
+                                <template if:false={isValidEmail}>
+                                    <div class="error">
+                                        Email is Invalid
+                                    </div>
+                                </template>
+                            </div>
+                        </h4>
+                </template>
+                <div>
+                    <button class="slds-m-left_medium pillShapeButtonPh" onclick={handleSubmit} disabled={disableSubmitButton}>
+                        Submit
+                    </button>
+                </div>
+        </template>
+    </template>
+    <template if:true={isPhoneLayout}>
+        <template if:true={submitShowSuccess}>
+                <div class="logo-container slds-m-bottom_medium slds-m-left_small"> 
+                    <img src={sentaraLogoUrl}/>
+                </div>
+                <div class="heading_SubmitPublicPathPh slds-m-left_medium slds-m-bottom_small ">
+                <a href="https://www.sentara.com/" onclick={handleUrlClick}>Sentara</a> > Patient Care Feedback
+                </div>
+            <h1 class="heading_SubmitPh heading_centerPhone slds-m-bottom_small">Patient Care Feedback</h1>
+                <center>
+                    <div class="slds-m-bottom_medium slds-m-top_large"> 
+                        <img src={checkBoxLogoUrl} class="logoPh"/>
+                    </div>
+                    <h1 class="fontBold">Your Question has been Submitted</h1>
+                    <h4 class="slds-m-top_large">
+                        <p></p><p>Thank you for contacting Sentara.</p><p>Your compliment or concern is important to us and will be shared with a Sentara representative who will follow up you.</p><p>Sentara monitors patient care feedback submissions Monday through Friday 8 am - 6 pm.</p><p></p>
+                    </h4>
+                    <button class="slds-m-top_large slds-m-left_medium pillShapeButtonNewPh" onclick={handleUrlClick}>
+                        <h4><p class="slds-m-left_x_small">Return to www.sentara.com</p></h4>
+                    </button>
+                </center>
+        </template>
+    </template>
+    <template if:true={isPhoneLayout}>
+            <div slot="footer">
+                <div class="footerStylingPh slds-m-top_small">
+                    <span>Your community, not-for-profit health partner.</span></br><span>Copyright © 2023 Sentara Health.</span>
+                </div>
+            </div>
+    </template>
+    <template if:false={isPhoneLayout}>
+        <div slot="footer">
+            <div class="slds-grid slds-grid_align-center slds-m-top_large footerStyling">
+                Your community, not-for-profit health partner. Copyright © 2023 Sentara Health.
+            </div>
+        </div>
+    </template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading.." size="medium"></lightning-spinner>
+    </template>
+</template>

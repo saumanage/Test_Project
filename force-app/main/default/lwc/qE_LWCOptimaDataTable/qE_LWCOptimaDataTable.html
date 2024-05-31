@@ -1,0 +1,595 @@
+<template>
+  <vlocity_ins-layout extraclass="slds-gutters" data-loading-table={updatingTable}>
+    <!--Re-added the old search-->
+    <vlocity_ins-layout-item size="5" class="slds-m-top_x-small">
+      
+      <template if:true={issearchavailable}>
+        <input
+          placeholder="Search"
+          type="text"
+          onkeyup={searchKeyChangeHandler}
+          class="slds-input"
+          value={searchInput}
+        />
+        <!--
+          <template if:true={retrieveMoreRecords}>
+          <vlocity_ins-layout-item class="slds-spinner slds-spinner_x-small slds-is-relative">
+            <span class="slds-assistive-text">Loading</span>
+          </vlocity_ins-layout-item>
+        </template>
+        -->
+        
+      </template>      
+    </vlocity_ins-layout-item>
+    
+    <!--
+      <template if:false={showMoreSearch}>
+        <vlocity_ins-layout-item size="5" class="slds-m-top_x-small">
+          <template if:true={issearchavailable}>
+            <input
+              placeholder="Search"
+              type="text"
+              onkeyup={searchKeyChangeHandler}
+              class="slds-input"
+              value={searchInput}
+            />
+          </template>
+        </vlocity_ins-layout-item>
+     </template>
+
+    <template if:true={showMoreSearch}>
+      <vlocity_ins-layout-item size="5" class="slds-m-top_x-small slds-p-right_xx-small">
+        <template if:true={issearchavailable}>
+          <input
+            placeholder="Search"
+            type="text"
+            onkeyup={storeSearchKey}
+            class="slds-input"
+            value={searchInput}
+          />
+        </template>
+      </vlocity_ins-layout-item>
+
+
+      <vlocity_ins-layout-item size="5" class="slds-m-top_x-small">
+        <template if:true={issearchavailable}>
+        <vlocity_ins-button
+                  class="vlocity-btn slds-button slds-button_neutral"
+                  icon-name="utility:search"
+                  icon-url={iconUrl}
+                  icon-size="Small"
+                  theme={theme}
+                  label="Search"
+                  onclick={newSearchKeyChangeHandler}
+                ></vlocity_ins-button>
+          <vlocity_ins-button
+                  class="vlocity-btn slds-button slds-button_neutral"
+                  icon-name="utility:clear"
+                  icon-url={iconUrl}
+                  icon-size="small"
+                  theme={theme}
+                  label="Clear"
+                  onclick={clearSearchHandler}
+                ></vlocity_ins-button>
+        </template>
+      </vlocity_ins-layout-item>
+    </template>
+    -->
+     
+
+    
+
+    
+    <vlocity_ins-layout-item size="1" if:true={userSelectableColumn}>
+      <vlocity_ins-menu
+        theme={theme}
+        icon-url={iconUrl}
+        position="right"
+        icon-name="utility:down"
+        checked="multiple"
+        class="slds-float_right"
+      >
+        <template for:each={selectableObj} for:item="col">
+          <vlocity_ins-menu-item
+            key={col.id}
+            theme={theme}
+            record={col}
+            icon-url={iconUrl}
+            checked={col.checked}
+            name={col.fieldName}
+          >
+          </vlocity_ins-menu-item>
+        </template>
+      </vlocity_ins-menu>
+    </vlocity_ins-layout-item>
+  </vlocity_ins-layout>
+  <div class="slds-is-relative"  style={styleTable}>
+    <div if:false={isLoaded}>
+      <vlocity_ins-spinner
+        variant="brand"
+        size="medium"
+        alternative-text="loading"
+      ></vlocity_ins-spinner>
+    </div>
+
+    <div class={tableClass} style="border-collapse:collapse;margin-top:20px;width:100%; overflow-y:auto;">
+      <div if:false={hideTableHeader} class="tableHead">
+        <div class="slds-line-height_reset tableRow">
+          <div if:true={isGrouped} class="tableHeadCell iconWidth"></div>
+          <template if:false={isGrouped}>
+            <div if:true={draggable} class="tableHeadCell iconWidth"></div>
+          </template>
+          <template for:each={dataColumns} for:item="item" for:index="index">
+            <div
+              if:true={item.visible}
+              data-label={item.label}
+              key={item.id}
+              class={tableHeaderClass}
+              style="padding: 5px 0px; font-size: 20px; font-weight: 500; font-family: 'Salesforce Sans' !important; text-transform: uppercase;"
+              scope="col"
+            >
+              <a
+                onmouseenter={mouseoverHead}
+                onmouseleave={mouseoutHead}
+                if:true={issortavailable}
+                class="slds-th__action slds-text-link_reset"
+                data-reverse="false"
+                data-field={item.fieldName}
+                onclick={sortByField}
+                data-sortable={item.sortable}
+                role="button"
+                tabindex="-1"
+              >
+                <span class="slds-assistive-text">Sort by: </span>
+                <span class="slds-truncate" title={item.label}
+                  >{item.label}</span
+                >
+                <div class="slds-icon_container">
+                  <span class="" aria-hidden="true">
+                    <vlocity_ins-icon
+                      class="sorted-icon slds-is-absolute sort-direction"
+                      if:true={item.sortingEnabled}
+                      icon-name={sortingIcon}
+                      baseurl={iconUrl}
+                      size="x-small"
+                      theme={theme}
+                    >
+                    </vlocity_ins-icon>
+                    <vlocity_ins-icon
+                      class="hover-icon slds-transition-hide"
+                      icon-name="utility:arrowdown"
+                      baseurl={iconUrl}
+                      size="x-small"
+                      theme={theme}
+                    ></vlocity_ins-icon>
+                  </span>
+                </div>
+              </a>
+              <a
+                if:false={issortavailable}
+                class="slds-th__action slds-text-link_reset"
+              >
+                <span class="slds-truncate" title={item.label}
+                  >{item.label}</span
+                >
+              </a>
+            </div>
+          </template>
+          <div if:true={showActions} class="tableHeadCell iconWidth" style="padding: 5px 0px; font-size: 20px; font-weight: 500; font-family: 'Salesforce Sans' !important; text-transform:uppercase;">ACTIONS</div>
+          <div if:true={rowLevelEdit} class="tableHeadCell iconWidth"></div>
+          <div if:true={rowDelete} class="tableHeadCell iconWidth"></div>
+        </div>
+      </div>
+      <!-- body -->
+      <template if:false={isnotEmpty}>
+        <div class="tableFoot">
+           No data to show
+          <!-- <div class="noData"></div> -->
+        </div>
+      </template>
+      <div ondrop={onDrop} class="tableBody">
+        <template
+          if:true={isnotEmpty}
+          for:each={tablePageData}
+          for:item="row"
+          for:index="rowIndex"
+          if:false={isGrouped}
+        >
+          <div
+            style={row.hide}
+            onmouseenter={mouseoverField}
+            onmouseleave={mouseoutField}
+            key={row.id}
+            data-index={row.originalItemIndex}
+            onclick={saveDataRow}
+            draggable={draggable}
+            ondragstart={onDragStart}
+            ondragenter={onDragEnter}
+            ondragleave={onDragLeave}
+            ondragover={onDragOver}
+            class="tableRow"
+          >
+            <div if:true={draggable} class="tableRowCell iconWidth">
+              <vlocity_ins-icon
+                class="draggableIcon"
+                icon-name="utility:drag_and_drop"
+                baseurl={iconUrl}
+                size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+              >
+              </vlocity_ins-icon>
+            </div>
+
+            <template if:false={baseVersion}>
+              <slot></slot>
+            </template>
+
+            <template
+              for:each={row.columns}
+              for:item="cell"
+              for:index="colIndex"
+              if:true={baseVersion}
+            >
+              <div key={cell.id} class="tableRowCell">
+                <c-q-e_-l-w-c-optima-datatable-cell
+                  data-field-name={cell.fieldName}
+                  data-index={row.originalItemIndex}
+                  column-data={cell}
+                  cell-data={cell.data}
+                  icon-url={iconUrl}
+                  onedit={handleFieldEdit}
+                  onclick={handleFieldClick}
+                  theme={theme}
+                  class="dataTableCell rowDataStyle"
+                  is-custom-ui=""
+                  type={cell.type}
+                >
+                </c-q-e_-l-w-c-optima-datatable-cell>
+              </div>
+            </template>
+
+            <div if:true={showActions} class="tableRowCell iconWidth">
+              <lightning-button-menu
+                onselect={handleSelect}
+                data-index={row.originalItemIndex}
+                menu-alignment="right"
+                alternative-text="Toggle menu">
+                  <template
+                  for:each={dataActions}
+                  for:item="action"
+                  >
+                    <c-q-e_-l-w-c-optima-data-table-action-option  key={action.Id}  row={row} action={action}>
+                    </c-q-e_-l-w-c-optima-data-table-action-option>
+                </template>
+            </lightning-button-menu>
+
+
+            </div>
+            <div if:true={rowLevelEdit} class="tableRowCell iconWidth">
+              <vlocity_ins-icon
+                class="hover-icon rowLevelEdit slds-transition-hide"
+                icon-name="utility:edit"
+                baseurl={iconUrl}
+                size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+                onclick={editDataRow}
+              >
+              </vlocity_ins-icon>
+              <vlocity_ins-button
+                class="slds-button slds-hide"
+                icon-name="utility:check"
+                icon-url={iconUrl}
+                icon-size="x-small"
+                theme={theme}
+              ></vlocity_ins-button>
+            </div>
+            <div if:true={rowDelete} class="tableRowCell iconWidth">
+              <vlocity_ins-icon
+                icon-name="utility:delete"
+                baseurl={iconUrl}
+                size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+                onclick={deleteRow}
+              >
+              </vlocity_ins-icon>
+            </div>
+          </div>
+        </template>
+<!-- test -->
+        <template
+          for:each={tablePageGroupData}
+          for:item="group"
+          for:index="groupIndex"
+          if:true={isGrouped}
+        >
+          <div key={group.id} class="slds-theme_shade tableRow">
+            <div colspan={group.colspan} class="tableRowCell">
+              <a
+                data-index={groupIndex}
+                onclick={toggleGroupedRow}
+                class="slds-text-link_reset"
+              >
+                <vlocity_ins-icon
+                  class="slds-m-around_xx-small"
+                  theme={theme}
+                  data-index={groupIndex}
+                  baseurl={iconUrl}
+                  icon-name="utility:chevrondown"
+                  size="x-small"
+                >
+                </vlocity_ins-icon
+                >{group.groupName}
+              </a>
+            </div>
+            <template
+              for:each={group.columns}
+              for:item="cell"
+              for:index="colIndex"
+            >
+              <div key={cell.id} class="tableRowCell">
+                <b>
+                  <c-q-e_-l-w-c-optima-datatable-cell
+                    data-field-name={cell.fieldName}
+                    column-data={cell}
+                    cell-data={cell.data}
+                    icon-url={iconUrl}
+                    theme={theme}
+                    type={cell.type}
+                  >
+                  </c-q-e_-l-w-c-optima-datatable-cell>
+                </b>
+              </div>
+            </template>
+          </div>
+          <div
+            onmouseenter={mouseoverField}
+            onmouseleave={mouseoutField}
+            key={row.id}
+            for:each={group.groupItems}
+            for:item="row"
+            class={group.class}
+            onclick={saveDataRow}
+            data-index={row.originalItemIndex}
+            draggable={draggable}
+            ondragstart={onDragStart}
+            ondragenter={onDragEnter}
+            ondragleave={onDragLeave}
+            ondragover={onDragOver}
+          >
+            <div key={row.id} class="tableRowCell iconWidth">
+              <div if:true={draggable} class="slds-show_inline-block">
+                <vlocity_ins-icon
+                  class="draggableIcon"
+                  icon-name="utility:drag_and_drop"
+                  baseurl={iconUrl}
+                  size="x-small"
+                  data-index={row.originalItemIndex}
+                  theme={theme}
+                >
+                </vlocity_ins-icon>
+              </div>
+              <span
+                if:false={rowLevelEdit}
+                data-row-position={row.position}
+              ></span>
+              <vlocity_ins-icon
+                class="hover-icon rowLevelEdit slds-transition-hide"
+                icon-name="utility:edit"
+                baseurl={iconUrl}
+                size="x-small"
+                data-row-position={row.position}
+                data-index={row.originalItemIndex}
+                if:true={rowLevelEdit}
+                theme={theme}
+                onclick={editGroupDataRow}
+              >
+              </vlocity_ins-icon>
+              <vlocity_ins-button
+                class="slds-button slds-hide"
+                icon-name="utility:check"
+                icon-url={iconUrl}
+                icon-size="x-small"
+                theme={theme}
+                if:true={rowLevelEdit}
+              ></vlocity_ins-button>
+            </div>
+
+            <template
+              for:each={row.columns}
+              for:item="cell"
+              for:index="colIndex"
+            >
+              <div key={cell.id} class="tableRowCell">
+                <c-q-e_-l-w-c-optima-datatable-cell
+                  data-field-name={cell.fieldName}
+                  column-data={cell}
+                  cell-data={cell.data}
+                  icon-url={iconUrl}
+                  onedit={handleFieldEdit}
+                  theme={theme}
+                  type={cell.type}
+                >
+                </c-q-e_-l-w-c-optima-datatable-cell>
+              </div>
+            </template>
+          </div>
+        </template>
+
+      </div>
+      <!-- <div if:false={hideTableHeader} class="tableFoot">
+        <template  if:false={isGrouped}>
+            <div class="noData">No data to show</div>
+        </template>
+      </div> -->
+    </div>
+  </div>
+  <!-- <template if:true={isnotEmpty}>
+    <div class="tableFoot">
+      <div class="noData">No data to show</div>
+    </div>
+  </template> -->
+  <div
+    if:true={pagesize}
+    class="slds-grid slds-m-around_x-small slds-grid_align-end "
+  >
+    <div class="slds-col slds-size_1-of-2">
+      <lightning-combobox class="combo-page-size" options={optionsPageSize}  value={pagesize} onchange={changePageSize}></lightning-combobox>
+    </div>
+    <div class="slds-col slds-size_1-of-2 slds-grid align-end">
+      <div class="slds-form-element slds-button-group pull-right" role="group">
+
+        <vlocity_ins-button
+          if:true={range.length}
+          class="slds-button"
+          data-index="prev"
+          title="Previous"
+          onmousedown={goToPage}
+          disabled={prevDisabled}
+          icon-name="utility:chevronleft"
+          icon-url={iconUrl}
+          icon-size="small"
+          theme={theme}
+        ></vlocity_ins-button>
+        <template for:each={range} for:item="item" for:index="index">
+          <button
+            key={item}
+            class={pageButtonClass}
+            data-index={item}
+            onclick={goToPage}
+          >
+            {pageIndex}{item}
+          </button>
+        </template>
+        <!-- Re-Added the old button config -->
+          <vlocity_ins-button
+            if:true={range.length}
+            class="slds-button"
+            data-index="next"
+            title="Next"
+            onmousedown={goToPage}
+            disabled={nextDisabled}
+            icon-name="utility:chevronright"
+            icon-url={iconUrl}
+            icon-size="small"
+            theme={theme}
+          >
+          </vlocity_ins-button>
+        <!--
+          <template if:false={showMoreControls}>
+        <vlocity_ins-button
+          if:true={range.length}
+          class="slds-button"
+          data-index="next"
+          title="Next"
+          onmousedown={goToPage}
+          disabled={nextDisabled}
+          icon-name="utility:chevronright"
+          icon-url={iconUrl}
+          icon-size="small"
+          theme={theme}
+        >
+        </vlocity_ins-button>
+      </template>
+        <template if:true={showMoreControls}>
+        <vlocity_ins-button
+        if:true={range.length}
+          class="slds-button"
+          data-index="next_STAR"
+          data-id ="next_STAR"
+          title="Next"
+         
+          onclick={goToPage2}
+          disabled={IsNoMoreRecord}
+          icon-name="utility:chevronright"
+          icon-url={iconUrl}
+          icon-size="small"
+          theme={theme}
+        >
+        </vlocity_ins-button>
+
+      </template>
+        -->
+        
+
+
+      </div>
+    </div>
+  </div>
+  <vlocity_ins-modal
+      class="vloc-ins-omni-modal"
+      title={omniscriptModalLabel}
+      size="medium"
+      hideclosebutton
+      hideheader
+  >
+      <div slot="content">
+        <div class="slds-grid align-right">
+          <button
+            class="slds-button slds-button_icon slds-button_icon-inverse close-modal-button"
+            title="Close" onclick={closeModal}>
+
+            <vlocity_ins-icon icon-name="utility:close" class="icon-close" extraclass="slds-m-left_small"
+                size="medium" color="#e3e3e3"></vlocity_ins-icon>
+        </button>
+        </div>
+        <template if:true={omnis.editDependent} >
+          <c-q-e-os-edit-dependent-english  layout="lightning" prefill={prefill}></c-q-e-os-edit-dependent-english>
+        </template>
+        <template if:true={omnis.deleteDependent} >
+          <c-q-e-os-remove-dependent-english  layout="lightning" prefill={prefill}></c-q-e-os-remove-dependent-english>
+        </template>
+        <template if:true={omnis.editSubGroup}>
+          <c-q-e-os-edit-group-sub-group-english   layout="lightning" prefill={prefill}></c-q-e-os-edit-group-sub-group-english>
+        </template>
+        <template if:true={omnis.editSubscriber}>
+          <c-q-e-os-update-subscriber-english  layout="lightning" prefill={prefill}></c-q-e-os-update-subscriber-english>
+        </template>
+        <!-- <c-q-e-os-select-medical-plans-english if:true={omnis.editDependent} prefill={prefill} layout="lightning"></c-q-e-os-select-medical-plans-english> -->
+
+        <!-- c-cf-demo-embed-child-f-cpass-records  -->
+        <!--c-q-e-os-delete-account-division-sub-division-english if:true={omnis.deleteDivision} layout="lightning" prefill={prefill}></c-q-e-os-delete-account-division-sub-division-english>
+        <c-q-e-os-delete-group-classes-english if:true={omnis.deleteClass} layout="lightning" prefill={prefill}></c-q-e-os-delete-group-classes-english-->
+      </div>
+  </vlocity_ins-modal>
+  <vlocity_ins-modal hidefooter={hideFooter} size="medium" class="vloc-ins-product-modal">
+      <div slot="header">
+        <div class="nds-text-heading_medium slds-text-heading_medium">
+            {modalTitle}
+        </div>
+    </div>
+      <div slot="content">
+
+          <template if:true={products}>
+            <c-q-e_-l-w-c-ins-product-matrix-new-quote products={products} hide-header={hideHeader} is-editable={isEditable}>
+            </c-q-e_-l-w-c-ins-product-matrix-new-quote>
+          </template>
+      </div>
+  </vlocity_ins-modal>
+  <vlocity_ins-modal hidefooter={hideFooter} size="medium" class="vloc-ins-deps-modal">
+    <div slot="header">
+      <div class="nds-text-heading_medium slds-text-heading_medium">
+          View Dependents
+      </div>
+  </div>
+    <div slot="content">
+      <lightning-datatable
+            class=""
+            key-field="DepId"
+            data={dataDepSpan}
+            hide-checkbox-column="true"
+            column-widths-mode="auto"
+            columns={depSpanColumns}>
+      </lightning-datatable>
+      <template if:true={depModSpan}>
+        <div class="tableFoot tableNoData">
+           No data to show
+        </div>
+      </template>
+    </div>
+</vlocity_ins-modal>
+  <!-- <c-q-e_-l-w-c-ins-os-grid-product-modal-new-quote  root-channel={rootChannel}></c-q-e_-l-w-c-ins-os-grid-product-modal-new-quote> -->
+
+</template>

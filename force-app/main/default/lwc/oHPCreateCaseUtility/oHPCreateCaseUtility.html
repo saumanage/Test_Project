@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <div if:true={productPicklist.data} class="slds-p-horizontal_xx-small">
+            <lightning-record-edit-form object-api-name="Case" columns="1" onsuccess={handleSuccess} record-type-id={recordTypeId}>
+                <lightning-input-field field-name="Subject" value="Thank you for contacting Optima Health"></lightning-input-field>
+                <lightning-input-field field-name="Description"></lightning-input-field>
+                <lightning-input-field field-name="Origin" value="Phone"></lightning-input-field>
+                <lightning-input-field field-name="AccountId" required="true"></lightning-input-field>
+                <lightning-input-field field-name="Status" value="Solved"></lightning-input-field>
+                <div class="slds-p-horizontal_xx-small">
+                    <c-combo-box-autocomplete
+                        field-name="OHP_Product__c"
+                        label="Product"
+                        options={productPicklist.data.values}
+                        onselectoption={handleOptionChange}
+                        classes="slds-m-bottom_small">
+                    </c-combo-box-autocomplete>
+                </div>
+                <lightning-button-group>
+                    <lightning-button variant="brand-outline" label="Reset" onclick={handleReset}></lightning-button>
+                    <lightning-button variant="brand" type="submit" label="Save"></lightning-button>    
+                </lightning-button-group>
+            </lightning-record-edit-form>
+        </div>
+        <div if:false={productPicklist.data}>
+            <lightning-spinner></lightning-spinner>
+        </div>
+    </lightning-card>
+</template>

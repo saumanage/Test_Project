@@ -1,0 +1,31 @@
+<template>
+    <template for:each={products} for:item="product" for:index="index">
+        <div
+            key={product.Id}
+            data-key={product.Id}
+            data-name="products"
+            data-id={index}
+            class="slds-col slds-size_1-of-1 nds-col nds-size_1-of-1 bottom-margin"
+        >
+            <c-q-e_-l-w-c-ins-os-grid-product-row-optima
+                hidden-actions={hiddenActions}
+                onselected={selectProduct}
+                product={product}
+                rate-values={rateValues}
+                show-config-inline={showConfigInline}
+                onexpand={expandProduct}
+                invalidate-cache={invalidateCache}
+                show-product-tile={showProductTile}
+                is-cart={isCart}
+                show-config-button={showConfigButton}
+                theme={theme}
+                root-channel={rootChannel}
+                reprice-action={repriceAction}
+                onhiglightproduct={higlightProduct}
+                review-cart-opened={reviewCartOpened}
+                is-benefit-change={isBenefitChange}
+            >
+            </c-q-e_-l-w-c-ins-os-grid-product-row-optima>
+        </div>
+    </template>
+</template>

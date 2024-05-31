@@ -1,0 +1,115 @@
+.table {
+    display: table;
+  }
+  
+  .tableHead {
+    display: table-header-group;
+    border-top: 1px solid lightgrey;  /*CSS Added for Optima */
+    border-bottom: 1px solid lightgrey; /*CSS Added for Optima */
+  }
+  .tableFoot{
+    display: table-caption;
+    text-align: center;
+    position: relative;
+    top: 80px;
+    font-size: 20px;
+    font-family: 'Salesforce Sans' !important;
+  }
+  .tableRow {
+    display: table-row;
+    counter-increment: row-number;
+  }
+  
+  .tableBody {
+    display: table-row-group
+  }
+  
+  .tableHeadCell {
+    display: table-cell;
+  }
+  
+  .tableRowCell {
+    display: table-cell
+  }
+  
+  .slds-table_header-fixed .tableHeadCell {
+    position: static;
+    padding: 0;
+    border-top: 0;
+  }
+  
+  .table .tableHeadCell {
+    background-color: rgb(255, 255, 255);
+    color: #2B2826;
+    font-weight: 700;
+    line-height: normal;
+    white-space: nowrap;
+    text-align: left;
+  }
+  .tableNoData{
+    display: block !important;
+    width: 100%;
+  }
+  .table .tableRowCell {
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .table .tableRowCell .draggableIcon {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  
+  .table .tableRowCell .draggableIcon:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  
+  .slds-table_header-fixed .tableBody .tableRow:first-child .tableRowCell {
+    border: 0;
+  }
+  
+  .slds-table_bordered .tableRowCell {
+    border-top: 1px solid rgb(221, 219, 218);
+  }
+  
+  .tableBody .tableRow:hover {
+    background-color: #eee;
+  }
+  
+  .tableHeadCell.iconWidth {
+    width: 0.1%;
+  }
+  
+  .tableRowCell.iconWidth {
+    width: 0.1%;
+  }
+  .align-end{
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .combo-page-size{
+    width: 70px;
+  }
+  .close-modal-button {
+    top: 0.5rem;
+    right: 1.5rem;
+    width: 3rem;
+  }
+  .align-right{
+    justify-content: flex-end;
+  }
+
+  /* .cellPadding {
+    padding: 5px 0px;
+  } */
+
+  .rowDataStyle {
+     font-size: 18px;;
+     font-family: calibri;
+  }
+  .noData {
+    text-align: center;
+    font-size: 22px;
+  }

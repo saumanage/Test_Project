@@ -1,0 +1,195 @@
+<template>
+    <!-- <template class='slds-form-element slds-size_1-of-1 slds-m-bottom_large slds-p-around_small slds-rich-text-editor__output'
+        for:each={child.eleArray} for:item="control">
+        <div key={control} class="slds-size_1-of-1"> -->
+            <table class="slds-table slds-table_cell-buffer slds-no-row-hover edit-member-summary-table" style="width: 70% !important">
+
+                <tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+                    <th>
+                        <div class="slds-truncate cust-header">Personal Information</div>
+                    </th>
+                    <th></th>
+                </tr>
+
+
+                <tr class="slds-hint-parent">
+                    <td>
+                        <div class="slds-truncate">Name</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.firstName} {middleInitialCalc} {summary.personalInfo.lastName}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.birthDate}>
+                    <td>
+                        <div class="slds-truncate">Birth Date</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.birthDate}</div>
+                    </td>
+                </tr>
+                <!--SSN not to be shown on UI - VLOC-847-->
+                <!--<tr class="slds-hint-parent" ng-if="summary.personalInfo.socialSecurityNumber != null">
+                    <td>
+                        <div class="slds-truncate">SSN / ITIN</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{formatSSN(summary.personalInfo.socialSecurityNumber)}</div>
+                    </td>
+                </tr>-->
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.maritalStatus}>
+                    <td>
+                        <div class="slds-truncate">Marital Status</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.maritalStatus}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.ethnicity}>
+                    <td>
+                        <div class="slds-truncate">Ethnicity</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.ethnicity}</div>
+                    </td>
+                </tr>
+                <!--tr class="slds-hint-parent" ng-if="summary.personalInfo.gender != null">
+                    <td>
+                        <div class="slds-truncate">Sex</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{changeToUpperCase(summary.personalInfo.gender)}</div>
+                    </td>
+                </tr-->
+                
+                
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.primaryLanguage} >
+                    <td>
+                        <div class="slds-truncate">Primary Language</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.primaryLanguage}</div>
+                    </td>
+                </tr>
+                <!--tr class="slds-hint-parent" ng-if="summary.personalInfo.writtenLanguage != null">
+                    <td>
+                        <div class="slds-truncate">Written Language</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{changeToUpperCase(summary.personalInfo.writtenLanguage)}</div>
+                    </td>
+                </tr-->
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.phoneNumber}>
+                    <td>
+                        <div class="slds-truncate">Home Phone</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.phoneNumber}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.mobilePhone}>
+                    <td>
+                        <div class="slds-truncate">Mobile Phone</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.mobilePhone}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.workPhone}>
+                    <td>
+                        <div class="slds-truncate">Work Phone</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.workPhone}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.emailAddress}>
+                    <td>
+                        <div class="slds-truncate">Email Address</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">{summary.personalInfo.emailAddress}</div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.changeAddress}>
+                    <td>
+                        <div class="slds-truncate">Home Address</div>
+                    </td>
+                    <!-- 
+                        IF(%personalInfo:changeAddress% == 'Yes', %personalInfo:ZipCodeSearch-Block:City%, 
+                        %personalInfo:currentCity%)
+                    -->  
+                    <td if:true={summary.personalInfo.Relationship}>
+                <div class="slds-truncate">
+                    <p>
+                        {homeStreetCalc} {homestreet2Calc}<br/>
+                    {summary.personalInfo.homeCity},{summary.personalInfo.homeState} {summary.personalInfo.homeZipCode}<br/>
+                    {homeCountryCalc}
+                            </p>
+                        </div>
+                    </td>
+                    <td if:true={summary.personalInfo.changeAddress}>
+                        <div class="slds-truncate">
+                            <p>
+                                {currentStreetCalc}, <br/> 
+                                {summary.personalInfo.currentCity}, {summary.personalInfo.currentState} {summary.personalInfo.currentZipCode}
+                                 {summary.personalInfo.currentCounty} County
+
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.Relationship}>
+                    <td>
+                        <div class="slds-truncate">Mailing Address</div>
+                    </td>
+                    
+                    <td if:true={changeMailingAddCalc}>
+                        <div class="slds-truncate">
+                            <p>
+                                {mailStreet1MainCalc} {mailStreet2MainCalc}<br/> 
+                                {mCityCalc},{mStateCalc} {mZipCodeCalc}<br/>
+                                {mCountyCalc} 
+
+                            </p>
+                        </div>
+                    </td>
+                    
+                    <td if:false={changeMailingAddCalc}>
+                        <div class="slds-truncate">
+                            <p>
+                                {mailStreet1Calc} {mailStreet2Calc}<br/> 
+                                {summary.personalInfo.mailingAddress.currentMailingCity},{summary.personalInfo.mailingAddress.currentMailingState} {summary.personalInfo.mailingAddress.currentMailingZipCode}<br/>
+                                {summary.personalInfo.mailingAddress.currentMailingCounty} County 
+                            </p>
+                        </div>
+                    </td>
+                    <!--<td>
+                        <div class="slds-truncate">
+                            <p>
+                                {summary.personalInfo.mailingAddress.mailingStreet != null && summary.personalInfo.mailingAddress.mailingStreet != ""? changeToUpperCase(summary.personalInfo.mailingAddress.mailingStreet)
+                                :""} {summary.personalInfo.mailingAddress.mailingStreet2 != null && summary.personalInfo.mailingAddress.mailingStreet2
+                                != ""? ", "+summary.personalInfo.mailingAddress.mailingStreet2 :""},<br/> {summary.personalInfo.mailingCity},
+                                {summary.personalInfo.mailingState}, {summary.personalInfo.mailingCounty+" County"} {summary.personalInfo.mailingZipCode}
+
+                            </p>
+                        </div>
+                    </td>-->
+                </tr>
+                <tr class="slds-hint-parent" if:true={summary.personalInfo.HomeCounty}>
+                    <td>
+                        <div class="slds-truncate">County</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate">
+                            <p>
+                                {summary.personalInfo.HomeCounty}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </div>
+    </template> -->
+</template>

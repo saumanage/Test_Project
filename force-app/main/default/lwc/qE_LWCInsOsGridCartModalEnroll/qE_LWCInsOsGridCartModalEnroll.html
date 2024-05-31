@@ -1,0 +1,18 @@
+<template>
+    <vlocity_ins-modal hidefooter size="medium">
+        <div slot="header">
+            <h1 class="slds-text-heading_medium nds-text-heading_medium">{labels.DCMyCart}</h1>
+        </div>
+        <div if:true={products} slot="content">
+            <div class="slds-grid nds-grid">
+                <c-q-e_-l-w-c-ins-os-grid-cart-enroll
+                    step-name={stepName}
+                    products={products}
+                    root-channel={rootChannel}
+                    theme={theme}
+                    style="width: 100%;"
+                ></c-q-e_-l-w-c-ins-os-grid-cart-enroll>
+            </div>
+        </div>
+    </vlocity_ins-modal>
+</template>

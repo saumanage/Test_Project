@@ -1,0 +1,28 @@
+.align-center-block{
+    text-align: center;
+    justify-content: center;
+
+}
+.first-container{
+    border-top: 1px solid #f1f1f1;
+}
+.footer-font{
+
+}
+.disclaimer{
+    margin-top: 2rem !important;
+    text-align: center;
+    border-top: none !important;
+    padding: 0 !important;
+}
+p{
+    font-family: open_sansregular, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    text-rendering: optimizeLegibility;
+    margin: 0.5rem 0;
+    color: #555555;
+    font-size: 14px;
+    max-width: 1500px;
+}

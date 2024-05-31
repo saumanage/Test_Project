@@ -1,0 +1,31 @@
+.vloc-ins-plan-block{
+    padding: 15px 0px 15px;
+}
+.vloc-ins-coverages-title{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2B2826;
+}
+.vloc-ins-align{
+    align-items: center;
+}
+.vloc-ins-plan-label{
+    font-weight: 600;
+    font-size: 18px;
+    color: #2B2826;
+}
+.vloc-ins-plan-content{
+    font-size: 15px;
+    color: #2B2826;
+}
+.vloc-ins-plan-content button{
+    color: #0E406A;
+}
+.vloc-ins-align-end{
+    align-items: flex-end;
+}
+.vloc-ins-plan-container{
+    border-bottom: 1px solid #d9dbdd;
+
+}

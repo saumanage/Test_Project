@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>OHP Case Create Flowscreen</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="recordTypeId" type="String" role="inputOnly"/>
+            <property name="selectedProduct" type="String" role="outputOnly"/>
+            <property name="accountIdVal" type="String"/>
+            <property name="subjectVal" type="String" role="outputOnly"/>
+            <property name="dnisVal" type="String" role="outputOnly"/>
+            <property name="ownerIdVal" type="String"/>
+            <property name="ownerName" type="String"/>
+            <property name="originVal" type="String" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

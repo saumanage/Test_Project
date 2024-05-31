@@ -1,0 +1,9 @@
+.disclaimer-font, 
+.disclaimer-font > ol > li,
+.disclaimer-font > p > strong{
+font-size:14px !important;
+font-family: Source Sans Pro, sans-serif;
+}
+.disclaimer-font > p{
+margin-bottom: 14px !important;
+}

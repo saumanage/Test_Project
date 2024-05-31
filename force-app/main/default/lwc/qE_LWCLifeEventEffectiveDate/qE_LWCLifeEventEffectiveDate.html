@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-grid" if:true={showDate}>
+        <div class="slds-col slds-size_1-of-1" if:false={showSelect}>
+            <vlocity_ins-input
+                type="date"
+                onchange={changeDate}
+                placeholder=""
+                value={value}
+                theme="slds"
+                label="Effective Date"
+                format="MM/DD/YYYY"
+                output-format="YYYY-MM-DD"
+                name="EffectiveDate"
+                id="EffectiveDate"
+                read-only={isReadOnly}
+                required
+            >
+            </vlocity_ins-input>
+        </div>
+        <div class="slds-col slds-size_1-of-1" if:true={showSelect}>
+            <lightning-combobox
+                        name="EffectiveDate"
+                        label="Effective Date"
+                        placeholder="Select Effective Date"
+                        value={selectedValue}
+                        onchange={handleChange}
+                        options={dateOptions}>
+            </lightning-combobox>
+            
+        </div>
+    </div>
+    
+</template>

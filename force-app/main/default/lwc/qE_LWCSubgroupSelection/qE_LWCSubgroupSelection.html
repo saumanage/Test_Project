@@ -1,0 +1,11 @@
+<template>
+    <lightning-datatable
+                class="table-subgroups"
+                key-field="Id"
+                data={subgroups}
+                max-row-selection="1"
+                selected-rows={selectedRows}
+                onrowselection={getSelectedName}
+                columns={columns}>
+        </lightning-datatable>
+</template>

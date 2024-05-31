@@ -1,0 +1,207 @@
+<template>
+<div class="slds-scrollable_x" style="width:!00%" tabindex="0">
+	<table aria-multiselectable="true"
+		class="slds-table slds-no-cell-focus slds-table_bordered   slds-table_resizable-cols" role="grid"
+		aria-label="Example inline edit table in navigation mode with header cell marked">
+		<thead>
+			<tr class="slds-line-height_reset" style="height:35px">
+				<th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:12%;">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  style="margin-left: 10px;">Phone Type</span>
+					</div>
+
+				</th>
+				<th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:18%;">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  style="margin-left: 10px;">Phone #</span>
+					</div>
+
+				</th>
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:25%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  >Auto-Dial Consent</span>
+					</div>
+
+				</th>
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:25%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate" style="margin-left: 10px;"  >Level Of Consent</span>
+					</div>
+
+				</th>
+
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:20%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  >Consent Assigned Date</span>
+					</div>
+
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<template for:each={recordData1} for:item="rows" for:index="indexs1">
+				<tr aria-selected="false" class="slds-hint-parent" key={rows.Id}>
+					<td style="width:12%" class="slds-cell-edit slds-cell-error" role="gridcell">
+						{rows.Label}
+					</td>
+					<td style="width:18%" class="slds-cell-edit slds-cell-error" role="gridcell">
+						<template if:false={rows.editable}>
+							{rows.Phone}
+						</template>
+						<template if:true={rows.editable}>
+							<lightning-input access-key={indexs1} onblur ={handleRec1change} 
+							disabled={rows.disableRecord} type="phone" value={rows.Phone}></lightning-input>
+						</template>
+					</td>
+					<td style="width:25%"> {rows.consentValue}</td>
+					<td style="width:25%">
+						<template if:true={isAgent}>
+							<template if:true={isDNCLifeTimeBan}>
+								<lightning-input access-key={indexs1} onblur ={handleRec1change} 
+							disabled={rows.disableRecord} type="phone" value={rows.level}></lightning-input>
+							</template>
+							<template if:false={isDNCLifeTimeBan}>
+								<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs1}
+								value={rows.level} options={statusOptionsAgent} onchange={handleChange1}
+								></lightning-combobox>
+							</template>
+							
+						</template>
+						<template if:false={isAgent}>
+							<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs1}
+							value={rows.level} options={statusOptions} onchange={handleChange1}
+							></lightning-combobox>
+						</template>
+						
+					</td>
+					<td style="width:20%">
+						<lightning-formatted-date-time value={rows.updatedDate} year="numeric" month="numeric"
+							day="numeric" hour="2-digit" minute="2-digit" hour12={ampm}></lightning-formatted-date-time>
+					</td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+	<br/>
+	<table aria-multiselectable="true"
+		class="slds-table slds-no-cell-focus slds-table_bordered   slds-table_resizable-cols" role="grid"
+		aria-label="Example inline edit table in navigation mode with header cell marked">
+		<thead>
+			<tr style="height:35px">
+				<th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:12%;">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  style="margin-left: 10px;">Phone Type</span>
+					</div>
+
+				</th>
+				<th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:18%;">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  style="margin-left: 10px;">Phone #</span>
+					</div>
+
+				</th>
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:25%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate" >SMS Consent</span>
+					</div>
+
+				</th>
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:25%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate" style="margin-left: 10px;" >Level Of Consent</span>
+					</div>
+
+				</th>
+				<th aria-label="Action" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col"
+					style="width:20%">
+
+					<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+						<span class="slds-truncate"  >Consent Assigned Date</span>
+					</div>
+
+				</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<template for:each={recordData2} for:item="rows" for:index="indexs2">
+				<tr aria-selected="false" class="slds-hint-parent" key={rows.Id}>
+					<td style="width:12%" class="slds-cell-edit slds-cell-error" role="gridcell">
+						{rows.Label}
+					</td>
+					<td style="width:18%" class="slds-cell-edit slds-cell-error" role="gridcell">
+						<template if:false={rows.editable}>
+							{rows.Phone}
+						</template>
+						<template if:true={rows.editable}>
+							<lightning-input type="phone" access-key={indexs2} onblur ={handleRec2change}
+							disabled={rows.disableRecord} value={rows.Phone}></lightning-input>
+						</template>
+					</td>
+					<td style="width:25%">{rows.consentValue}</td>
+					<td style="width:25%">
+						<!--
+							<template if:true={isAgent}>
+							<template if:true={isDNCLifeTimeBan}>
+								<lightning-input access-key={indexs1} onblur ={handleRec1change} 
+							disabled={rows.disableRecord} type="phone" value={rows.level}></lightning-input>
+							</template>
+							<template if:false={isDNCLifeTimeBan}>
+								<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs2}
+							value={rows.level} options={statusOptions} onchange={handleChange2}
+							></lightning-combobox>
+							</template>
+							
+						</template>
+						<template if:false={isAgent}>
+							<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs2}
+							value={rows.level} options={statusOptions} onchange={handleChange2}
+							></lightning-combobox>
+						</template> -->
+						<template if:true={isAgent}>
+							<template if:true={isDNCLifeTimeBan}>
+								<lightning-input access-key={indexs1} onblur ={handleRec1change} 
+							disabled={rows.disableRecord} type="phone" value={rows.level}></lightning-input>
+							</template>
+							<template if:false={isDNCLifeTimeBan}>
+								<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs1}
+								value={rows.level} options={statusOptionsAgent} onchange={handleChange1}
+								></lightning-combobox>
+							</template>
+							
+						</template>
+						<template if:false={isAgent}>
+							<lightning-combobox dropdown-alignment="auto" name="progress" access-key={indexs1}
+							value={rows.level} options={statusOptions} onchange={handleChange1}
+							></lightning-combobox>
+						</template>
+					</td>
+					<td style="width:20%">
+						<lightning-formatted-date-time value={rows.updatedDate} year="numeric" month="numeric"
+							day="numeric" hour="2-digit" minute="2-digit" hour12={ampm}></lightning-formatted-date-time>
+					</td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+</div>
+</template>

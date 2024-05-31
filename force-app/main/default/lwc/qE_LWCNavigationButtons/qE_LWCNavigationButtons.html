@@ -1,0 +1,21 @@
+<template>
+    <div if:false={showPreviousButton} class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium" style="margin-top: 30px; padding-left: 85%">
+        <div class="slds-col">
+                <button type="button" label="undefined" onclick={nextButton} class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center">
+                        <span class="btnLabel">Next</span>
+                </button>
+        </div>
+    </div>
+    <div if:true={showPreviousButton} class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium" style="margin-top: 30px; padding-left: 70%">
+            <div class="slds-col">
+                    <button type="button" label="undefined" onclick={prevButton} class="vlocity-btn slds-button slds-button_neutral slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center">
+                            <span class="btnLabel">Previous</span>
+                    </button>
+            </div>
+            <div class="slds-col">
+                    <button type="button" label="undefined" onclick={nextButton} class="vlocity-btn slds-button slds-button_brand slds-size_1-of-1 slds-p-horizontal_none slds-text-align_center">
+                            <span class="btnLabel">Next</span>
+                    </button>
+            </div>
+    </div>
+</template>

@@ -1,0 +1,168 @@
+<template>
+    <div style="height: 100px;">
+        <lightning-datatable
+            key-field="id"
+            data={authSectionData}
+            columns={authSectionColumns}
+            hide-checkbox-column="true"  
+            show-row-number-column="true">
+        </lightning-datatable>
+    </div>
+    <lightning-tabset>
+        <lightning-tab label="Details">
+            <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                <lightning-accordion-section if:true={authDetailSection} name="Auth Details" label={authSectionName}>
+                    <!-- auth fields -->
+                    <lightning-layout>
+                        <lightning-layout-item size="6">
+                            <p if:true={authDetailSection.parentEpisodeId}><b>{authDetailSection.parentEpisodeId.label}:</b> {authDetailSection.parentEpisodeId.value}</p>
+                            <p if:true={authDetailSection.certAuthNo}><b>{authDetailSection.certAuthNo.label}:</b> {authDetailSection.certAuthNo.value}</p>
+                            <p if:true={authDetailSection.episodeStartDt}><b>{authDetailSection.episodeStartDt.label}:</b> {authDetailSection.episodeStartDt.value}</p>
+                            <p if:true={authDetailSection.episodeStatus}><b>{authDetailSection.episodeStatus.label}:</b> {authDetailSection.episodeStatus.value}</p>
+                            <p if:true={authDetailSection.statusReasonDesc}><b>{authDetailSection.statusReasonDesc.label}:</b> {authDetailSection.statusReasonDesc.value}</p>
+                            <p if:true={authDetailSection.referralReasonDesc}><b>{authDetailSection.referralReasonDesc.label}:</b> {authDetailSection.referralReasonDesc.value}</p>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <p if:true={authDetailSection.severityDesc}><b>{authDetailSection.severityDesc.label}:</b> {authDetailSection.severityDesc.value}</p>
+                            <p if:true={authDetailSection.complexityTypeDesc}><b>{authDetailSection.complexityTypeDesc.label}:</b> {authDetailSection.complexityTypeDesc.value}</p>
+                            <p if:true={authDetailSection.providerName}><b>{authDetailSection.providerName.label}:</b> {authDetailSection.providerName.value}</p>
+                            <p if:true={authDetailSection.assignedNurseName}><b>{authDetailSection.assignedNurseName.label}:</b> {authDetailSection.assignedNurseName.value}</p>
+                            <p if:true={authDetailSection.claimedVisits}><b>{authDetailSection.claimedVisits.label}:</b> {authDetailSection.claimedVisits.value}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-accordion-section>
+                <lightning-accordion-section if:true={diagnosisSection} name="Diagnosis Information" label="Diagnosis Information">
+                    <!-- diagnosis fields -->
+                    <lightning-layout>
+                        <lightning-layout-item size="6">
+                            <p if:true={diagnosisSection.diagnosisTypeCd}><b>{diagnosisSection.diagnosisTypeCd.label}:</b> {diagnosisSection.diagnosisTypeCd.value}</p>
+                            <p if:true={diagnosisSection.diagnosisDesc}><b>{diagnosisSection.diagnosisDesc.label}:</b> {diagnosisSection.diagnosisDesc.value}</p>
+                            <p if:true={diagnosisSection.isPrimary}><b>{diagnosisSection.isPrimary.label}:</b> {diagnosisSection.isPrimary.value}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-accordion-section>
+                <lightning-accordion-section if:true={providerSection} name="Provider Information" label="Provider Information">
+                    <!-- provider fields -->
+                    <lightning-layout>
+                        <lightning-layout-item size="6">
+                            <p><b>{providerSection.providerId.label}:</b> {providerSection.providerId.value}</p>
+                            <p><b>{providerSection.providerName.label}:</b> {providerSection.providerName.value}</p>
+                            <p><b>{providerSection.providerTypeDesc.label}:</b> {providerSection.providerTypeDesc.value}</p>
+                            <p><b>{providerSection.providerRoleDesc.label}:</b> {providerSection.providerRoleDesc.value}</p>
+                            <p><b>{providerSection.phone.label}:</b> {providerSection.phone.value}</p>
+                            <p><b>{providerSection.providerFax.label}:</b> {providerSection.providerFax.value}</p>
+                            <p><b>{providerSection.inNetwork.label}:</b> {providerSection.inNetwork.value}</p>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <p><b>{providerSection.providerAddressLine1.label}:</b> {providerSection.providerAddressLine1.value}</p>
+                            <p><b>{providerSection.providerAddressLine2.label}:</b> {providerSection.providerAddressLine2.value}</p>
+                            <p><b>{providerSection.city.label}:</b> {providerSection.city.value}</p>
+                            <p><b>{providerSection.stateDesc.label}:</b> {providerSection.stateDesc.value}</p>
+                            <p><b>{providerSection.countryDesc.label}:</b> {providerSection.countryDesc.value}</p>
+                            <p><b>{providerSection.zip.label}:</b> {providerSection.zip.value}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-accordion-section>
+                <lightning-accordion-section if:true={typeSection1} name="Type Information" label={typeSectionName}>
+                    <!--Type fields-->
+                    <lightning-layout if:true={typeSection1}>
+                        <lightning-layout-item size="6">
+                            <template for:each={typeSection1} for:item="col" for:index="index">  
+                                <div key={col.Id}>  
+                                    <p><b>{col.label}:</b> {col.value}</p>
+                                </div>  
+                            </template> 
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <template for:each={typeSection2} for:item="col" for:index="index">  
+                                <div key={col.Id}>  
+                                    <p><b>{col.label}:</b> {col.value}</p>
+                                </div>  
+                            </template> 
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-accordion-section>
+                <lightning-accordion-section name="System Information" label="System Information">
+                    <!--System fields-->
+                    <lightning-layout>
+                        <lightning-layout-item size="6">
+                            <p><b>{systemSection.createdDt.label}:</b> {systemSection.createdDt.value}</p> 
+                            <p><b>{systemSection.createdByName.label}:</b> {systemSection.createdByName.value}</p> 
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <p><b>{systemSection.modifiedDt.label}:</b> {systemSection.modifiedDt.value}</p> 
+                            <p><b>{systemSection.modifiedByName.label}:</b> {systemSection.modifiedByName.value}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </lightning-tab>
+        <lightning-tab label="Related">
+            <!-- related list -->
+            <lightning-card if:true={serviceData} variant="Narrow"  title="Service Request" >               
+                <lightning-datatable
+                        key-field="id"
+                        data={serviceData}
+                        columns={serviceColumns}
+                        hide-checkbox-column="true"  
+                        show-row-number-column="true"
+                        onrowaction={handleRowAction}
+                        min-column-width = '120'>
+                </lightning-datatable>
+            </lightning-card>
+            <lightning-card if:true={stayData} variant="Narrow"  title="Stay Request" >               
+                <lightning-datatable
+                        key-field="id"
+                        data={stayData}
+                        columns={stayColumns}
+                        hide-checkbox-column="true"  
+                        show-row-number-column="true"
+                        onrowaction={handleRowAction}
+                        min-column-width = '120'>
+                </lightning-datatable>                
+            </lightning-card>
+            <lightning-card if:true={appealStayData} variant="Narrow"  title="Appeals Stay Requests" >               
+                <lightning-datatable
+                        key-field="Id"
+                        data={appealStayData}
+                        columns={appealStayColumns}
+                        hide-checkbox-column="true"  
+                        show-row-number-column="true"
+                        onrowaction={handleRowAction}
+                        min-column-width = '120'>
+                </lightning-datatable>                
+            </lightning-card>
+            <lightning-card if:true={appealServiceData} variant="Narrow"  title="Appeals Service Requests" >               
+                <lightning-datatable
+                        key-field="id"
+                        data={appealServiceData}
+                        columns={appealServiceColumns}
+                        hide-checkbox-column="true"  
+                        show-row-number-column="true"
+                        onrowaction={handleRowAction}
+                        min-column-width = '120'>
+                </lightning-datatable>                
+            </lightning-card>
+            <lightning-card if:true={procedureSection} variant="Narrow"  title="Procedures" >               
+                <lightning-datatable
+                        key-field="id"
+                        data={procedureSection}
+                        columns={procedureColumns}
+                        hide-checkbox-column="true"  
+                        show-row-number-column="true"
+                        min-column-width = '120'>
+                </lightning-datatable>                
+            </lightning-card>
+        </lightning-tab>
+        <lightning-tab label="Notes">
+            <c-note-Component noteinfo={notes}></c-note-Component>
+        </lightning-tab>
+        <lightning-tab if:true={authorizationId} label="Associated Claims">
+            <lightning-card variant="Narrow"  title="Claims" >   
+                <lightning-flow flow-api-name='AuthorizationAssociatedClaims'
+                    flow-input-variables={inputVariables}>
+                </lightning-flow>            
+            </lightning-card>
+        </lightning-tab>
+    </lightning-tabset>   
+</template>

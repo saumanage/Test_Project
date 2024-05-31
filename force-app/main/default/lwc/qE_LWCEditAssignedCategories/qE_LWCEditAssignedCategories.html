@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_6-of-12">
+            <lightning-accordion  
+                allow-multiple-sections-open
+                onsectiontoggle={handleToggleSection}>
+
+                <template for:each={catData} for:item="cat">
+                    <lightning-accordion-section class="vloc-section"  key={cat.name} name={cat.name} label={cat.name}>
+                        <lightning-combobox
+                            name={cat.name}
+                            data-catname={cat.name}
+                            label={cat.name}
+                            value={cat.value}
+                            placeholder="Select Category"
+                            options={cat.options}
+                            onchange={handleChange} ></lightning-combobox>
+                    </lightning-accordion-section>
+
+                </template>
+            </lightning-accordion> 
+        </div>
+    </div>
+     
+</template>

@@ -1,0 +1,86 @@
+<template>
+    <div class="slds-size_1-of-1" style="overflow-x:auto" >
+        <!--div class="nds-size_1-of-1 membermaintenance-pcp-providerSearch" ng-controller="membermaintenance-pcp-providerSearch" >
+            <ng-form name='loopform'
+                    class='nds-form-element nds-m-bottom_large nds-p-around_small ngFormProvider nds-rich-text-editor__output'
+                    ng-repeat='control in child.eleArray' id='{{::control.name}}'>
+                <table class="provider" ng-if="bpTree.response.providerDetails">
+                    <tr>
+                        <th>Provider Name</th>
+                        <th>Provider ID</th>
+                        <th>Speciality</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Zip</th>
+                        <th>Accepting New Patients</th>
+                    </tr>
+                    <tr ng-repeat="x in bpTree.response.providerDetails">
+                        <td>{{ x.providerName }}</td>
+                        <td>{{ x.providerNpi }}</td>
+                        <td>{{ x.specialtyName }}</td>
+                        <td>{{ x.phone }}</td>
+                        <td>{{ x.city }}  {{ x.state }}</td>
+                        <td>{{ x.zip }}</td>
+                        <td>{{ x.acceptingNewPatients }}</td>
+                    </tr>           
+                </table>
+            </ng-form>
+        </div-->
+        <div  class='slds-form-element slds-m-bottom_large slds-p-around_small formProvider slds-rich-text-editor__output' >
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                <thead >
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Provider Name">Provider Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Provider ID">Provider ID</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Speciality">Speciality</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Phone">Phone</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="City">City</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Zip">Zip</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Accepting New Patients">Accepting New Patients</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={providerDetailsList} for:item="pr">
+                        <tr key={pr} class="slds-hint-parent" >
+                            <td data-label="Provider Name">
+                                <div class="slds-truncate" title={pr.providerName}>{ pr.providerName }</div>
+                            </td>
+                            <td data-label="Provider Id">
+                                <div class="slds-truncate" title={pr.providerNpi} >{pr.providerNpi}</div>
+                            </td>
+                            <td data-label="Specialty Name">
+                                <div class="slds-truncate" title={pr.specialtyName}>{pr.specialtyName}</div>
+                            </td>
+                            <td data-label="Phone">
+                                <div class="slds-truncate" title={pr.phone}>{pr.phone}</div>
+                            </td>
+                            <td data-label="City & State">
+                                <div class="slds-truncate" title={pr.city}>{pr.city} {pr.state}</div>
+                            </td>
+                            <td data-label="Zip">
+                                <div class="slds-truncate" title={pr.zip}>{pr.zip}</div>
+                            </td>
+                            <td data-label="Accepting New Patients">
+                                <div class="slds-truncate" title={pr.acceptingNewPatients}>{pr.acceptingNewPatients}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

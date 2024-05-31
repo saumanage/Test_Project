@@ -1,0 +1,78 @@
+<template>
+    <lightning-quick-action-panel header="Contact Information">
+        <template if:true={recordId}>
+            <lightning-record-edit-form object-api-name="Account" record-id={contactId} onsuccess={handleSuccess} onsubmit={onSubmitHandler}>
+                <lightning-messages> </lightning-messages>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="Name"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field  required="true" field-name="PersonBirthdate"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="PersonGender"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonHomePhone"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonEmail"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="Primary_Street__pc"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="Primary_State_Province__pc"></lightning-input-field>
+                    </div>
+                </div>
+
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="Physical_Address_2__pc"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="Primary_Zip_Postal_Code__pc"></lightning-input-field>
+                    </div>
+                </div>
+
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field required="true" field-name="Primary_City__pc"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonMailingStreet"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonMailingCity"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonMailingState"></lightning-input-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-input-field field-name="PersonMailingPostalCode"></lightning-input-field>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <div class="slds-form-element buttons slds-text-align_center">
+                        <lightning-button class="slds-m-top_small" variant="Neutral" label="Cancel"
+                            onclick={closeModal}></lightning-button>
+                        &nbsp;&nbsp;
+                        <lightning-button class="slds-m-top_small" variant="Brand" label="Submit" type="submit">
+                        </lightning-button>
+                    </div>
+                </div>
+            </lightning-record-edit-form>
+        </template>
+    </lightning-quick-action-panel>
+</template>

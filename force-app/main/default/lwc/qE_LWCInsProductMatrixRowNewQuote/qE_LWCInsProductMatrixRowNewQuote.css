@@ -1,0 +1,56 @@
+:host{
+    color: #2B2826 !important;
+    font-size: 16px !important;
+}
+.vloc-ins-total-price {
+    font-size: 1.1rem;
+}
+
+.vloc-ins-link:hover {
+    cursor: pointer;
+}
+
+.vloc-ins-bold {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.vloc-ins-grey {
+    color:grey;
+}
+
+.vloc-ins-blue {
+    color: #16325c;
+}
+
+.vloc-ins-diff {
+    color: orange;
+}
+
+.vloc-ins-overview-label {
+    padding-left: 1.8rem;
+    cursor: pointer;
+}
+
+.vloc-ins-is-primary {
+    color: #706e6b;
+}
+.button-brand-extra{
+    background-color: #1B7CAC;
+    height: 40px;
+}
+.button-neutral-extra{
+    border-color: #1B7CAC;
+    height: 40px;
+}
+.plan-style{
+    font-size: 22px;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
+}
+.centered{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

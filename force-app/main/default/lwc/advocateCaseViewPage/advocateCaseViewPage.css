@@ -1,0 +1,123 @@
+.dummy{
+	color : black;
+     background-color: #F5F5F5;
+  
+}
+.pillShapeButton {
+   height:35px;
+   width:220px;
+   border-radius: 30px;
+   background-color:#66ADCB;
+   border:none;
+   color:white;
+}
+.pillShapeButtonPh {
+   height:35px;
+   width:150px;
+   border-radius: 30px;
+   background-color:#66ADCB;
+   border:none;
+   color:white;
+}
+   .payform {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     padding: 0.5rem 0.5rem;
+     margin: 0 auto;
+     column-gap: 1rem;
+   } 
+
+      .form_confirm {
+     max-width: 100rem;
+     margin: 0 auto;
+   }
+         .form_confirmDekstop {
+    margin-left: 250px;
+    margin-right: 250px;
+   }
+   .form_confirmDekstopLogo{
+   margin-left: 70px;
+   }
+      .form_confirmDekstopLogoPh{
+   margin-right: 70px;
+   }
+         .background_color {
+   background-color: white; 
+   }
+   .accordionBackground{
+     background-color: #0076A8;
+   }
+   :host {
+     --slds-c-accordion-summary-color-background :  	#F5F5F5;
+   }    
+   .heading_SubmitPublicNew1{
+    color: rgb(26,26,26);
+    font-size: 40px;
+    font-family: Literata;
+    font-weight: 500;
+    line-height: 65px;
+    letter-spacing: 0.80px;
+    word-wrap: break-word;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 280px;
+    margin-right: 250px;
+  }
+.fontBold{
+    font-weight: bold;
+}
+   .heading_Submit{
+    font-weight: bold;
+}
+.logoStyle{
+         max-width: 80rem;
+     margin: 0 auto;
+}
+.marginTop{
+   margin-right: 500px;
+}
+.heading_center {
+    text-align: center;
+    line-height: 70px;
+    font-size: 35px;
+  }
+  .heading_centerPhone {
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px;
+  }
+    .heading_centerPhoneLogo {
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px;
+  }
+
+
+  .container{
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 10px; 
+    width: 90%; 
+}
+
+.logo-container {
+    text-align: left; 
+}
+
+.logo {
+    width: 20%; 
+}
+
+.logoPhone {
+    width: 60%; 
+}
+
+.custom-textarea {
+   --sds-c-textarea-sizing-min-height: 200px;
+}
+
+.custom-textareaPh {
+     --sds-c-textarea-sizing-min-height: 100px;
+}

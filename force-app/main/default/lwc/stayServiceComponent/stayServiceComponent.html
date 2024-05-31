@@ -1,0 +1,22 @@
+<template>
+    <div style=background-color:silver class="slds-text-body_regular">
+        <h1>{type} Information</h1>
+    </div>
+    <lightning-layout>
+        <lightning-layout-item size="6">
+            <template for:each={column1} for:item="col" for:index="index">  
+                <div class="slds-p-left_small" key={col.Id}>  
+                    <p><b>{col.label}:</b> {col.value}</p>
+                </div>  
+            </template>  
+        </lightning-layout-item>
+        <lightning-layout-item size="6">
+            <template for:each={column2} for:item="col" for:index="index">  
+                <div class="slds-p-left_small" key={col.Id}>  
+                    <p><b>{col.label}:</b> {col.value}</p>
+                </div>  
+            </template> 
+        </lightning-layout-item>
+    </lightning-layout>
+    <c-note-component noteinfo={notes}></c-note-component>
+</template>

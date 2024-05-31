@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+    <!--try the easy way first-->
+    <div if:true={recordId}  class="slds-p-horizontal_x-large">
+        <div if:false={editMode} class="slds-p-bottom_large">
+            <div if:true={fieldsLoaded}>
+                <lightning-input label="Strategy" type="text" value={selectedStrategy} disabled></lightning-input>
+                <lightning-input label="Stage of" type="text" value={selectedStage} disabled></lightning-input>
+                <lightning-input label="Win/Loss Reason" type="text" value={selectedWinLossReason} disabled></lightning-input>
+            </div>
+            <div if:false={fieldsLoaded}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+        </div>
+        <div if:true={editMode} class="slds-p-bottom_large">
+            <lightning-combobox
+                name="Strategy"
+                label="Strategy"
+                value={selectedStrategy}
+                options={strategyOptions}
+                onchange={handleSelection}
+                required="true">
+            </lightning-combobox>
+            <lightning-combobox
+                name="Stage"
+                label="Stage of"
+                value={selectedStage}
+                options={stageOptions}
+                onchange={handleSelection}
+                required="true">
+            </lightning-combobox>
+            <lightning-combobox
+                name="WinLoss"
+                label="Win/Loss Reason"
+                value={selectedWinLossReason}
+                options={winLossOptions}
+                onchange={handleSelection}>
+            </lightning-combobox>
+        </div>
+        <lightning-button-group>
+            <lightning-button label="Edit" onclick={startEdit}></lightning-button>
+            <lightning-button label="Submit" variant="brand" onclick={handleSubmit}></lightning-button>        
+        </lightning-button-group>
+    </div>
+    <div if:false={recordId}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </div>
+    </lightning-card>
+</template>

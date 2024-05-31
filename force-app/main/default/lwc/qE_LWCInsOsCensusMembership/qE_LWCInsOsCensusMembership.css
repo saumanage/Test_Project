@@ -1,0 +1,23 @@
+.vloc-ins-family-tiers-container {
+    justify-content: space-between;
+}
+.vloc-container-family{
+    text-align: center;
+}
+.vloc-container-family-label{
+    color:#2B2826;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+.vloc-ins-census-count{
+    color:#2B2826;
+    font-size: 20px;
+    font-weight: 500;
+}
+.vloc-ins-census-info-title-container{
+    padding: 25px 75px 35px;
+}
+.slds-scoped-notification--error{
+    background-color: #f5e2e1!important;
+}

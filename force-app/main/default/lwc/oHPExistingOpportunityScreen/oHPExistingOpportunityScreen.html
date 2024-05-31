@@ -1,0 +1,21 @@
+<template>
+    <div if:false={finishedLoading}>
+        <lightning-spinner alternative-text="loading" size="large"></lightning-spinner>
+    </div>
+    <div if:true={finishedLoading}>
+        <div if:true={emptyList}>
+            <lightning-card title="No Existing Opportunities Found">
+                <p class="slds-p-horizontal_small">No opportunities found: click next to continue to your case</p>
+            </lightning-card>
+        </div>
+        <div if:false={emptyList} style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    onrowselection={handleChange}
+                    max-row-selection="1">
+            </lightning-datatable>
+        </div>
+    </div>
+</template>

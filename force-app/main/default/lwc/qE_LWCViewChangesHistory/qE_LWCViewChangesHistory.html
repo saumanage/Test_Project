@@ -1,0 +1,36 @@
+<template>
+    <template if:false={isEmbedded}>
+      <div class="slds-grid">
+            <span class="vloc-contact-name">{name}</span>
+            <vlocity_ins-button
+            if:true={showChanges}
+            class="slds-m-left_medium "
+            label="View Changes"
+            onclick={viewChanges}
+            variant="brand"
+            ></vlocity_ins-button>
+        </div>
+        <vlocity_ins-modal
+          class="vloc-ins-omni-modal-changes"
+          size="medium" 
+          hideclosebutton
+          hideheader
+      >
+          <div slot="content">
+            <div class="slds-grid align-right">
+              <button
+                class="slds-button slds-button_icon slds-button_icon-inverse close-modal-button"
+                title="Close" onclick={closeModal}>
+
+                <vlocity_ins-icon icon-name="utility:close" class="icon-close" extraclass="slds-m-left_small"
+                    size="medium" color="#e3e3e3"></vlocity_ins-icon>
+            </button>
+            </div>
+            <c-cf-q-e_-f-c-member-approval-list-b-a if:true={result} parent-record={result} records={result} record-id={recordId} card-node="records[0]" parent-attribute='\{}'></c-cf-q-e_-f-c-member-approval-list-b-a>
+          </div>
+      </vlocity_ins-modal>
+    </template>
+    <template if:true={isEmbedded}>
+      <c-cf-q-e_-f-c-member-approval-list-b-a if:true={result} parent-record={result} records={result} record-id={recordId} card-node="records[0]" parent-attribute='\{}'></c-cf-q-e_-f-c-member-approval-list-b-a>
+    </template>
+</template>

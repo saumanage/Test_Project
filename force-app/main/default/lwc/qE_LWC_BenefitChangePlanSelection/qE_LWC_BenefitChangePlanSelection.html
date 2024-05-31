@@ -1,0 +1,41 @@
+<template>
+  <div class="app slds-p-around_x-large">
+    <h1 class="slds-text-heading_large">{title}</h1>
+
+    <template for:each={records} for:item='rec' class="slds-scrollable_y">
+
+
+      <article class="slds-card" key={rec.Id} onmouseover={HoverOverCurrentCard} data-id={rec.Id} data-name={rec.Name} >
+        <div class="slds-grid slds-einstein-header slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+<svg class="slds-icon slds-icon_small" aria-hidden="true">
+<use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+</svg>
+<span class="slds-assistive-text">Plan</span>
+              </span>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+               
+                  <span>{rec.Plan}</span>
+                
+              </h2>
+            </div>
+
+          </header>
+        </div>
+        <div class="slds-card__body">
+          <lightning-datatable data={subDivisions} columns={columns} key-field="Id" onrowselection={getSelectedRows}>
+          </lightning-datatable>
+        </div>
+        <footer class="slds-card__footer">
+            <span>&nbsp;</span>
+         </footer>
+      </article>
+
+
+    </template>
+  </div>
+</template>

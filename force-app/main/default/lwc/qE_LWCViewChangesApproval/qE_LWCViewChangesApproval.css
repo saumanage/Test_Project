@@ -1,0 +1,8 @@
+.close-modal-button {
+    top: 0.5rem;
+    right: 1.5rem;
+    width: 3rem;
+  }
+  .align-right{
+    justify-content: flex-end;
+  }

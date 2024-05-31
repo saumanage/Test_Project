@@ -1,0 +1,32 @@
+<template>
+    <template if:true={coverageBenefits}>
+        <lightning-accordion allow-multiple-sections-open>
+            <template for:each={coverageBenefits} for:item="coverageBenefit">
+                <lightning-accordion-section key={coverageBenefit.Id} name={coverageBenefit.Name} label={coverageBenefit.Name}>                              
+                        <lightning-record-view-form
+                        object-api-name="CoverageBenefit"
+                        record-id={coverageBenefit.Id}>
+                        <div class="slds-m-right_small">
+                            <lightning-button label="More Details" data-id={coverageBenefit.Id} onclick={openCoverageBenefit} class="slds-float_right"></lightning-button>
+                        </div>
+                        <div class="slds-box">
+                            <lightning-layout>
+                                        <lightning-layout-item size="6">
+                                            <lightning-output-field field-name="Name"></lightning-output-field>
+                                            <lightning-output-field field-name="CoverageType"></lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="6">
+                                            <lightning-output-field field-name="IsActive"></lightning-output-field>
+                                        </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </lightning-record-view-form>         
+                    <c-benefit-item-component benefit-id={coverageBenefit.Id}></c-benefit-item-component>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </template>
+    <template if:true={error}>
+                <p>{error}</p>
+    </template>
+</template>

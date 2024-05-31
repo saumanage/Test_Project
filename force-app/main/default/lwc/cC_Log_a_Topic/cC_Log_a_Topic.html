@@ -1,0 +1,20 @@
+<!-- sldsValidatorIgnore -->
+<template>
+<lightning-quick-action-panel header="Log a Topic">
+    <lightning-record-edit-form object-api-name="Topic__c" columns="1"
+        onsuccess={handleSuccess} onsubmit={handleSubmit} record-type-id={recordTypeId.data}>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-1">
+                    <lightning-input-field field-name="CaseType__c" value={recordTypeLabel.data} required></lightning-input-field>
+                <lightning-input-field field-name="ReasonCategory__c" required name="reasonCategory"></lightning-input-field>
+                <lightning-input-field field-name="ReasonCode__c" required name="reasonCode"></lightning-input-field>
+                <lightning-input-field field-name="ReasonCodesNSA__c" required name="reasonCodeNSA"></lightning-input-field>
+            </div>
+        </div>
+        <div class="slds-float_right">
+            <lightning-button label="Close" onclick={close}></lightning-button>
+            <lightning-button variant="brand" type="submit" label="Save"></lightning-button>
+        </div>
+    </lightning-record-edit-form>
+</lightning-quick-action-panel>
+</template>

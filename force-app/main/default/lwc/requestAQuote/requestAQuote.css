@@ -1,0 +1,1052 @@
+/* sort */
+
+/* astrisk styling fix */
+span.rn_Required {
+    color: #F00;
+    text-transform: capitalize !important;
+    font-size: 1.15em;
+}
+
+
+/* error styling */
+div.rn_MessageBox {
+    margin: 1rem 0 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: .3rem;
+    background: #ffeded;
+   /* border: .15em solid red;*/
+}
+
+
+.yui3-panel {
+    position: absolute;
+    background: #eee;
+    padding: 2rem;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.yui3-widget-mask {
+    background: #000;
+    background: rgba(0,0,0,0.45);
+}
+
+.yui3-button-close {
+    display: none;
+}
+
+/* content area styling */
+
+
+.small {
+    font-size: 0.8rem;
+    margin-bottom: .25rem;
+}
+          
+          p.small-phone {
+    font-size: 1rem;
+    margin-bottom: .25rem;
+}
+          
+          .small a.alt-link {
+    font-size: .7rem;
+}
+
+
+
+
+
+
+
+.datepicker td {
+    font-size: 1rem !important;
+}
+
+
+
+/* icons */
+i.fa.fa-check.fa-large {
+    font-size: 4em;
+	color: #27B575;
+}
+		
+	i.fa.fa-check-square-o.fa-large {
+    font-size: 4em;
+	color: #27B575;
+}	
+
+.wcs input[type=checkbox] {
+    margin: .35rem 1rem 1rem 0rem !important
+}
+
+.wcs input[type=checkbox] {
+      transform:scale(1.4, 1.4);
+    }
+
+input[role="combobox"]
+{
+	background-color: #fff !important;
+
+}
+
+.wcs input[readonly]
+{
+	background-color: #fff !important;
+}
+
+/* contact box - phone box - top right */ 
+
+.phone-block {
+    padding-bottom: 1em;
+}
+
+.alt-link {
+    border-bottom: 1px solid #008CBA;
+    padding-bottom: 0.03rem;
+     color: #0078a0 !important;
+    font-size: .95rem;
+}
+
+
+.contact {
+	text-align: right;				
+	}
+
+.contact p {
+	font-size: 1rem;
+    margin-bottom: 0.25rem;
+	}
+
+a.phone-swap-medicare {
+    color: #333;
+    border-bottom:none;
+}
+
+a.phone-swap-medicare:hover {
+    color: #333 !important;
+}
+
+
+a:hover, a:focus {
+   
+    /*color: #009887 !important;*/
+    border: none !important;
+}
+
+
+
+
+
+/* validation */
+
+/* Parsley Field Field Parsing */
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  /*color: #468847;*/
+  color: #2a5d2b;
+  background-color: #DFF0D8 !important;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  /*color: #B94A48;*/
+  color: #9e3a38;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 1em;
+  line-height: 1.1em;
+  opacity: 0;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+	/* wip error styling */
+	color: #c33 !important;
+    margin-top: -.5em !important;
+	margin-bottom: .5em !important;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+
+
+
+
+/* concept sprint */
+
+
+
+label {
+font-size: 1.0rem;
+}
+
+
+
+.conditional {
+    /*background-color: #f9f9f9; */
+    margin: .75rem 0 2.5rem;
+        padding: 1rem 1.5rem !important;
+    border-radius: .3rem;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+}
+
+
+
+.conditional.mini {
+    margin: 0 0rem 1.5rem 2rem;
+}
+
+
+
+
+/* some helpers */
+.alr {
+	text-align: right;
+}
+
+.alc {
+	text-align: center;
+}
+
+.all {
+	text-align: left;
+}
+
+.top-1em {
+	padding-top: 1.25em;
+}
+
+.bottom-1em {
+	padding-bottom: 1em;
+}
+
+.top-quarter-em {
+    margin-top: .25rem;	
+	
+}
+
+/* global foundation overwrites */
+ 
+h4 {
+	
+margin-bottom: 0 !important;
+/*margin-top: .5rem !important; */
+/* super size spacing for field destressing */
+margin-top: 2rem !important;
+font-weight:600;
+}
+
+hr {
+    margin: 0 0 .85rem !important;
+}
+
+/* these 2 are temp fixes */
+
+.wcs select {
+    margin: 0 0 1rem 0;
+}
+
+.logo {
+    margin: .25em 0 0 0;
+}
+
+a {
+    color: #0078a0;
+    border-bottom: 1px solid #008CBA;
+    padding-bottom: 0.03rem;
+}
+
+/* ----- END email Styling go health -------- */
+
+
+/* ---------- Main Container Styling -------------- */
+
+
+.reveal-modal {
+	padding: 2rem;				
+	}
+
+.reveal-modal p {
+    margin: 0 2rem;
+    padding: 1rem 0;
+    }
+    
+a.close-reveal-modal {
+	border: none !important;			
+				
+}
+
+.content-area-header {
+	-moz-border-radius-topleft: 0.2em;
+	-webkit-border-top-left-radius: 0.2em;
+	border-top-left-radius: 0.2em;
+	-moz-border-radius-topright: 0.2em;
+	-webkit-border-top-right-radius: 0.2em;
+	border-top-right-radius: 0.2em;
+	-moz-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	-webkit-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	box-shadow: 0 0 35px rgba(0,0,0,.15);
+	font-family: Roboto, "Open Sans", sans-serif;
+	font-weight: 600;
+	background: #120c80;
+	border: 1px solid #0b0851;
+	border-bottom: none;
+	color: #fff;
+	/* font-size: 1.8em; */
+	padding: 0.65em 0.76923em;
+	margin-bottom: 0;
+}
+
+.content-area-header+.content-area {
+	-moz-border-radius-topleft: 0;
+	-webkit-border-top-left-radius: 0;
+	border-top-left-radius: 0;
+	-moz-border-radius-topright: 0;
+	-webkit-border-top-right-radius: 0;
+	border-top-right-radius: 0;
+	border-top: none;
+	-moz-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	-webkit-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	box-shadow: 0 0 35px rgba(0,0,0,.15);
+}
+
+.content-area {
+	-webkit-border-bottom-right-radius: 0.2em;
+	-webkit-border-bottom-left-radius: 0.2em;
+	-moz-border-radius-bottomright: 0.2em;
+	-moz-border-radius-bottomleft: 0.2em;
+	border-bottom-right-radius: 0.2em;
+	border-bottom-left-radius: 0.2em;
+	-moz-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	-webkit-box-shadow: 0 0 35px rgba(0,0,0,.15);
+	box-shadow: 0 0 35px rgba(0,0,0,.15);
+	border: 1px solid #bdc6c9;
+	border-top: 0;
+	background: #fff;
+	margin-bottom: 1.2em;
+	
+}
+
+.inner-content-area {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/* Lead Paragraph and required field text */
+
+.directions p {
+	font-size: 1em;
+	line-height: 1.3em;
+	color: #7D7D7D;
+	margin: .5em 0 .5em 0;
+}
+
+
+.required-key {
+	font-size: .85em;
+	color: #A0A0A0;
+	margin-top: .25rem;
+}
+
+.required-key small {
+	text-transform: capitalize;
+	color: #F00;
+    font-size: 1.45em;
+}
+
+/* ---------- Text Field Styling ---------- */
+
+.prompt {
+	margin-bottom: 26px;
+	padding: 0;
+}
+
+/* Field Styling */
+.textbox .field input {
+	padding: 10px;
+	font-size: 18px;
+}
+
+.textbox {
+	line-height: 20px;
+}
+
+.wcs input,
+.wcs textarea,
+.wcs select,
+div[contenteditable] {
+	transition: background .2s linear;
+}
+
+.wcs input,
+.wcs textarea,
+div[contenteditable],
+.t1-select {
+	padding: 4px;
+	margin: 0;
+	outline: 0;
+	background-color: #fff;
+	border: 1px solid #e1e8ed;
+	border-radius: 3px;
+}
+/* merged with below
+.inputText,
+textarea,
+.wcs input[type=text],
+.wcs input[type=password],
+.wcs input[type=datetime],
+.wcs input[type=datetime-local],
+.wcs input[type=date],
+.wcs input[type=month],
+.wcs input[type=time],
+.wcs input[type=week],
+.wcs input[type=number],
+.wcs input[type=email],
+.wcs input[type=url],
+.wcs input[type=search],
+.wcs input[type=tel],
+.wcs input[type=color] {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-border-radius: 0.15em;
+	-moz-border-radius: 0.15em;
+	-ms-border-radius: 0.15em;
+	-o-border-radius: 0.15em;
+	border-radius: 0.15em;
+
+	padding: 0.65em 0.65em;
+	border: 1px solid #929ca0;
+	margin: 0 0 .75rem 0 !important;
+	font-size: .95em;
+    line-height: .95em;
+} */
+
+/*input Text shadow removal
+ -webkit-box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;
+    -moz-box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;
+    box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;*/
+
+
+label small {
+	text-transform: capitalize;
+	color: #F00;
+	font-size: 1.15em;
+}
+
+.form-control {
+height: 2.06rem !important;	
+}
+
+/*.dropdown {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 0.15em;
+    -moz-border-radius: 0.15em;
+    -ms-border-radius: 0.15em;
+    -o-border-radius: 0.15em;
+    border-radius: 0.15em;
+
+    padding: 0 0.65em;
+    border: 1px solid #929ca0;
+	font-size: .95em;
+    line-height: .95em;
+} */
+
+   /* dropdown shadow removed
+
+-webkit-box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;
+    -moz-box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;
+    box-shadow: inset 0 0.25em 0.25em 0 #d9dee0;*/
+
+
+/* --------------- input styling ------------------- */
+
+input,
+select,
+label {
+	margin: 0.35em 0;
+	font-family: "Open Sans", sans-serif;
+	/*font-weight: 600;*/
+	outline: none;
+	/*line-height: 1.4em;*/
+	line-height: 1.32em;
+}
+
+input,
+textarea,
+select,
+button {
+	margin: 0em;
+	font: 12.6667px Arial;
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	text-align: start;
+}
+
+/* Merged with below
+textarea:focus,
+select.dropdown:focus,
+.wcs input[type=text]:focus,
+.wcs input[type=password]:focus,
+.wcs input[type=datetime]:focus,
+.wcs input[type=datetime-local]:focus,
+.wcs input[type=date]:focus,
+.wcs input[type=month]:focus,
+.wcs input[type=time]:focus,
+.wcs input[type=week]:focus,
+.wcs input[type=number]:focus,
+.wcs input[type=email]:focus,
+.wcs input[type=url]:focus,
+.wcs input[type=search]:focus,
+.wcs input[type=tel]:focus,
+.wcs input[type=color]:focus {
+	border-color: rgba(18, 12, 128, 0.8);
+	box-shadow: 0 1px 1px rgba(146, 156, 160, 0.05) inset, 0 0 8px rgba(146, 156, 160, 0.5);
+	outline: 0 none
+} */
+
+/* We use this to get basic styling on all basic form elements */
+/* Input Base Styling */
+.wcs input[type=text], .wcs input[type=password], .wcs input[type=date], .wcs input[type=datetime], .wcs input[type=datetime-local], .wcs input[type=month], .wcs input[type=week], .wcs input[type=email], .wcs input[type=number], .wcs input[type=search], .wcs input[type=tel], .wcs input[type=time], .wcs input[type=url], .wcs textarea, .wcs select, .inputText {
+  /*-webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: white;
+  font-family: inherit;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
+  display: block;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem;
+  height: 2.3125rem;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;*/
+	
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 0.15em;
+    -moz-border-radius: 0.15em;
+    -ms-border-radius: 0.15em;
+    -o-border-radius: 0.15em;
+    border-radius: 0.15em;
+
+   /* ribbon fix padding: 0 0.5em; */
+    border: 1px solid #929ca0;
+	font-size: .90em;
+    margin: 0 0 1rem 0;
+	
+}
+
+
+  .wcs input[type=text]:focus, .wcs select:focus, .wcs input[type=password]:focus, .wcs input[type=date]:focus, .wcs input[type=datetime]:focus, .wcs input[type=datetime-local]:focus, .wcs input[type=month]:focus, .wcs input[type=week]:focus, .wcs input[type=email]:focus, .wcs input[type=number]:focus, .wcs input[type=search]:focus, .wcs input[type=tel]:focus, .wcs input[type=time]:focus, .wcs input[type=url]:focus, textarea:focus {
+  
+	/*-webkit-box-shadow: 0 0 5px #999999;
+    -moz-box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px #999999;
+    border-color: #999999; */
+	border-color: rgba(18, 12, 128, 0.8);
+	box-shadow: 0 1px 1px rgba(146, 156, 160, 0.05) inset, 0 0 8px rgba(146, 156, 160, 0.5);
+	outline: 0 none;
+	  
+
+
+}
+  .wcs input[type=text]:focus, .wcs select:focus, .wcs input[type=password]:focus, .wcs input[type=date]:focus, .wcs input[type=datetime]:focus, .wcs input[type=datetime-local]:focus, .wcs input[type=month]:focus, .wcs input[type=week]:focus, .wcs input[type=email]:focus, .wcs input[type=number]:focus, .wcs input[type=search]:focus, .wcs input[type=tel]:focus, .wcs input[type=time]:focus, .wcs input[type=url]:focus, textarea:focus {
+    /*background: #fafafa;
+    border-color: #999999;
+    outline: none;*/
+
+}
+  .wcs input[type=text][disabled], .wcs input[type=password][disabled], .wcs input[type=date][disabled], .wcs input[type=datetime][disabled], .wcs input[type=datetime-local][disabled], .wcs input[type=month][disabled], .wcs input[type=week][disabled], .wcs input[type=email][disabled], .wcs input[type=number][disabled], .wcs input[type=search][disabled], .wcs input[type=tel][disabled], .wcs input[type=time][disabled], .wcs input[type=url][disabled], textarea[disabled] {
+    background-color: #dddddd; }
+
+
+/*
+textarea.error,
+.wcs input[type=text].error,
+.wcs input[type=password].error,
+.wcs input[type=datetime].error,
+.wcs input[type=datetime-local].error,
+.wcs input[type=date].error,
+.wcs input[type=month].error,
+.wcs input[type=time].error,
+.wcs input[type=week].error,
+.wcs input[type=number].error,
+.wcs input[type=email].error,
+.wcs input[type=url].error,
+.wcs input[type=search].error,
+.wcs input[type=tel].error,
+.wcs input[type=color].error {
+	border-color: #ff2424;
+	background-color: #ffe6e6;
+	outline: 0 none
+} */
+
+
+
+::-webkit-input-placeholder {
+	color: #8899a6;
+}
+
+:-moz-placeholder {
+	/* Firefox 18- */
+	color: #8899a6;
+}
+
+::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #8899a6;
+}
+
+:-ms-input-placeholder {
+	color: #8899a6;
+}
+
+/* ---------------- button Styling ----------------- */
+
+.button {
+	font-family: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+	font-size: 1.2rem;
+	font-weight: 700;
+	transition: all 0.3s ease;
+}
+
+a.button:hover,
+a.button:focus,
+.wcs input.button:hover,
+.wcs input.button:focus,
+.wcs button:hover,
+.wcs button:focus {
+	color: #F3F3F3;
+	cursor: pointer;
+}
+
+.wcs a.button,
+.wcs input.button,
+.wcs button {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
+	border: 1px solid transparent;
+	color: #F3F3F3;
+	border: 1px solid #007F6E;
+    border: 1px solid rgba(0, 127, 110, 0.5);
+	-moz-border-radius: 0.15em;
+	-ms-border-radius: 0.15em;
+	-o-border-radius: 0.15em;
+	border-radius: 0.15em;
+	font-size: 0.875em;
+	color: #fff;
+	text-decoration: none;
+	padding: 1em 1.6em 0.9em;
+	-webkit-appearance: none;
+    margin: 1em 0 1em 0;
+    width: 100%;
+    text-align: center;
+}
+
+.button-holder {
+	padding-top: 1.5em;
+	padding-bottom: 2em;
+}
+
+
+input.button.large.expand {
+	margin: 1em 0 2em 0;
+	text-transform: uppercase;
+	font-size:1em;
+}
+
+.submitBtn {
+	background-color: #333131 !important;
+}
+
+
+
+/* --------------- Disclaimer and Footer Styling ------------------- */
+
+.form-disclaimer p {
+	font-size: 1em;
+	line-height: 1.35em;
+	margin: .5em;
+	color: #766;
+	font-family: "Open Sans", sans-serif;	
+	font-weight: 100;
+}
+
+.form-disclaimer a:hover {
+	color: #120c80;
+}
+
+footer {
+	clear: both;
+	background: #120c80;
+	border-top: 0.1em solid #0E406A; 
+}
+
+.small-footer-container {
+    padding: 0 1em;
+}
+
+footer .links {
+	float: right;
+	margin-right: 0;
+	font-size: 0.875em;
+	text-align: right;
+	line-height: 2.8em;
+}
+
+footer a.home-link {
+	border-right: 1px solid #fff;
+	margin-right: 0.6em;
+	padding-right: 0.6em;
+}
+
+footer .address {
+	color: white;
+}
+
+footer a {
+    color: white !important;
+    text-decoration: none !important;
+    border: none;
+}
+
+footer a:hover {
+	color: #999999 !important;
+}
+
+/* End Disclaimer and and Footer Styling */
+
+
+/* Foundation Template Styling */
+/* --------- General Styles --------- */
+
+html,
+body {
+	font-size: 17px;
+}
+
+header {
+	background: #FFFFFF;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+    border-bottom: 0.35em solid #0E406A !important;
+    position: relative;
+    -webkit-transition: -webkit-transform 300ms ease 150ms;
+    -moz-transition: -webkit-transform 300ms ease 150ms;
+    -ms-transition: -webkit-transform 300ms ease 150ms;
+    -o-transition: -webkit-transform 300ms ease 150ms;
+    transition: -webkit-transform 300ms ease 150ms;
+    -webkit-transition: transform 300ms ease 150ms;
+    -moz-transition: transform 300ms ease 150ms;
+    -ms-transition: transform 300ms ease 150ms;
+    -o-transition: transform 300ms ease 150ms;
+    transition: transform 300ms ease 150ms;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	color: #616161;
+	font-size: 100%;
+}
+
+
+/*body {
+	color: #333333;
+	font-family: 'Open Sans', Helvetica, Roboto, Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4 ,h5, h6 {
+	font-family: 'Raleway', Arial, sans-serif;
+	color: #666666;
+	font-weight: 300;
+}
+h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 2.315rem;
+	font-weight: 700;
+	margin-top: 3rem;
+	line-height: 2.5rem;
+	color: #4d4d4d;
+}
+h2 {
+	font-size: 2.1rem;
+}*/
+
+h1 {
+	font-size: 1.75em;
+	line-height: 1.125em;
+	margin-bottom: 0.75em;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
+}
+
+h2, h3, h4, h5, h6 {  
+  color: #666666;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-rendering: optimizeLegibility; }
+  
+h1 {
+  font-size: 2.125rem; }
+
+h2 {
+  font-size: 1.4rem;
+  padding-top: 1rem; }
+
+h3 {
+  font-size: 1.25rem; }
+
+h4 {
+  font-size: 1.15rem; }
+
+h5 {
+  font-size: 1.125rem; }
+
+h6 {
+  font-size: 1rem; }
+
+.fa {
+ padding-right: 0.2rem;				
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+
+/* --------- Main Content Styles --------- */
+
+.main {
+	/*border-top: 0.35em solid #120c80;*/
+	background: #e7eaeb;
+	padding-bottom: 1em;
+}
+
+.row.topshim {
+	padding-top: 1.5em;
+}
+
+.small {
+	font-size: 0.7rem;
+}
+
+.footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
+.day {		
+	padding-top: 0.4rem;
+    text-align: center;
+}
+
+
+
+
+
+
+
+/* --------- Media Queries Styles --------- */
+
+
+/* --------- Header Styles --------- */
+
+@media only screen {
+	header {
+		
+		/* IE6-9 */
+		padding: 1rem 0 0rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+
+    
+    .content-area-header {
+        font-size: 1.2rem;  
+    }
+
+}
+
+@media only screen and (max-width: 40em) {
+	header {
+		
+		/* IE6-9 */
+		padding: 1rem 0 1rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+	h2 {
+		font-size: 1.2rem;
+	}
+    
+    h3 {
+        font-size: 1.0rem;
+        font-weight: 500;
+    }
+		
+	.wcs button {
+    font-size: .8rem;
+}	
+    
+        .content-area-header {
+        font-size: 1.2em;  
+    }
+
+}
+
+@media only screen and (min-width: 40.0625em) {
+	header {
+		
+		/* IE6-9 */
+		padding: 1rem 0 1rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+	h1 {
+		font-size: 1.4rem;
+	}
+	h2 {
+		font-size: 1.2rem;
+	}
+	
+    
+	.wcs button {
+    font-size: .8rem;
+}
+    
+    .content-area-header {
+        font-size: 1.2em;  
+    }
+
+	
+}
+
+@media only screen and (min-width: 58.75em) {
+	header {
+		/* IE6-9 */
+		padding: 1rem 0 1rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+	h1 {
+		font-size: 1.8rem;
+	}
+	h2 {
+		font-size: 1.3rem;
+	}
+	
+    
+	.wcs button {
+    font-size: .9em;
+}	
+
+        .content-area-header {
+        font-size: 1.3em;  
+    }
+    
+        label {
+            font-size: 1.05rem;
+    
+    }
+}
+
+@media only screen and (min-width: 64.0625em) {
+	header {
+		
+		/* IE6-9 */
+		padding: 1rem 0 1rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+	h1 {
+		font-size: 1.8rem;
+	}
+	h2 {
+		font-size: 1.4rem;
+	}
+	
+    
+    label {
+            font-size: 1.1rem;
+    
+    }
+    
+	.wcs button {
+    font-size: 1.0em;
+}
+    
+        .content-area-header {
+        font-size: 1.4em;  
+    }
+}
+
+@media only screen and (min-width: 90.0625em) {
+	header {
+		
+		/* IE6-9 */
+		padding: 1rem 0 0.5rem 0;
+		border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+	}
+	h2 {
+		font-size: 1.4rem;
+	}
+	.wcs button {
+    font-size: 1.1em;
+}
+    
+    .content-area-header {
+        font-size: 1.6em;  
+    }
+
+}
+
+@media only screen and (min-width: 90.063em) {
+	
+	
+h2 {
+	font-size: 2.1rem;
+}
+
+	.wcs button {
+    font-size: 1.2em;
+}
+    
+    .content-area-header {
+        font-size: 1.65em;  
+}
+}
+
+/***Label Hide***/
+.THIS.slds-form-element__label  {
+    display: none;
+}

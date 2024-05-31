@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen"> 
+            <property name="inputColumns" label="Columns to Display" type="String" description="List of columns to display; seperated by comma; Example: Name,Id"/>
+            <property name="inputData" label="Data To Display" type="String" />
+            <property name="showButton" label="Show Button" type="Boolean" description="show the view more details button"/>
+            <property name="episodeIdField" label="Episode Id Field" type="String" description="The api name of the episode Id field"/>
+            <property name="authNumber" type="String" label="Auth Number" role="outputOnly"/>
+            <property name="memberDetail" type="String" label="Member Detail" role="outputOnly" />
+            <property name="outputColumns" label="Columns to Display" type="String" role="outputOnly"/>
+        </targetConfig> 
+    </targetConfigs>
+</LightningComponentBundle>

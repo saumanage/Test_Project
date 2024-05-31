@@ -1,0 +1,76 @@
+<template>
+    <template if:true={accountRecordChanged}>
+        <lightning-card title="Communication Preferences">
+            <template if:true={isViewState}>
+                <lightning-button label="Edit" slot="actions" variant="brand" onclick={handleUpdate}></lightning-button>
+            </template>
+            <lightning-combobox label="Pref. Communication Channel" 
+                                name="OHP_Pref_Communication_Channel__c" 
+                                options={accountComboboxValues.OHP_Pref_Communication_Channel__c}
+                                value={accountRecordChanged.OHP_Pref_Communication_Channel__c}
+                                disabled={isViewState}
+                                onchange={handleFieldChange}>
+            </lightning-combobox>
+            <lightning-combobox label="Language Preferences" 
+                                name="OHP_Language_Preferences__c" 
+                                options={accountComboboxValues.OHP_Language_Preferences__c}
+                                value={accountRecordChanged.OHP_Language_Preferences__c}
+                                disabled={isViewState}
+                                onchange={handleFieldChange}>
+            </lightning-combobox>
+            <lightning-input type="checkbox" 
+                            label="Do Not Call" 
+                            name="PersonDoNotCall" 
+                            checked={accountRecordChanged.PersonDoNotCall}
+                            disabled={isViewState}
+                            onchange={handleFieldChange}>
+            </lightning-input>
+            <lightning-input type="checkbox" 
+                            label="Do Not Email"
+                            name="OHP_Do_Not_Email__c" 
+                            checked={accountRecordChanged.OHP_Do_Not_Email__c}
+                            disabled={isViewState}
+                            onchange={handleFieldChange}>
+            </lightning-input>
+            <lightning-input type="checkbox" 
+                            label="Do Not Mail" 
+                            name="OHP_Do_Not_Mail__c" 
+                            checked={accountRecordChanged.OHP_Do_Not_Mail__c}
+                            disabled={isViewState}
+                            onchange={handleFieldChange}>
+            </lightning-input>
+            <lightning-combobox label="Communication Barrier" 
+                                name="OHP_Communication_Barrier__c" 
+                                options={accountComboboxValues.OHP_Communication_Barrier__c}
+                                value={accountRecordChanged.OHP_Communication_Barrier__c}
+                                disabled={isViewState}
+                                onchange={handleFieldChange}>
+            </lightning-combobox>
+            <lightning-combobox label="Deceased" 
+                                name="OHP_Deceased__c" 
+                                options={accountComboboxValues.OHP_Deceased__c}
+                                value={accountRecordChanged.OHP_Deceased__c}
+                                disabled={isViewState}
+                                onchange={handleFieldChange}>
+            </lightning-combobox>
+            <p slot="footer">
+                <template if:false={isViewState}>
+                    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                    <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+                </template>
+            </p>
+        </lightning-card>
+    </template>
+
+    <template if:true={showDoubleCheckModal}>
+        <c-ohp-lwc-Message-utility allow-cancel="true" 
+                                    show-message="true" 
+                                    allow-close="true" 
+                                    message-type="prompt" 
+                                    message-title="Warning" 
+                                    message-variant="warning"
+                                    message-body={doubleCheckMessage}
+                                    onclose={handleClose}>
+        </c-ohp-lwc-Message-utility>
+    </template>
+</template>

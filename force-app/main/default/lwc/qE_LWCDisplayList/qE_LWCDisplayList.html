@@ -1,0 +1,20 @@
+<template>
+        <div class="heading">
+                <h3 style="font-size: 18px;">Dependents</h3>
+                <p><span style="color: #999999;">Please select the dependents below to include in this coverage</span></p>
+        </div>
+        <c-q-e_-l-w-c-display-list-custom-table
+                class="table-subgroups"
+                resize-column-disabled="true"
+                key-field="Id"
+                data={tableData}
+                onooa={selectedOOA}
+                selected-rows={selectedRows}
+                onrowaction={rowAction}
+                onrowselection={selectedDependent}
+                columns={columns}>
+        </c-q-e_-l-w-c-display-list-custom-table>
+        <div if:true={displayPDF} class="slds-grid slds-m-top_medium">
+                <a href={pdfLink} target="_blank">{pdfLinkName}</a>
+        </div>
+</template>

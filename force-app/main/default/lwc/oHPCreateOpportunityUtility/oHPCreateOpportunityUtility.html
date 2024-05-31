@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form object-api-name="Opportunity" columns="2"
+            onsuccess={handleSuccess} onsubmit={handleSubmit}>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input-field field-name="AccountId"></lightning-input-field>
+                    <lightning-input-field field-name="CampaignId"></lightning-input-field>
+                    <lightning-input-field field-name="Application_Number__c"></lightning-input-field>
+                    <lightning-input-field field-name="BrokerID__c"></lightning-input-field>
+                    <lightning-input-field field-name="Dental_Plan__c"></lightning-input-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input-field field-name="Policy_Number__c"></lightning-input-field>
+                    <lightning-input-field field-name="Premium__c"></lightning-input-field>
+                    <lightning-input-field field-name="Renewed_As__c"></lightning-input-field>
+                    <lightning-input-field field-name="Sold_Channel__c"></lightning-input-field>
+                    <lightning-input-field field-name="Status__c"></lightning-input-field>
+                    <lightning-input-field field-name="Strategy__c"></lightning-input-field>
+                    <lightning-input-field field-name="Win_Loss_Reason__c"></lightning-input-field>
+
+                </div>
+            </div>
+            <lightning-button variant="brand-outline" label="Reset" onclick={handleReset}></lightning-button>
+            <lightning-button variant="brand" type="submit" label="Save"></lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

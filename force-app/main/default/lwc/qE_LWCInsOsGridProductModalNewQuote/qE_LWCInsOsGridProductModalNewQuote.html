@@ -1,0 +1,45 @@
+<template>
+    <vlocity_ins-modal hidefooter={hideFooter} size="medium">
+        <div slot="header">
+            <div class="nds-text-heading_medium slds-text-heading_medium">
+                {modalTitle}
+            </div>
+        </div>
+        <div slot="content">
+            <div if:true={hideHeader} class="slds-border_bottom slds-p-bottom_small nds-border_bottom nds-p-bottom_small slds-text-heading_large nds-text-heading_large">
+                <lightning-layout>
+                    <lightning-layout-item size="6">
+                        <!-- <template if:true={product.QE_Summary_of_Benefits__c}>
+                            <div class="slds-text-align_left slds-p-left_small nds-text-align_left nds-p-left_small">
+                                <lightning-formatted-url value={product.QE_Summary_of_Benefits__c} tooltip="Summary of Benefits" label="Summary of Benefits" target="_blank" ></lightning-formatted-url>
+                            </div>
+                        </template> -->
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                        <template if:true={displayRates}>
+                            <div class="slds-text-align_right slds-p-right_small nds-text-align_right nds-p-right_small">
+                                <lightning-formatted-number if:true={product}
+                                    value={price} format-style="currency" currency-code={currency.code} minimum-fraction-digits="2"
+                                    maximum-fraction-digits="0">
+                                </lightning-formatted-number>/{labels.InsMonthAbrv}
+                            </div>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <template if:true={products}>
+                <c-q-e_-l-w-c-ins-product-matrix-new-quote products={products} hide-header={hideHeader} is-editable={isEditable} rate-values={rateValues}
+                    theme={theme} compare-limit={compareLimit} select-btn-fn={selectBtnFn}>
+                </c-q-e_-l-w-c-ins-product-matrix-new-quote>
+            </template>
+        </div>
+        <div if:false={hideFooter} slot="footer">
+            <vlocity_ins-button
+            variant="neutral"
+            theme={theme}
+            label={labels.Back}
+            onclick={backToCart}
+        ></vlocity_ins-button>
+        </div>
+    </vlocity_ins-modal>
+</template>

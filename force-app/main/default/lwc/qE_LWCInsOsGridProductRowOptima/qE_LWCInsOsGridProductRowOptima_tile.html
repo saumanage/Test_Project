@@ -1,0 +1,120 @@
+<template>
+    <div class={productRowTileClasses} style="margin-bottom: 0px;">
+        <div
+            if:true={renewalOldProduct}
+            class="slds-text-align_center slds-p-top_x-small nds-text-align_center nds-p-top_x-small vloc-ins-renewal-banner"
+        >
+            <span class="slds-m-right_small nds-m-right_small vloc-ins-renewal-label">{replacesLabel}</span>
+            <vlocity_ins-button
+                theme={theme}
+                label={labels.InsViewChanges}
+                extraclass="slds-button_icon-inverse nds-button_icon-inverse"
+                onclick={viewChanges}
+            ></vlocity_ins-button>
+        </div>
+        <div
+            class="slds-size_2-of-3 slds-p-top_x-small slds-p-left_x-small nds-size_2-of-3 nds-p-top_x-small nds-p-left_x-small vloc-ins-product-info"
+        >
+            <div class="slds-truncate slds-text-align_left nds-truncate nds-text-align_left vloc-ins-product-bold">
+                <span class={productColor}>{product.Name}</span>
+            </div>
+            <div class="slds-m-top_small nds-m-top_small">
+                <vlocity_ins-button
+                    theme={theme}
+                    icon-name="standard:customer_portal_users"
+                    icon-position="left"
+                    label={labels.InsPlanDetails}
+                    onclick={openDetailsProduct}
+                ></vlocity_ins-button>
+                <vlocity_ins-button
+                    if:true={product.QE_Summary_of_Benefits__c}
+                    theme={theme}
+                    onclick={openSummaryofBenefits}
+                    style="padding-left: 10px;"
+                    label="Benefit Summary"
+                ></vlocity_ins-button>
+            </div>
+            <div class="vloc-ins-product-features slds-m-vertical_small nds-m-vertical_small">
+                <vlocity_ins-icon
+                    icon-name="action:check"
+                    extraclass="slds-icon-text-default nds-icon-text-default"
+                    size="xx-small"
+                    theme={theme}
+                >
+                </vlocity_ins-icon>
+                <span class="vloc-ins-product-features-text">{labels.InsStandoutFeatures}</span>
+            </div>
+            <div class="vloc-ins-product-attributes slds-grid slds-wrap nds-grid nds-wrap">
+                <template for:each={parsedAttributes} for:item="attribute">
+                    <div
+                        if:false={attribute.hidden}
+                        class="slds-p-vertical_small slds-size_1-of-3 nds-p-vertical_small nds-size_1-of-3"
+                        key={attribute.attributeId}
+                    >
+                        <vlocity_ins-ins-os-grid-product-attribute
+                            theme={theme}
+                            attribute={attribute}
+                            is-cart={isCart}
+                            root-channel={rootChannel}
+                        >
+                        </vlocity_ins-ins-os-grid-product-attribute>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="slds-size_1-of-3 nds-size_1-of-3 vloc-ins-action-container">
+            <div if:true={showCompareAction}>
+                <vlocity_ins-input
+                    type="checkbox"
+                    checked={product.isSelectedForCompare}
+                    theme={theme}
+                    label={labels.InsCompare}
+                    onchange={toggleCompare}
+                    disabled={isCompareDisabled}
+                ></vlocity_ins-input>
+            </div>
+            <div class="vloc-ins-product-bold slds-truncate nds-truncate">
+                <span class={productColor}>
+                    <template if:true={displayRates}>
+                        <lightning-formatted-number
+                            value={price}
+                            format-style="currency"
+                            minimum-fraction-digits="2"
+                            maximum-fraction-digits="2"
+                        ></lightning-formatted-number>
+                        <span class="vloc-lowercase">/{labels.InsMonthAbrv}</span>
+                    </template>
+                </span>
+            </div>
+            <div class="vloc-ins-product-actions">
+                <div if:true={showEditAction} class="slds-m-bottom_small nds-m-bottom_small">
+                    <vlocity_ins-button
+                        if:false={doBenefitChange}
+                        variant="brand"
+                        theme={theme}
+                        label="Select Prescription Drug"
+                        extraclass="slds-button_stretch nds-button_stretch"
+                        onclick={clickModalCustomConfigPlan}
+                    ></vlocity_ins-button>
+                </div>
+                <div if:true={showCartAction}>
+                    <vlocity_ins-button
+                        if:false={doBenefitChange}
+                        variant="brand"
+                        extraclass={isSelectedForCartClasses}
+                        onclick={selectProduct}
+                        onmouseenter={addHoverState}
+                        onmouseleave={removeHoverState}
+                        icon-name={isSelectedForCartIcon}
+                        icon-position="left"
+                        icon-fill="#ffffff"
+                        theme={theme}
+                        label={isSelectedForCartLabel}
+                        aria-live="assertive"
+                    >
+                    </vlocity_ins-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

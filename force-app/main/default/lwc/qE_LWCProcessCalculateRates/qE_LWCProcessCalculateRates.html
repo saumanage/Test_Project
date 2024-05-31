@@ -1,0 +1,30 @@
+<template>
+
+  <!--
+ <div if:false={isLoaded} class="slds-spinner-container__wrapper slds-is-relative nds-is-relative vlovlocity_ins-ins-products-spinner">
+        <vlocity_ins-spinner
+        variant="brand"
+        size="medium"
+        alternative-text="loading"
+        class="c-spinner"
+      ></vlocity_ins-spinner>
+
+       <p class="slds-spinner-text">{loadingMessage} {recordCounter} of {memberListCount}</p>
+    </div>-->
+
+    <div class={containerClass} if:false={isLoaded}>
+        <div role="status" class={spinnerClass}>
+            <span class="slds-assistive-text">Loading...</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+        <div data-id="spinnerMsg" class={messageClass}>
+            <div style="margin-left:-50%">{loadingMessage} {recordCounter} of {memberListCount}</div>
+        </div>
+    </div>
+
+
+
+
+
+</template>

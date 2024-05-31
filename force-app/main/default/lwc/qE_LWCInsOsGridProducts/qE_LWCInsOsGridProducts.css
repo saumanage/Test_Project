@@ -1,0 +1,8 @@
+.border-style {
+    border: 3px solid green;
+    border-radius: 7px;
+}
+
+.bottom-margin {
+    margin-bottom: .625rem;
+}

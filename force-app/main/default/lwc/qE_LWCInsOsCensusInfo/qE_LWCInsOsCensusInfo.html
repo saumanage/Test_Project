@@ -1,0 +1,90 @@
+<template>
+    <vlocity_ins-layout extraclass="nds-border_bottom nds-m-bottom_large slds-border_bottom slds-m-bottom_large" multiple-rows>
+        <vlocity_ins-layout-item size="11">
+            <div class="nds-grid nds-wrap slds-grid slds-wrap">
+                <template for:each={headerColumns} for:item="header">
+                    <template if:true={header.isUpdateable}>
+                        <vlocity_ins-ins-field
+                            theme={theme}
+                            field={header}
+                            key={header.fieldName}
+                            channel={formChannel}
+                            class={header.style}
+                        ></vlocity_ins-ins-field>
+                    </template>
+                    <template if:false={header.isUpdateable}>
+                        <div class="padding-top nds-m-bottom_large nds-size_1-of-5 nds-p-around_small slds-m-bottom_large slds-size_1-of-5 slds-p-around_small" key={header.fieldName}>
+                            <label class="show-hide label-iput slds-form-element__label nds-form-element__label">{header.label}</label>
+                            <p class="slds-p-top_xx-small">{header.value}</p>
+                        </div>
+                        
+                    </template>
+                </template>
+            </div>
+        </vlocity_ins-layout-item>
+
+        <vlocity_ins-layout-item
+            size="1"
+            class="nds-p-horizontal_small nds-size_1-of-12 slds-p-horizontal_small slds-size_1-of-12"
+        >
+            <vlocity_ins-button
+                if:true={isDependent}
+                theme={theme}
+                variant="icon"
+                icon-name="utility:delete"
+                icon-size="x-small"
+                icon-fill="#706e6b"
+                onclick={deleteMember}
+                title={labels.Delete}
+                class="nds-float_right nds-p-around_xx-small slds-float_right slds-p-around_xx-small"
+            >
+            </vlocity_ins-button>
+        </vlocity_ins-layout-item>
+        <template if:true={hasOptOut}>
+            <div
+                class="nds-size_1-of-1 nds-grid nds-wrap nds-p-around_small slds-size_1-of-1 slds-grid slds-wrap slds-p-around_small"
+            >
+                <template for:each={optOutTypes} for:item="optOutType">
+                    <div key={optOutType.value} class="nds-size_1-of-5 slds-size_1-of-5">
+                        <label
+                            class="nds-form-element__label slds-form-element__label nds-p-around_small slds-p-around_small"
+                            aria-label={optOutType.label}
+                            >{optOutType.label}</label
+                        >
+                        <vlocity_ins-toggle
+                            type="toggle"
+                            toggle-enabled-label=""
+                            toggle-disabled-label=""
+                            value={optOutType.value}
+                            checked={optOutType.checked}
+                            name="optOutTypes"
+                            onchange={handleMultiValueUpdate}
+                            data-field-name={optOutTypesField.name}
+                            data-field-value={optOutType.value}
+                            class="nds-m-bottom_large nds-size_1-of-5 nds-p-around_small slds-m-bottom_large slds-size_1-of-5 slds-p-around_small vloc-ins-readonly-toggle"
+                        ></vlocity_ins-toggle>
+                    </div>
+                </template>
+            </div>
+        </template>
+        <template if:true={isDependent}>
+            <vlocity_ins-layout-item size="12" class="nds-size_1-of-1 slds-size_1-of-1">
+                <div
+                    if:true={member.error}
+                    role="alert"
+                    class="slds-scoped-notification slds-scoped-notification_form slds-media slds-media_center slds-scoped-notification_light slds-scoped-notification--error"
+                >
+                    <vlocity_ins-icon
+                        icon-name="utility:error"
+                        size="medium"
+                        color="#c23934"
+                        theme={theme}
+                        class="nds-p-around_xx-small slds-p-around_xx-small"
+                    >
+                    </vlocity_ins-icon>
+                    <span class="">{errorsMember}</span>
+                </div>
+            </vlocity_ins-layout-item>
+        </template>
+    </vlocity_ins-layout>
+</template>

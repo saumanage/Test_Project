@@ -1,0 +1,226 @@
+header {
+    background: #FFFFFF;
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 30%);
+    border-bottom: 0.35em solid #227066 !important;
+    position: relative;
+    padding: 1em;
+}
+.info-icon {
+    --sds-c-icon-color-foreground: white;
+}
+.text-right {
+    text-align: right !important;
+    float: right;
+}
+
+a {
+    color: #0078a0;
+    border-bottom: 1px solid #008CBA;
+    padding-bottom: 0.03rem;
+    line-height: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom:none;
+}
+
+.body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    color: #616161;
+    font-size: 100%;
+    line-height: 1.5;
+}
+
+.main {
+    background: #e7eaeb;
+    padding: 2em;
+}
+
+.content-area {
+    background: #fff;
+    border-bottom-right-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
+    box-shadow: 0 0 35px rgb(0 0 0 / 15%);
+    border: 1px solid #bdc6c9;
+    border-top: 0;
+    margin-bottom: 1.2em;
+}
+
+.required-key {
+    font-size: .85em;
+    color: #A0A0A0;
+    margin-top: 0.25rem;
+}
+
+h1 {
+    color:azure;
+}
+
+h2 {
+    padding-top: 1rem;
+    font-size: 1.3rem;
+}
+
+h2, h3, h4, h5, h6 {
+    color: #666666;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 0.2rem;
+    text-rendering: optimizeLegibility;
+}
+
+hr {
+    padding: none;
+    margin: none;
+}
+
+small {
+    color:red;
+}
+
+p {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+    text-rendering: optimizeLegibility;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.content-area-header {
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    box-shadow: 0 0 35px rgb(0 0 0 / 15%);
+    font-family: Roboto, "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    background: #227066;
+    border: 1px solid #227066;
+    border-bottom: none;
+    color: #fff;
+    padding: 0.65em 0.76923em;
+    margin-bottom: 0;
+}
+
+.panel{ 
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d8d8d8;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: #f2f2f2;
+    color: #333;
+}
+
+.conditional {
+    padding: 1rem 1.5rem !important;
+    border-radius: 0.3rem;
+    box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
+}
+
+.lightningLabel{
+    font-size: 1.05rem;
+
+    margin: 0.35em 0;
+    font-family: "Open Sans", sans-serif;
+    outline: none;
+    line-height: 1.32em;
+
+    color: #4d4d4d;
+    cursor: pointer;
+    display: block;
+    font-weight: normal;
+}
+
+.infoSection{
+    margin-top: 2em;
+}
+
+.submitBtn {
+    margin: 1em 0 2em 0;
+    text-transform: uppercase;
+    font-size: 1em;
+
+    padding: 1rem 2rem 1.0625rem 2rem;
+    padding-bottom: 1.0625rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    
+    display: inline-block;
+    outline: none;
+    border: none;
+    font: 12.6667px Arial;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+
+    color:#fff;
+
+    background: #227066;
+}
+
+.submitBtn.disabled,
+.submitBtn:disabled:hover {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #CCCCCC;
+}
+
+.submitBtn:hover {
+    background: #227066;
+}
+
+.day{
+    text-align: center;
+}
+.errorMessages {
+    color: red;
+}
+footer {
+    clear: both;
+    color: #fff;
+    background: #227066;
+    border-top: 0.1em solid #227066;
+    display: block;
+    padding: 2em;
+    font-size: 1.25em;
+    text-align: center;
+}
+footer a{
+    color: white;
+    text-decoration: none !important;
+    border: none;
+}
+.buttonLink{
+    color:white;
+    background-color:#009887;
+    padding: 1em;
+}
+.buttonLink:hover {
+    background-color:#227066;
+}
+.confirmMsg p {
+    margin-bottom: 2.5em;
+}
+
+footer a:hover {
+    color:#A0A0A0;
+}

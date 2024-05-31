@@ -1,0 +1,19 @@
+<template>
+    <div if:true={IsDisclaimer} >
+        <h4 style="color: #3a3a3a; font-size:15px; font-family: Source Sans Pro, Verdana, sans-serif; ">Disclaimer</h4>
+        <div class='nds-box'>
+            <p class="disclaimer-font elementChildren" style="font-size:14px!important" lwc:dom="manual"></p>
+        </div>
+        <br/>
+        <table style="width: 70% !important">
+            <tr>
+                <td><b>Attested By</b></td>
+                <td>{summary.Attestation.attestedBy}</td>
+            </tr>
+            <tr>
+                <td><b>Attested Date</b></td>
+                <td>{summary.Attestation.attestedDateFormatted}</td>
+            </tr>
+        </table>
+    </div>
+</template>

@@ -1,0 +1,12 @@
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column="true"  
+                show-row-number-column="true"
+                onrowaction={callRowAction}>
+        </lightning-datatable>
+    </div>    
+</template>

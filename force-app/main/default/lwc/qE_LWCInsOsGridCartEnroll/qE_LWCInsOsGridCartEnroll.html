@@ -1,0 +1,31 @@
+<template>
+    <template for:each={productGroups} for:item="group">
+        <div key={group.label} class="slds-p-bottom_small nds-p-bottom_small">
+            <div class="slds-grid slds-grid_vertical-align-center nds-grid nds-grid_vertical-align-center">
+                <h2 class="slds-m-vertical_medium nds-m-vertical_medium vloc-ins-group-label" style="font-size: 1.5rem;">
+                    {group.label}
+                </h2>
+                <!-- <c-button
+                    if:false={group.hideStepButton}
+                    theme={theme}
+                    label={labels.InsEditSelections}
+                    class="slds-m-left_medium nds-m-left_medium vloc-ins-group-button"
+                    onclick={editSelection}
+                    data-product-step={group.stepName}
+                ></c-button> -->
+            </div>
+            <c-q-e_-l-w-c-ins-os-grid-products
+                hidden-actions={hiddenActions}
+                products={group.products}
+                theme={theme}
+                root-channel={rootChannel}
+                invalidate-cache
+                is-cart
+            >
+            </c-q-e_-l-w-c-ins-os-grid-products>
+        </div>
+    </template>
+    <div if:true={cartEmpty} class="slds-p-around_medium nds-p-around_medium vloc-ins-cart-empty">
+        {labels.CPQCartIsEmpty}
+    </div>
+</template>

@@ -1,0 +1,352 @@
+<template>
+
+    <div class="c-container">
+        <div class="slds-grid slds-gutters">
+             <div class="slds-col slds-size_2-of-6">
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">ID</p>
+                            <p>{detailsRow.id}</p>
+                        </div>
+                    </lightning-layout-item >
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Provider Name</p>
+                            <p>{detailsRow.providerName}</p>
+                        </div>
+                    </lightning-layout-item >
+
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Phone</p>
+                            <p>{detailsRow.phone}</p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Claim Status</p>
+                            <p>{detailsRow.claimStatus}</p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">CPT Code</p>
+                            <p>{detailsRow.cptCode}</p>
+                        </div>
+                    </lightning-layout-item>
+                    
+                </lightning-layout>
+               
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Charges</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalCharges} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Paid by Plan</p>
+                            <p>
+                                    <lightning-formatted-number value={detailsRow.totalPaidByPlan} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Covered</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalCovered} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Deductible</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalDeductible} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Patient Responsibility</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalPatientResponsibility} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Spend Down</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalMemberSpendDown} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Copay</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalCopay} format-style="currency">
+                                </lightning-formatted-number>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="12">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Total Units</p>
+                            <p>{detailsRow.rvu}</p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Check</p>
+                            <p>
+                                {detailsRow.check}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Medicaid ID</p>
+                            <p>
+                                {detailsRow.medicaidID}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Provider Paid Date/Pay date</p>
+                            <p>
+                                <lightning-formatted-date-time value={detailsRow.providerPaidDate}></lightning-formatted-date-time>
+                                
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Clean Date</p>
+                            <p>
+                                <lightning-formatted-date-time value={detailsRow.cleanDate}></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+               
+                <lightning-layout>
+
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Paid Date</p>
+                            <p>
+                                <lightning-formatted-date-time value={detailsRow.paidDate}></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Date of Service</p>
+                            <p>
+                                <lightning-formatted-date-time value={detailsRow.datesOfService}></lightning-formatted-date-time>
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Co-Insurance</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.totalCoinsurance} format-style="currency">
+                                </lightning-formatted-number>
+                                
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Patient Pay</p>
+                            <p>
+                                <lightning-formatted-number value={detailsRow.memberSpendDown} format-style="currency">
+                                </lightning-formatted-number>
+                                
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Revenue</p>
+                            <p>{detailsRow.revenueCode}</p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Pay To/Vendor Name</p>
+                            <p>
+                                {detailsRow.practiceName}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Bulk Payment</p>
+                            <p>
+                                {detailsRow.bulkPaymentAmount}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Single Payment</p>
+                            <p>
+                                {detailsRow.singlePaymentAmount}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Check paid to Family</p>
+                            <p>
+                                {detailsRow.chkPaymentToFamilyMember}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Check paid to Vendor</p>
+                            <p>
+                               {detailsRow.chkPaymentToVendor}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="12">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Diagnostic Code</p>
+                            <p>{detailsRow.diagnosticCode}</p>
+                        </div>
+                    </lightning-layout-item>
+                    
+                </lightning-layout>
+
+                <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Check paid to</p>
+                            <p>
+                                {detailsRow.checkPaymentTo}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Claim comments</p>
+                            <p>
+                                {detailsRow.comments}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                 <lightning-layout>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Address Sent To</p>
+                            <p>
+                                {detailsRow.addressLine1} <br/>
+                                {detailsRow.addressLine2} {detailsRow.city} {detailsRow.state} {detailsRow.zipCode}
+                            </p>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Claim Type</p>
+                            <p>{claimtype}</p>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                <lightning-layout>
+                     <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">NDC</p>
+                            <p>{detailsRow.ndcCode}</p>
+                        </div>
+                    </lightning-layout-item>
+                    
+                    <lightning-layout-item class="layout-item" padding="around-small" size="6">
+                        <div class="header-column">
+                            <p class="field-title" title="Field 1">Claim Form Type</p>
+                            <p>{detailsRow.claimFormType}</p>
+                        </div>
+                    </lightning-layout-item>
+
+                </lightning-layout>
+                
+            </div>
+            <div class="slds-col slds-size_4-of-6">
+                 <lightning-datatable
+                    style="heigth: auto;"
+                    data={services}
+                    columns={columns}
+                    key-field="key"
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </div>    
+        </div>   
+        
+    </div>
+    <!-- <div class="demo-only" style="width:300px">
+        <div class="slds-page-header slds-page-header_vertical">
+            <div class="slds-media">
+            <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                    <h1>
+                    <span class="slds-page-header__title slds-hyphenate" title="Services">Services</span>
+                    </h1>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    -->
+
+
+</template>

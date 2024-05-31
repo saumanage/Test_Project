@@ -1,0 +1,647 @@
+<template>
+	<form name='loopform'
+		class='nds-form-element nds-size_1-of-1 nds-m-bottom_large nds-p-around_small nds-rich-text-editor__output'>
+		<div id='printableArea' style="border: none !important; padding: 0 !important;"
+			class="nds-size_1-of-1 membermaintenance-addnew-summary">
+			<center>
+				<h3 class="pageh2"
+					style="color: #3a3a3a; font-family: Source Sans Pro, Verdana, sans-serif; text-align: left; font-size: 18px;">
+					Please review the following information and click submit.</h3>
+			</center>
+			<div class="section-to-print">
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important">
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Enrollment Details</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Hire Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.reasonForEnroll.hireDateFormatted }</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Reason For Enrollment</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.reasonForEnroll.reasonForEnrollmentFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<!--if:true={summary.effectiveDateFormula}-->
+							<td>
+								<div class="slds-truncate">Effective Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.effectiveDateFormulaFormatted}</div>
+
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.reasonForEnroll.DateOfEvent}>
+							<td>
+								<div class="slds-truncate">Date Of Event</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.reasonForEnroll.DateOfEventFormatted}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important">
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Personal Information</div>
+						</th>
+						<th></th>
+					</tr>
+
+
+					<tbody>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate"> {summary.personalInfo.firstName} {middleInitialCalculated}
+									{summary.personalInfo.lastName}</div>
+							</td>
+							<!-- <td>
+							<div class="slds-truncate">{changeToUpperCase(summary.personalInfo.firstName)} {middleInitialCalculated} {changeToUpperCase(summary.personalInfo.lastName)}</div>
+						</td> -->
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Birth Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.birthDateFormatted}</div>
+							</td>
+						</tr>
+						<!--SSN not to be shown on UI - VLOC-847-->
+						<!--<tr class="slds-hint-parent">
+						<td>
+							<div class="slds-truncate">SSN / ITIN</div>
+						</td>
+						<td>
+							<div class="slds-truncate">{formatSSN(summary.personalInfo.socialSecurityNumber)}</div>
+						</td>
+					</tr>-->
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Sex</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.genderFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.maritalStatus}>
+							<td>
+								<div class="slds-truncate">Marital Status</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.maritalStatusFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.ethnicity}>
+							<td>
+								<div class="slds-truncate">Ethnicity</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.ethnicityFormatted}</div>
+							</td>
+						</tr>
+						<!--tr class="slds-hint-parent" if:true={summary.personalInfo.spokenLanguage}>
+						<td>
+							<div class="slds-truncate">Spoken Language</div>
+						</td>
+						<td>
+							<div class="slds-truncate">{changeToUpperCase(summary.personalInfo.spokenLanguage)}</div>
+						</td>
+					</tr-->
+						<!--tr class="slds-hint-parent" if:true={summary.personalInfo.writtenLanguage}>
+						<td>
+							<div class="slds-truncate">Written Language</div>
+						</td>
+						<td>
+							<div class="slds-truncate">{changeToUpperCase(summary.personalInfo.writtenLanguage)}</div>
+						</td>
+					</tr-->
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.primaryLanguage}>
+							<td>
+								<div class="slds-truncate">Primary Language</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.primaryLanguageFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.phoneNumber}>
+							<td>
+								<div class="slds-truncate">Home Phone</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.phoneNumberFormmatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.mobilePhone}>
+							<td>
+								<div class="slds-truncate">Mobile Phone</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.mobilePhoneFormmatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.workPhone}>
+							<td>
+								<div class="slds-truncate">Work Phone</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.workPhoneFormmatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={summary.personalInfo.emailAddress}>
+							<td>
+								<div class="slds-truncate">Email Address</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.personalInfo.emailAddress}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Home Address</div>
+							</td>
+							<td>
+								<div class="slds-truncate">
+									<p>
+										{summary.personalInfo.homeStreetFormatted} {homeStreetCalculated}<br />
+										<span if:true={zipCodeSearchCalculated}>
+											{zipCodeSearchCalculated.City},{zipCodeSearchCalculated.State},{zipCodeSearchCalculated.ZipCode}<br />
+											{zipCodeSearchCalculated.County}&nbsp;County
+										</span>
+
+									</p>
+								</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Mailing Address</div>
+							</td>
+							<td>
+								<div class="slds-truncate">
+									<p>
+										{mailingStreetCalculated}
+										{mailingStreetCalculated2}<br />
+										{summary.personalInfo.mailingCity},{summary.personalInfo.mailingState},{summary.personalInfo.mailingZipCode}<br />
+										{mailingCountyCalculated}
+
+
+									</p>
+								</div>
+							</td>
+						</tr>
+						<!--<tr class="slds-hint-parent" if:true={summary.personalInfo.HomeCounty }>
+						<td>
+							<div class="slds-truncate">County</div>
+						</td>
+						<td>
+							<div class="slds-truncate">
+								<p>
+									{changeToUpperCase(summary.personalInfo.HomeCounty)}
+								</p>
+							</div>
+						</td>
+					</tr> -->
+					</tbody>
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover groupInfo"
+					style="width: 70% !important">
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Group Information</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Group Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.groupInfo.groupNameFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Sub Group Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{subgroupCalculated}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Group Class</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{groupClassCalculated}</div>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover selected-plans-table"
+					style="width: 70% !important" if:true={selectedPlansArr.length}>
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Selected Plans</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody for:each={selectedPlansArr} for:item="plan" key={plan.Name}>
+
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate padding8">Type</div>
+								<div class="slds-truncate padding8">Name</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualHealthValidation}>Annual
+									Health FSA Election Amount</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualDepValidation}>Annual
+									Dependent Care FSA Election Amount</div>
+							</td>
+							<td>
+								<div class="slds-truncate padding8" if:true={plan.getPlanNotMedicalSavings}>
+									{plan.Type__c}</div>
+								<!--div class="slds-truncate" if:true="plan.Type__c == 'Medical Savings Account' && plan.SubType__c == 'FSA'">Flexible Spending Account</div>
+							<div class="slds-truncate" if:true="plan.Type__c == 'Medical Savings Account' && plan.SubType__c == 'HSA'">Health Savings Account</div-->
+								<div class="slds-truncate padding8">{plan.Name}</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualHealthValidation}>$
+									{summary.fsaPlan.FSAContributionMedicalAmount}</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualDepValidation}>$
+									{summary.fsaPlan.FSADependentContributionAmount}</div>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover selected-plans-table"
+					style="width: 70% !important" if:true={pediatricPlansArr.length}>
+					<tbody for:each={pediatricPlansArr} for:item="plan" key={plan.Name}>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate padding8">Type</div>
+								<div class="slds-truncate padding8">Name</div>
+
+							</td>
+							<td>
+								<div class="slds-truncate padding8">{plan.Type__c}</div>
+								<div class="slds-truncate padding8">{plan.Name}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!--table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important" if:true={pcpProviderName}-->
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover pcp-information-table"
+					style="width: 70% !important" if:true={omniJsonData.PCPSelection.ProviderInformation}>
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header"> Subscriber PCP Information</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate padding8">Provider Name</div>
+								<div class="slds-truncate padding8">Provider ID</div>
+							</td>
+							<td>
+								<div class="slds-truncate padding8">
+									{omniJsonData.PCPSelection.ProviderInformation.ProviderName}</div>
+								<div class="slds-truncate padding8">
+									{omniJsonData.PCPSelection.ProviderInformation.ProviderID}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!--table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important" if:true={COBcarrierName}-->
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important"
+					if:true={omniJsonData.CoordinationOfBenefits.Insurance}>
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<!--div class="slds-truncate cust-header">COB Information</div-->
+							<div class="slds-truncate cust-header">Other Insurance</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+
+						<tr class="slds-hint-parent" if:true={cardinationOfBene}>
+							<td>
+								<div class="slds-truncate">Carrier Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{cardinationOfBene.TACarrierName}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={cardinationOfBene}>
+							<td>
+								<div class="slds-truncate">Carrier ID</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{cardinationOfBene.carrierId}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Effective Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{EffectiveDateCOBFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent"
+							if:true={omniJsonData.CoordinationOfBenefits.Insurance.PolicyNumber}>
+							<td>
+								<div class="slds-truncate">Policy Number</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{omniJsonData.CoordinationOfBenefits.Insurance.PolicyNumber}
+								</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent" if:true={omniJsonData.CoordinationOfBenefits.Insurance.TermDate}>
+							<td>
+								<div class="slds-truncate">Termination Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{TermDateFormatted}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div if:true={needDepValidation}>
+					<table class="slds-table slds-table_cell-buffer slds-no-row-hover " style="width: 70% !important">
+						<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+							<th>
+								<div class="slds-truncate cust-header">Dependent Details</div>
+							</th>
+							<th></th>
+						</tr>
+						<tbody for:each={dependenRepeatable} for:item="dependent" key={dependent.emailDep}>
+							<template if:true={dependent}>
+								<tr class="slds-hint-parent">
+									<th class="sub-head" colspan="2">
+										<div class="slds-truncate">Dependent {dependent.showIndex}</div>
+									</th>
+								</tr>
+								<tr class="slds-hint-parent">
+									<td>
+										<div class="slds-truncate">Name</div>
+									</td>
+									<td>
+										<div class="slds-truncate">{dependent.firstNameDep} {dependent.getMiddleDep}
+											{dependent.lastNameDep}</div>
+									</td>
+									<!-- <td>
+                                    <div class="slds-truncate">{changeToUpperCase(dependent.firstNameDep)} {getMiddleDep(dependent)} {changeToUpperCase(dependent.lastNameDep)}</div>
+                                </td> -->
+								</tr>
+
+								<tr class="slds-hint-parent">
+									<td>
+										<div class="slds-truncate">Birth Date</div>
+									</td>
+									<td>
+										<div class="slds-truncate">{dependent.birthDateDepFormatted}</div>
+									</td>
+								</tr>
+
+								<!--SSN not to be shown on UI - VLOC-847-->
+								<!--<tr class="slds-hint-parent" if:true={dependent.socialSecurityNumberDep}>
+                                <td>
+                                    <div class="slds-truncate">SSN / ITIN</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{formatSSN(dependent.socialSecurityNumberDep)}</div>
+                                </td>
+                            </tr>-->
+								<!--tr class="slds-hint-parent" if:true={dependent.phoneDep}>
+                                <td>
+                                    <div class="slds-truncate">Phone</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{formatPhone(dependent.phoneDep)}</div>
+                                </td>
+                            </tr>
+                            <tr class="slds-hint-parent" if:true={dependent.mobileDep}>
+                                <td>
+                                    <div class="slds-truncate">Mobile Phone</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{formatPhone(dependent.mobileDep)}</div>
+                                </td>
+                            </tr>
+                            <tr class="slds-hint-parent" if:true={dependent.workDep}>
+                                <td>
+                                    <div class="slds-truncate">Work Phone</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{formatPhone(dependent.workDep)}</div>
+                                </td>
+                            </tr>
+                            <tr class="slds-hint-parent" if:true={dependent.emailDep}>
+                                <td>
+                                    <div class="slds-truncate">Email</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{dependent.emailDep}</div>
+                                </td>
+                            </tr-->
+								<tr class="slds-hint-parent" if:true={dependent.relationship}>
+									<td>
+										<div class="slds-truncate">Relationship</div>
+									</td>
+									<td>
+										<div class="slds-truncate">{dependent.relationshipFormatted}</div>
+									</td>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.genderDep}>
+									<td>
+										<div class="slds-truncate">Sex</div>
+									</td>
+									<td>
+										<div class="slds-truncate">{dependent.genderDepFormatted}</div>
+									</td>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.ethnicityDep}>
+									<td>
+										<div class="slds-truncate">Ethnicity</div>
+									</td>
+									<td>
+										<div class="slds-truncate">{dependent.ethnicityDepFormatted}</div>
+									</td>
+								</tr>
+
+								<!--tr class="slds-hint-parent" if:true={dependent.spokenLanguageDep}>
+                                <td>
+                                    <div class="slds-truncate">Spoken Language</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{changeToUpperCase(dependent.spokenLanguageDep)}</div>
+                                </td>
+                            </tr>
+                            <tr class="slds-hint-parent" if:true={dependent.writtenLanguageDep}>
+                                <td>
+                                    <div class="slds-truncate">Written Language</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{changeToUpperCase(dependent.writtenLanguageDep)}</div>
+                                </td>
+                            </tr-->
+
+								<!-- no plans available in document template. Need to check if allthe below fields need to be removed-->
+								<tr class="slds-hint-parent">
+									<th class="sub-head" colspan="2">
+										<div class="slds-truncate"><strong>Selected Dependent Plans</strong></div>
+									</th>
+									<th></th>
+								</tr>
+
+								<tr class="slds-hint-parent">
+									<td>
+										{dependent.getDpPlan.dentalPlanName}
+										<!--<div class="slds-truncate">Dependent Name</div>-->
+										<div class="slds-truncate padding8">Medical Plan</div>
+										<div class="slds-truncate padding8">Dental Plan</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getDpPlan.pedDentalPlanEnroll}>Pediatric Dental</div>
+										<div class="slds-truncate padding8" if:true={dependent.getPedDentalValidation}>
+											Pediatric Dental Attestation</div>
+									</td>
+									<td>
+										<!--<div class="slds-truncate">{changeToUpperCase(dplan.dependentPlanSelectionDepName)}</div>-->
+										<!--div class="slds-truncate padding8">{{dplan.medicalPlanEnroll == 'enroll'? 'Enrolled' : 'Declined'}}</div>
+																	<div class="slds-truncate padding8">{{dplan.dentalPlanEnroll == 'enroll'? 'Enrolled' : 'Declined'}}</div>
+																	<div class="slds-truncate padding8" if:true={getDpPlan($index).pedDentalPlanEnroll}>{{dplan.pedDentalPlanEnroll== 'enroll'? 'Enrolled' : 'Declined'}}</div-->
+
+
+										<div class="slds-truncate padding8">{dependent.getMedicalPlanEnroll}</div>
+										<div class="slds-truncate padding8">{dependent.getDentalPlanEnroll}</div>
+										<div class="slds-truncate padding8" if:true={dependent.getPedDentalPlanEnroll}>
+											{dependent.getPedDentalPlanEnroll}</div>
+
+										<div class="slds-truncate padding8" if:true={dependent.getPedDentalValidation}>
+											Accepted</div>
+											{dependent.getPcpDep}
+											{dependent.getCobDep}
+
+
+									</td>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.getPcpDepProviderIdValidation}>
+									<th class="sub-head" colspan="2">
+										<div class="slds-truncate"><strong>PCP Information</strong></div>
+									</th>
+									<th></th>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.getPcpDepProviderIdValidation}>
+									<td>
+										<div class="slds-truncate padding8">Provider Name</div>
+										<div class="slds-truncate padding8">Provider ID</div>
+									</td>
+									<td>
+										<div class="slds-truncate padding8">
+											{dependent.getPcpDep.depProviderInformation.depProviderName}</div>
+										<div class="slds-truncate padding8">
+											{dependent.getPcpDep.depProviderInformation.depProviderID}</div>
+									</td>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.getCarrierIdDepValidation}>
+									<th class="sub-head" colspan="2">
+										<div class="slds-truncate"><strong>COB Information</strong></div>
+									</th>
+									<th></th>
+								</tr>
+								<tr class="slds-hint-parent" if:true={dependent.getCarrierIdDepValidation}>
+									<td>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDepCarrierName.TACarrierNameDep}>Carrier Name</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDepCarrierName.carrierIdDep}>Carrier ID</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDep.policyNumberCOB}>Policy Number</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDep.effectiveDateCOB}>Effective Date</div>
+										<div class="slds-truncate padding8" if:true={dependent.getCobDep.termDateCOB}>
+											Termination Date</div>
+									</td>
+									<td>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDepCarrierName.TACarrierNameDep}>
+											{dependent.getCobDepCarrierName.TACarrierNameDep}</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDepCarrierName.carrierIdDep}>
+											{dependent.getCobDepCarrierName.carrierIdDep}</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDep.policyNumberCOB}>
+											{dependent.getCobDep.policyNumberCOB}</div>
+										<div class="slds-truncate padding8"
+											if:true={dependent.getCobDep.effectiveDateCOB}>
+											{dependent.effectiveDateCOBFormatted}</div>
+										<div class="slds-truncate padding8" if:true={dependent.getCobDep.termDateCOB}>
+											{dependent.termDateCOBFormatted}</div>
+									</td>
+								</tr>
+							</template>
+
+						</tbody>
+
+					</table>
+				</div>
+
+				<div for:each={childsArr} for:item="ch" class="disclaimer " key={ch.keyCh}>
+					<div if:true={ch.getIsChildAttestation}>
+						<div for:each={childrenArr} for:item="ChildrenNode" key={ChildrenNode.keyChildrenNode}>
+							<div for:each={ChildrenNodeConvertedArr} for:item="ChildrenEl" key={ChildrenEl.idxEl}>
+								<c-q-e_-l-w-c-omni-newport-summary-children-el summary={summary} element={ChildrenEl}>
+								</c-q-e_-l-w-c-omni-newport-summary-children-el>
+							</div>
+
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<br />
+			<!--<center><button onclick={printDiv('printableArea')}>Print</button></center>-->
+		</div>
+	</form>
+</template>

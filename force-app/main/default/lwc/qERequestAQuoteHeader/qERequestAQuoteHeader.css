@@ -1,0 +1,22 @@
+.optimaLogo{
+     width: 499.38px;
+    height: 110.97px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left:240px; 
+ }
+
+ .header {
+    max-width: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #FFFFFF;
+    /* box-shadow: 0 0 8px 0 rgb(0 0 0 / 30%);
+    border-bottom: 0.35em solid #0E406A !important;
+    border-bottom-width: 0.35em !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: rgb(14, 64, 106) !important; */
+    position: relative;
+    width: auto;
+
+ }

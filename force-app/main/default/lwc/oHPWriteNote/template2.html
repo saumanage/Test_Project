@@ -1,0 +1,24 @@
+<template>
+    <lightning-card variant="Narrow">
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:note" size="small"></lightning-icon>
+            &nbsp;Notes
+        </h3>
+        <div style="height: 300px;">
+            <lightning-datatable key-field="Id" data={records.data} hide-checkbox-column="true" columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+    <lightning-card variant="Narrow">
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:note" size="small"></lightning-icon>
+            &nbsp;Add a Note
+        </h3>
+        <lightning-record-edit-form object-api-name="ContentNote" columns="1" onsubmit={handleSubmit}
+            onsuccess={handleSuccess}>
+            <lightning-input-rich-text value={noteContent} onchange={handleNoteChange}></lightning-input-rich-text>
+            <lightning-button variant="brand-outline" label="Reset" onclick={handleReset}></lightning-button>
+            <lightning-button data-savebtn="savenote" variant="brand" type="submit" label="Save" disabled={disableBtn}></lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

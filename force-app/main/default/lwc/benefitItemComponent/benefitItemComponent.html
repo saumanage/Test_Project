@@ -1,0 +1,35 @@
+<template>
+    <template if:true={benefitItems}>
+        <lightning-accordion allow-multiple-sections-open>
+            <template for:each={benefitItems} for:item="benefitItem">
+                    <lightning-accordion-section key={benefitItem.Id} name={benefitItem.Name} label={benefitItem.Name}>                              
+                            <lightning-record-view-form
+                                object-api-name="CoverageBenefitItem"
+                                record-id={benefitItem.Id}>
+                                <div class="slds-m-right_small">
+                                    <lightning-button label="More Details" data-id={benefitItem.Id} onclick={openCoverageBenefitItem} class="slds-float_right"></lightning-button>
+                                </div>
+                                <div class="slds-box">
+                                    <lightning-layout>
+                                        <lightning-layout-item size="6">
+                                            <lightning-output-field field-name="Name"></lightning-output-field>
+                                            <lightning-output-field field-name="ServiceType"></lightning-output-field>
+                                            <lightning-output-field field-name="BenefitCategory"></lightning-output-field>
+                                            <lightning-output-field field-name="CoverageBenefitId"></lightning-output-field>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="6">
+                                            <lightning-output-field field-name="CoverageLevel"></lightning-output-field>
+                                            <lightning-output-field field-name="TimePeriod"></lightning-output-field>
+                                            <lightning-output-field field-name="IsActive"></lightning-output-field>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </lightning-record-view-form>                 
+                    </lightning-accordion-section>
+                </template>
+        </lightning-accordion>
+    </template>
+    <template if:true={error}>
+                <p>{error}</p>
+    </template>
+</template>

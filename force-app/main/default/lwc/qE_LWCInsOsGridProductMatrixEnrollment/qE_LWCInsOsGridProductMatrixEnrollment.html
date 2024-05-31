@@ -1,0 +1,70 @@
+<template>
+    <div class="vloc-ins-product-matrix slds-table slds-table_cell-buffer nds-table nds-table_cell-buffer">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+        <template if:true={matrix}>
+            <!--Overview Matrix-->
+            <template for:each={matrix} for:item="row" for:index="rowIndex">
+                <div key={row.key}>
+                    <div class="slds-border_bottom nds-border_bottom vloc-ins-link" if:false={row.hidden}>
+                        <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment row={row} onclick={handleSectionToggle} data-record-index={rowIndex}
+                        row-style="overviewrow" theme={theme} select-btn-fn={selectBtnFn}></c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                    </div>
+                    <div if:true={row.showDetail}>
+                        <div if:true={row.attrMatrix} class="vloc-ins-row-detail">
+                            <template for:each={row.attrMatrix} for:item="row">
+                                <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment is-editable={isEditable} row-style="attributerow"
+                                    key={row.key} row={row} theme={theme}>
+                                </c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                            </template>
+                        </div>
+                        <div class="slds-border_bottom nds-border_bottom vloc-ins-row-detail">
+                            <template if:true={row.matrix}>
+                                <!--Coverages Matrix:-->
+                                <template for:each={row.matrix} for:item="row" for:index="childIndex">
+                                    <!--Party Item Row:-->
+                                    <template if:true={row.isInsuredPartySpec}>
+                                        <div key={row.key} class="vloc-ins-link">
+                                            <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment row={row} onclick={handleDetailSectionToggle}
+                                                data-child-index={childIndex} data-parent-index={rowIndex}
+                                                row-style="productrow" theme={theme}>
+                                            </c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                                        </div>
+                                        <template if:true={row.showDetail}>
+                                            <template if:true={row.attrMatrix}>
+                                                <!--Attribute Matrix-->
+                                                <template for:each={row.attrMatrix} for:item="row">
+                                                    <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment is-editable={isEditable}
+                                                        row-style="attributerow" key={row.key} row={row} theme={theme}>
+                                                    </c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </template>
+                                    <!--Non Party Item Row-->
+                                    <template if:false={row.isInsuredPartySpec}>
+                                        <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment row-style="productrow" key={row.key} row={row}
+                                            theme={theme}>
+                                        </c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                                        <template if:true={row.attrMatrix}>
+                                            <!--Attribute Matrix-->
+                                            <template for:each={row.attrMatrix} for:item="row">
+                                                <c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment is-editable={isEditable}
+                                                    row-style="attributerow" key={row.key} row={row} theme={theme}>
+                                                </c-q-e_-l-w-c-ins-os-grid-product-matrix-row-enrollment>
+                                            </template>
+                                        </template>
+                                    </template>
+                                </template>
+                            </template>
+                            <template if:true={row.isLoading}>
+                                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

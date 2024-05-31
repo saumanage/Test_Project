@@ -1,0 +1,14 @@
+<template>
+  <div class={containerClass} if:false={isLoaded}>
+        <div role="status" class={spinnerClass}>
+            <span class="slds-assistive-text">Loading...</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+        <div data-id="spinnerMsg" class={messageClass}>
+            <div style="margin-left:-50%">{message}</div>
+        </div>
+    </div>
+
+
+</template>

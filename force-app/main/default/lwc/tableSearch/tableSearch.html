@@ -1,0 +1,91 @@
+<template>
+    <lightning-card title="Choose any one of these events">
+        <div class="slds-m-around_medium">
+            
+            <!--Search boxes-->
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-input 
+                        type="search" 
+                        onchange={handleKeyChange} 
+                        class="slds-m-bottom_small"           
+                        label="Venue State" 
+                        value={venueStateFilter}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-input 
+                        type="search" 
+                        onchange={handleKeyChange} 
+                        class="slds-m-bottom_small"           
+                        label="Event Date" 
+                        value={eventDateFilter}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-input 
+                        type="search" 
+                        onchange={handleKeyChange} 
+                        class="slds-m-bottom_small"           
+                        label="Venue City" 
+                        value={venueCityFilter}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-input 
+                        type="search" 
+                        onchange={handleKeyChange} 
+                        class="slds-m-bottom_small"           
+                        label="Venue Zip Code" 
+                        value={venueZipCodeFilter}>
+                    </lightning-input>
+                </div>
+
+                <div class="slds-col slds-col_bump-right">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Add Meeting" 
+                        onclick={handleAddMeetings} 
+                        class="slds-m-left_x-medium"
+                    ></lightning-button>
+                </div>
+              </div>
+            
+            <!--Data table-->
+            <lightning-datatable 
+                data-id="table" 
+                key-field="Id" 
+                data={data} 
+                columns={columns} 
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection} 
+                onrowselection ={onRowSelection} 
+                selected-rows={allSelectedRows} 
+                onsort={sortColumns}>
+           </lightning-datatable>
+
+           <!--Paginations-->
+           <br/>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button 
+                        label="Previous" 
+                        icon-name="utility:chevronleft" 
+                        onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button 
+                        label="Next" 
+                        icon-name="utility:chevronright" 
+                        icon-position="right"
+                        onclick={nextHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

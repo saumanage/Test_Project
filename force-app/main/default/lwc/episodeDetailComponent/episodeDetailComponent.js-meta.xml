@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen"> 
+            <property name="episodeNumber" type="String" label="Episode Number" />
+            <property name="episode" type="String" label="Episode"/>
+            <property name="authDetail" type="String" label="Auth Detail" />
+            <property name="authDetailColumns" type="String" label="Auth Detail Column" />
+            <property name="typeField" type="String" label="Type Field" />
+            <property name="authDetailFields" type="String" label="Auth Detail Fields" description="List of auth detail fields to display; seperated by comma; Example: Name,Id"/>
+            <property name="diagnosisFields" type="String" label="Diagnosis Fields" description="List of diagnosis fields to display; seperated by comma; Example: Name,Id"/>
+            <property name="typeFields" type="String" label="type Fields" description="List of provider fields to display; seperated by comma; Example: Name,Id" role="outputOnly"/>
+            <property name="outputData" type="String" label="Output Data" role="outputOnly"/>
+            <property name="notes" type="String" label="Notes" description="List of Notes "/>
+            <property name="noteUri" type="String" label="Note Uri" description="Stay or Service noteUri" role="outputOnly" />
+            <property name="memberId" type="String" label="Member Id" description=" " />
+            <property name="authorizationId" type="String" label="AuthorizationId" description=" " />
+            <property name="claimedVisits" type="String" label="Used Units" description=" " />
+            <property name="extendedNoteUri" type="String" label="Extended Note Uri" description="Stay or Service extendedNoteUri" role="outputOnly" />
+            <property name="sourceSystem" type="String" label="Source System" description=" " role="inputOnly" />
+        </targetConfig> 
+    </targetConfigs>
+</LightningComponentBundle>

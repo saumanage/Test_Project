@@ -1,0 +1,19 @@
+<template>
+    <div if:true={showComponent}>
+        <div if:true={plans} class="nds-grid nds-wrap">
+            <lightning-spinner if:false={isLoaded} alternative-text="Loading" size="medium"></lightning-spinner>
+            <template for:each={plans} for:item="plan">
+                <vlocity_ins-ins-os-enrollee-benefits-summary-row
+                    key={plan.Id}
+                    class="nds-p-horizontal_x-small slds-p-horizontal_x-small"
+                    product={plan}
+                    dependents={dependents}
+                    root-channel={rootChannel}
+                    theme={theme}
+                >
+                </vlocity_ins-ins-os-enrollee-benefits-summary-row>
+            </template>
+        </div>
+        <vlocity_ins-ins-os-grid-product-modal theme={theme} root-channel={rootChannel}></vlocity_ins-ins-os-grid-product-modal>
+    </div>
+</template>

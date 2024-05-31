@@ -1,0 +1,15 @@
+<template>
+    <hr class="divider">
+    <div class="slds-grid">
+        <div if:true={showCategories} class="slds-col slds-size_1-of-1">
+            <span for:each={assignments} for:item="record" key={record.Name} class="slds-badge slds-m-horizontal_small">{record.Name} / {record.Value}</span>
+            <!-- <span class="slds-badge slds-m-horizontal_small">{name} / {value}</span> -->
+
+        </div>
+        <div if:false={showCategories} class="slds-col slds-size_1-of-1">
+            <span class="no-categories">
+                There are no current categories assigned, please select "Manage Categories" to get started.
+            </span>
+        </div>
+    </div>
+</template>

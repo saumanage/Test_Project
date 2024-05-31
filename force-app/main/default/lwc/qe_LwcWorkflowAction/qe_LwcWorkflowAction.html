@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Select Next Workflow Step" class="slds-var-p-around_medium">
+        <lightning-radio-group
+            label="Next Workflow Steps"
+            options={stepOptions}
+            onchange={handleSelect}
+            required>
+        </lightning-radio-group>
+        <lightning-textarea
+            name="comment"
+            label="Comments"
+            placeholder="Enter comments for the next step assignee"
+            onchange={setComment}></lightning-textarea>
+    </lightning-card>
+</template>

@@ -1,0 +1,206 @@
+<template>
+    <div class="body">
+        <header>		
+            <div>	
+                <img src={SentaraHealthLogo} alt="Sentara Health Logo">
+                <div class="text-right"><a href="https://www.sentarahealthplans.com/members/contact-us">Contact Us</a></div>
+            </div>
+        </header>
+        <section class="main">
+            <div class="content-area">
+                <template if:true={formView}> 
+                    <div>
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Sentara Individual & Family Health Plans Termination Request</div>
+                    </div>
+                    <div id="record-form" class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large">
+                        <div id="planTerminationInfo" class="infoSection">
+                            <h2>Plan Termination Information</h2>	
+                            <hr>
+                            <p>This online form is to be completed only by Sentara Health Plans policyholders who purchased their Individual &amp; Family Plan outside of the Exchange, either directly from Sentara Health Plans or a broker. If you enrolled in a Sentara Individual &amp; Family Health Plan through the Health Insurance Marketplace, you must terminate your coverage through the Marketplace. Please sign in to marketplace.virginia.gov or call 1-888-687-1501.</p>
+                            <div class="required-key"><strong>Note:</strong> Asterisk<small>*</small> indicates a required field</div>
+                            <div>
+                                <lightning-radio-group
+                                    class="lightningLabel"
+                                    name="terminationReason"
+                                    label="I am ending my Individual & Family plan health insurance coverage because:"
+                                    options={reasonOptions}
+                                    required
+                                    type="radio">
+                                </lightning-radio-group>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-combobox
+                                    class="lightningLabel"
+                                    label="Termination Date Selection"
+                                    name="terminationDate"
+                                    options={dateOptions}
+                                    placeholder="Select Termination Date"
+                                    onchange={handleDateSelection}
+                                    required>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+        
+                        <div id="primaryPlanMemberInfo" class="infoSection">
+                            <h2>Primary Plan Member Information</h2>
+                            <hr>
+                            <div class="slds-grid">
+                                <lightning-input class="slds-col slds-size_1-of-2 slds-p-right_xx-large lightningLabel" type="text" label="First Name" name="firstName" min-length="2" max-length="80" required></lightning-input>
+                                <lightning-input class="slds-col slds-size_1-of-2 slds-p-right_xx-large lightningLabel" type="text" label="Last Name" name="lastName" min-length="2" max-length="80" required></lightning-input>
+                            </div>
+                            <div class="slds-grid">
+                                <lightning-input class="slds-col slds-size_3-of-6 slds-p-right_xx-large lightningLabel" type="text" label="Member ID:" name="memberId" data-id="memberId" min-length="7" max-length="20" required placeholder="Type your member ID"></lightning-input>
+                                <lightning-input class="slds-col slds-size_1-of-6 lightningLabel" type="text" label="" name="memberIdSuffix" data-id="memberIdSuffix" min-length="2" max-length="2" required></lightning-input>
+                            </div>
+                            <div class="slds-grid">
+                                <lightning-input class="slds-col slds-size_2-of-3 lightningLabel" type="email" label="Email" name="email" required></lightning-input>
+                            </div>    
+                        </div>
+        
+                        <div id="dependentInfo" class="infoSection"> 
+                            <h2>Dependent Information</h2>	
+                            <hr>
+                            <p>Do you have any dependents covered under your Individual &amp; Family Plan who will need to apply for their own health insurance coverage when this plan ends?</p>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-combobox
+                                        class="lightningLabel"
+                                        label="Number of Dependents"
+                                        name="dependentDropdownSelection"
+                                        options={dependentOptions}
+                                        onchange={handleDependentSelection}
+                                        placeholder="Select Number of Dependents"
+                                        required>
+                                    </lightning-combobox>
+                                </div>
+                            </div>
+        
+                            <!-- probably need to iterate over something for this-->
+                            <div if:true={dependentsSelected} class="row" id="dependentsInfo" data-id="dependentSection" style="padding:0.5rem">
+                                <p id="dependentDisclaimer" style=""> Please provide the following information and a Personal Plan Advisor will contact your dependent about enrolling in an Individual &amp; Family Plan. You can also have your dependent call a Personal Plan Advisor at 1-866-550-1516 or search for plans at sentarahealthplans.com/individual.</p>
+                                <div for:each={dependents} data-id={dependent.id} for:item="dependent" key={dependent.id}>
+                                    <div class="panel dependentNode" id={dependent.value}>
+                                        <h3>{dependent.label}</h3>
+                                        <div class="slds-grid">
+                                            <lightning-input class="slds-col slds-size_1-of-2 slds-p-right_xx-large lightningLabel" type="text" label="First Name" min-length="2" max-length="80" name="depFirstName" required></lightning-input>
+                                            <lightning-input class="slds-col slds-size_1-of-2 slds-p-right_xx-large lightningLabel" type="text" label="Last Name" min-length="2" max-length="80" name="depLastName" required></lightning-input>
+                                        </div>
+                                        <div class="slds-grid">
+                                            <lightning-input class="slds-col slds-size_3-of-6 slds-p-right_xx-large lightningLabel" type="text" label="Member ID:" name="depMemberId" data-id="depMemberId" min-length="7" max-length="20" required placeholder="Type your member ID"></lightning-input>
+                                            <lightning-input class="slds-col slds-size_1-of-6 lightningLabel" type="text" label="" name="depMemberIdSuffix" data-id="depMemberIdSuffix" min-length="2" max-length="2" required></lightning-input>
+                                        </div>
+                                        <div class="slds-grid">
+                                            <lightning-input class="slds-col slds-size_2-of-3 lightningLabel" type="phone" label="Phone" name="depPhone" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}$" message-when-pattern-mismatch="Invalid Format: (###) ###-####; Please update" required></lightning-input>
+                                        </div>
+                                        <div class="slds-grid">
+                                            <lightning-input class="slds-col slds-size_2-of-3 lightningLabel" type="email" label="Email" name="depEmail" required></lightning-input>            
+                                        </div>
+                                    </div>    
+                                </div>                                                                 
+                            </div>    
+                        </div>
+                        <div id="planTerminationDisclaimer" class="infoSection">
+                            <h2>Plan Termination Disclaimer</h2>	
+                            <hr>
+                            <p>I understand that if I voluntarily cancel my Individual &amp; Family Plan coverage, I may not be eligible to re-enroll in an Individual &amp; Family Plan until the next Open Enrollment Period, for coverage effective January 1, or unless I qualify for a Special Enrollment Period. If I do not have health insurance coverage, I may be subject to a penalty.</p>    
+                            <p>This form requires an electronic signature. Please check the box below, which constitutes your electronic signature. By providing your electronic signature, you verify you are the policyholder for your health insurance plan.</p>
+            
+                            <div class="row">
+                                <div class="medium-12 large-12 columns hr">
+                                    <div class="conditional" style="margin: 0;">
+                                        <lightning-input name="readAndAgree" data-id="readAndAgree" type="checkbox" label="I confirm that I have read and agree to the plan termination disclaimer"></lightning-input>
+                                        <br>
+                                        <p class="day" style="margin: 0;">
+                                            <strong>{todayString}</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="errorMessages">
+                                <div if:true={requiredFieldsError}><p><strong>* Please fill out all required fields</strong></p></div>
+                                <div if:true={terminationReasonError}><p><strong>* Termination reason is required</strong></p></div>
+                                <div if:true={terminationDateError}><p><strong>* Termination date is required</strong></p></div>
+                                <div if:true={dependentsError}><p><strong>* Number of dependents is required</strong></p></div>
+                                <div if:true={memberIdError}><p><strong>* Error: Primary contact plan not found -- Please refer to your member ID card for help in filling out your member information to ensure your request is completed accurately.</strong></p></div>
+                                <div if:true={readAndAgreeError}><p><strong>* Please confirm you have read and agree to the plan termination disclaimer</strong></p></div>
+                            </div>
+                            <div class="row">
+                                <div class="small-12 medium-12 large-6 columns">      
+                                    <input type="submit" value="Submit" class={submitButtonClass} onclick={handleSubmit} disabled={isDisabled}></input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={confirmationOnly}>
+                    <div class="slds-m-bottom_xx-large">
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Confirmation of your submission</div>
+                        <div class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large confirmMsg">
+                            <h2>{memberName} - Confirmation of Termination of Health Insurance Coverage</h2>
+                            <p>Thank you for being a valued member of Sentara Individual & Family Health Plan. This notice serves as a confirmation you have voluntarily chosen to end your health insurance coverage with Sentara Health Plans effective {selectedDate}.</p>
+                            <p><a href="https://www.sentarahealthplans.com/">Back to SentaraHealthPlans.com</a></p>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={retiringMedicare}>
+                    <div class="slds-m-bottom_xx-large">
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Confirmation of your submission</div>
+                        <div class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large confirmMsg">
+                            <h2>{memberName} - Confirmation of Termination of Health Insurance Coverage</h2>
+                            <p>Thank you for being a valued member of Sentara Individual & Family Health Plan. This notice serves as a confirmation you have voluntarily chosen to end your health insurance coverage with Sentara Health effective {selectedDate}.</p>
+                            <p>We may have another health plan to meet your needs based on the reason you are ending your coverage.</p>
+                            <p><a class="buttonLink" href="https://www.sentarahealthplans.com/plans/medicare/">Explore Medicare Plans</a></p>
+                            <p><a href="https://www.sentarahealthplans.com/">Back to SentaraHealthPlans.com</a></p>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={medicaidEligible}>
+                    <div class="slds-m-bottom_xx-large">
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Confirmation of your submission</div>
+                        <div class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large confirmMsg">
+                            <h2>{memberName} - Confirmation of Termination of Health Insurance Coverage</h2>
+                            <p>Thank you for being a valued member of Sentara Individual & Family Health Plan. This notice serves as a confirmation you have voluntarily chosen to end your health insurance coverage with Sentara Health effective {selectedDate}.</p>
+                            <p>We may have another health plan to meet your needs based on the reason you are ending your coverage.</p>
+                            <p><a class="buttonLink" href="https://www.sentarahealthplans.com/plans/medicaid/">Explore Medicaid Plans</a></p>
+                            <p><a href="https://www.sentarahealthplans.com/">Back to SentaraHealthPlans.com</a></p>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={aPTCEligible}>
+                    <div class="slds-m-bottom_xx-large">
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Confirmation of your submission</div>
+                        <div class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large confirmMsg">
+                            <h2>{memberName} - Confirmation of Termination of Health Insurance Coverage</h2>
+                            <p>Thank you for being a valued member of Sentara Individual & Family Health Plan. This notice serves as a confirmation you have voluntarily chosen to end your health insurance coverage with Sentara Health effective {selectedDate}.</p>
+                            <p>We may have another health plan to meet your needs based on the reason you are ending your coverage.</p>
+                            <p><a class="buttonLink" href="https://www.sentarahealthplans.com/plans/individual/">Explore Marketplace Plans</a></p>
+                            <p><a href="https://www.sentarahealthplans.com/">Back to SentaraHealthPlans.com</a></p>
+                        </div>    
+                    </div>
+                </template>
+                <template if:true={soleProp}>
+                    <div class="slds-m-bottom_xx-large">
+                        <div class="content-area-header"><lightning-icon variant="inverse" icon-name="utility:info" size="small" class="info-icon"></lightning-icon>&nbsp;Confirmation of your submission</div>
+                        <div class="slds-m-horizontal_xx-large slds-p-horizontal_xx-large confirmMsg">
+                            <h2>{memberName} - Confirmation of Termination of Health Insurance Coverage</h2>
+                            <p>Thank you for being a valued member of Sentara Individual & Family Health Plan. This notice serves as a confirmation you have voluntarily chosen to end your health insurance coverage with Sentara Health effective {selectedDate}.</p>
+                            <p>We may have another health plan to meet your needs based on the reason you are ending your coverage.</p>
+                            <p><a class="buttonLink" href="#">Request a Quote</a> or <a href="https://www.sentarahealthplans.com/plans/employer/">Discover why employers choose Sentara Health</a></p>
+                            <!--expecting href = public/requestaquoteform-->
+                            <p><a href="https://www.sentarahealthplans.com/" >Back to SentaraHealthPlans.com</a></p>
+                        </div>    
+                    </div>
+                </template>
+            </div>
+        </section>
+        <footer>
+            <div class="address" style="font-size: 0.85em;"> Copyright © {yearString} Sentara Health Plans, 1300 Sentara Park, Virginia Beach, VA 23464</div>
+            <div class="address" style="font-size: 0.85em;">
+                <a href="https://www.sentarahealthplans.com/company/policies/notice-of-nondiscrimination" target="_blank">Notice of Non-Discrimination | </a>
+                <a href="https://www.sentarahealthplans.com/company/policies/language-assistance" target="_blank">Information in other languages | </a>
+                <a href="https://www.sentarahealthplans.com/company/policies" target="_blank">Privacy Statement | </a>
+                <a href="https://www.sentarahealthplans.com/company/policies/terms-of-use-and-disclaimer" target="_blank">Terms of Use</a>
+            </div>
+        </footer>
+    </div>
+</template>

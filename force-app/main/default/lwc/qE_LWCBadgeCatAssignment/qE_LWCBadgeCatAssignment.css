@@ -1,0 +1,11 @@
+.slds-badge{
+    background-color: rgb(3, 45, 96);
+    color: white;
+    border-radius: 5px;
+}
+.divider{
+    margin: 0px 0px 15px;
+}
+.no-categories{
+    font-size: 18px;
+}

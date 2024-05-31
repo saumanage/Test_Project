@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-2">
+            <vlocity_ins-input
+                type="date"
+                onchange={changeDate}
+                placeholder="Please Select"
+                value={value}
+                theme="slds"
+                label={labelName}
+                format="MM/DD/YYYY"
+                output-format="YYYY-MM-DD"
+                name="EffectiveDate"
+                id="EffectiveDate"
+                read-only={isreadonly}
+                required
+            >
+            </vlocity_ins-input>
+        </div>
+    </div>
+    
+</template>

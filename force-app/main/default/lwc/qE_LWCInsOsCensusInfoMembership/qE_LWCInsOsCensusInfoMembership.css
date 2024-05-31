@@ -1,0 +1,15 @@
+.vloc-ins-error-message {
+    border-radius: 0.25rem;
+    justify-content: left;
+}
+
+.vloc-ins-readonly-toggle {
+    pointer-events: none;
+}
+
+.padding-top {
+    padding-top: 17px;
+}
+.slds-scoped-notification--error{
+    background-color: #f5e2e1 !important;
+}

@@ -1,0 +1,276 @@
+<template>
+	<form class='slds-form-element slds-size_1-of-1 slds-m-bottom_large slds-p-around_small slds-rich-text-editor__output'>
+		<!-- <div ng-if="baseCtrl.shouldReinitTemplate(control)" ng-init="baseCtrl.reinitTemplate(control)"></div> -->
+		<div style="border: none !important; padding: 0 !important;"
+			class="slds-size_1-of-1 membermaintenance-Change-summary printableArea">
+			<div style="text-align: center;">
+
+				<h3 class="pageh2"
+					style="color: #3a3a3a; font-family: Source Sans Pro, Verdana, sans-serif; text-align: left; font-size: 18px;">
+					Please review the following information and click submit.</h3>
+			</div>
+			<div class="section-to-print">
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important">
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Enrollment Details</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Member ID</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.conMemberId}
+								</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Member Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.reasonForChange.memberFullName}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Reason For Change</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.reasonForChange.reasonForEnrollmentFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Effective Date</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.effectiveDateFormulaFormatted}</div>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover groupInfo"
+					style="width: 70% !important">
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Group Information</div>
+						</th>
+						<th></th>
+					</tr>
+
+					<tbody>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Group ID</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.AccountGroupID}
+								</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Group Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{summary.groupInfo.groupNameFormatted}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Sub Group Name</div>
+							</td>
+							<td>
+								<div class="slds-truncate">{subgroupCalculated}</div>
+							</td>
+						</tr>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate">Group Class</div>
+							</td>
+							<td>
+								<div class="slds-truncate">
+									{groupClassCalculated}
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" 
+					style="width: 70% !important" if:true={selectedPlansArr.length}>
+
+					<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+						<th>
+							<div class="slds-truncate cust-header">Selected Plans</div>
+						</th>
+						<th></th>
+					</tr>
+					<tbody for:each={selectedPlansArr} for:item="plan" key={plan.Name}>
+
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate padding8">Type</div>
+								<div class="slds-truncate padding8">Name</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualHealthValidation}>Annual
+									Health FSA Election Amount</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualDepValidation}>Annual
+									Dependent Care FSA Election Amount</div>
+							</td>
+							<td>
+								<div class="slds-truncate padding8" if:true={plan.getPlanNotMedicalSavings}>
+									{plan.Type__c}</div>
+								<!--div class="slds-truncate" if:true="plan.Type__c == 'Medical Savings Account' && plan.SubType__c == 'FSA'">Flexible Spending Account</div>
+							<div class="slds-truncate" if:true="plan.Type__c == 'Medical Savings Account' && plan.SubType__c == 'HSA'">Health Savings Account</div-->
+								<div class="slds-truncate padding8">{plan.Name}</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualHealthValidation}>$
+									{summary.fsaPlan.FSAContributionMedicalAmount}</div>
+								<div class="slds-truncate padding8" if:true={plan.getAnualDepValidation}>$
+									{summary.fsaPlan.FSADependentContributionAmount}</div>
+
+							</td>
+
+						</tr>
+
+					</tbody>
+					<!-- <template for:each={selectedPlans} for:item="plan">
+						<tbody key={plan}>
+
+							<tr class="slds-hint-parent">
+								<td>
+									<div class="slds-truncate padding8">Type</div>
+									<div class="slds-truncate padding8">Name</div>
+									<div class="slds-truncate padding8" if:true={FSAContributionMedicalAmount}>Medical
+										Contribution Amount</div>
+									<div class="slds-truncate padding8" if:true={FSADependentContributionAmount}>
+										Dependent Contribution Amount</div>
+
+								</td>
+								<td>
+									<div class="slds-truncate padding8" if:false={plan.Type__c}>{plan.Type__c}</div>
+									<div class="slds-truncate padding8" if:false={plan.SubType__c}>Flexible Spending
+										Account</div>
+									<div class="slds-truncate padding8" if:false={plan.SubType__c}>Health Savings
+										Account</div>
+									<div class="slds-truncate padding8">{plan.Name}</div>
+									<div class="slds-truncate padding8" if:true={FSAContributionMedicalAmount}>$
+										{summary.fsaPlan.FSAElections.FSAContributionMedicalAmount}</div>
+									<div class="slds-truncate padding8" if:true={FSADependentContributionAmount}>$
+										{summary.fsaPlan.FSAElections.FSADependentContributionAmount}</div>
+
+								</td>
+							</tr>
+
+						</tbody>
+					</template> -->
+				</table>
+				<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important"
+					if:true={pediatricPlansArr.length}>
+					<tbody for:each={pediatricPlansArr} for:item="plan" key={plan.Name}>
+						<tr class="slds-hint-parent">
+							<td>
+								<div class="slds-truncate padding8">Type</div>
+								<div class="slds-truncate padding8">Name</div>
+
+							</td>
+							<td>
+								<div class="slds-truncate padding8">{plan.Type__c}</div>
+								<div class="slds-truncate padding8">{plan.Name}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div if:true={summary.choosePlansDependents}>
+					<table class="slds-table slds-table_cell-buffer slds-no-row-hover" style="width: 70% !important">
+
+						<tr class="slds-hint-parent" style="border-bottom: 1px solid #DDDBDA">
+							<th>
+								<div class="slds-truncate cust-header">Selected Dependent Plans</div>
+							</th>
+							<th></th>
+						</tr>
+
+						<tbody for:each={dependenRepeatable} for:item="dplan" key={dplan}>
+							<template if:true={dplan}>
+								<tr class="slds-hint-parent">
+									<td>
+										<div class="slds-truncate padding8">Dependent Name</div>
+										<div class="slds-truncate padding8">Medical Plan</div>
+										<div class="slds-truncate padding8">Dental Plan</div>
+										<div class="slds-truncate padding8" if:true={dplan.getDpPlan.getPedDentalPlanEnroll}>Pediatric Dental</div>
+										<div class="slds-truncate padding8" if:true={dplan.getPedDentalValidation}>Pediatric Dental Attestation</div>
+									</td>
+									<td>
+										<div class="slds-truncate padding8">{dplan.dependentPlanSelectionDepName}</div>
+										<!-- <div class="slds-truncate padding8">{dplan.getMedicalPlanEnroll}</div> -->
+										<div class="slds-truncate padding8">HMO 25</div>
+										<!-- <div class="slds-truncate padding8">{dplan.getDentalPlanEnroll}</div> -->
+										<div class="slds-truncate padding8">Optima Plus Platinum 15/30 Direct</div>
+										<div class="slds-truncate padding8" if:true={dplan.getPedDentalPlanEnroll}>{dplan.getPedDentalPlanEnroll}</div>
+										<div class="slds-truncate padding8" if:true={dplan.getPedDentalValidation}>Accepted</div>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+				<div for:each={childsArr} for:item="ch" class="disclaimer " key={ch.keyCh}>
+					<div if:true={ch.getIsChildAttestation}>
+						<div for:each={childrenArr} for:item="ChildrenNode" key={ChildrenNode.keyChildrenNode}>
+							<div for:each={ChildrenNodeConvertedArr} for:item="ChildrenEl" key={ChildrenEl.idxEl}>
+								<c-q-e_-l-w-c-omni-newport-summary-children-el summary={summary} element={ChildrenEl}>
+								</c-q-e_-l-w-c-omni-newport-summary-children-el>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <template for:each={childs} for:item="ch">
+					<div key={ch} class="disclaimer">
+						<div if:true={ch.name}>
+							<template for:each={ch.children} for:item="ch1">
+								<div key={ch1}>
+									<template for:each={ch1.eleArray} for:item="ele1">
+										<div key={ele1}>
+											<div if:true={ele1.name}>
+												<h4
+													style="color: #3a3a3a; font-size:15px; font-family: Source Sans Pro, Verdana, sans-serif;">
+													Disclaimer</h4>
+												<div class='slds-box'>
+													<p class="disclaimer-font" ng-bind-html="ele1.propSetMap.text"></p>
+												</div>
+												<br />
+												<table style="width: 70% !important">
+													<tr>
+														<td><b>Attested By</b></td>
+														<td>{summary.Attestation.attestedBy}</td>
+													</tr>
+													<tr>
+														<td><b>Attested Date</b></td>
+														<td>{summary.Attestation.attestedDate}</td>
+													</tr>
+
+												</table>
+											</div>
+										</div>
+									</template>
+								</div>
+							</template>
+						</div>
+					</div>
+				</template> -->
+			</div>
+		</div>
+	</form>		
+</template>

@@ -1,0 +1,31 @@
+<template>
+    <lightning-card if:true={noteinfo} variant="Narrow"  title="Notes" >       
+        <lightning-datatable
+                key-field="ids"
+                data={noteData}
+                columns={noteColumns}
+                hide-checkbox-column="true"  
+                show-row-number-column="true"
+                onrowaction={handleRowAction}
+                min-column-width = '120'>
+        </lightning-datatable>
+        <div if:true={noteObject}>
+            <lightning-layout>
+                <lightning-layout-item size="7">
+                    <p><b>Note Type: </b>{noteObject.noteTypeCd}</p>
+                    <p><b>Note Type Desc:</b></p>{noteObject.noteTypeDesc}</p>
+                    <p><b>Note: </b>{noteObject.noteText}</p>
+                    <p><b>Addendum: </b>{noteObject.isAddendum}</p>
+                    <p><b>Source Desc: </b>{noteObject.noteSourceDesc}</p>
+                </lightning-layout-item>
+                <lightning-layout-item size="7">
+                    <p><b>Note Date: </b><lightning-formatted-date-time value={noteObject.noteDt}></lightning-formatted-date-time></p>
+                    <p><b>Member Id: </b>{noteObject.jivaMemberId}</p>
+                    <p><b>Created By: </b>{noteObject.createdByName}</p>
+                    <p><b>Created Date: </b><lightning-formatted-date-time value={noteObject.createdDt}></lightning-formatted-date-time></p>
+                    <p><b>Created User: </b>{noteObject.createdByUser}</p>
+                </lightning-layout-item>
+             </lightning-layout>
+        </div>       
+    </lightning-card>
+</template>

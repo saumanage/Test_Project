@@ -1,0 +1,428 @@
+<template>
+    <div>
+        <template if:false={submitShowSuccess}>
+            <template if:true={isPhoneLayout}>
+                <div class="form_confirmDekstopLogoPh slds-m-bottom_medium">
+                    <img src={sentaraLogoUrl}>
+                </div>
+                <div class="form_confirm background_color">
+                <h3 class="heading_Submit heading_centerPhone slds-m-bottom_small dummy">Patient Advocate Portal</h3>
+                    <lightning-accordion active-section-name="Case Information" allow-multiple-sections-open>
+                        <lightning-accordion-section name="Case Information" label="Case Information" class="slds-m-top_medium">
+                            <template if:true={isPhoneLayout}>
+                            <div class="payform container">
+                                    <lightning-input
+                                        label="Region"
+                                        value={caseRegion}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Facility"
+                                        value={getFacility}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Patient Promise Type"
+                                        value={caseCallType}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Status"
+                                        value={getStatus}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Subject"
+                                        value={getSubject}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Channel"
+                                        value={getChannel}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-textarea label="Comments"
+                                        value={getComments}
+                                        readonly
+                                    ></lightning-textarea>
+                                    <lightning-input
+                                        label="Visit/Incident Date"
+                                        value={getVisitIncidentsDate}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Visit/Incident Time"
+                                        value={getVisitIncidentTime}
+                                        readonly
+                                    class="slds-m-top_small"></lightning-input>
+                                    <lightning-input
+                                        label="Case Number"
+                                        value={getCaseNumber}
+                                        readonly
+                                    ></lightning-input>
+                            </div>
+                            </template>
+                    </lightning-accordion-section>
+                    </lightning-accordion>
+                    <lightning-accordion active-section-name="Patient Information" allow-multiple-sections-open>
+                        <lightning-accordion-section name="Patient Information" label="Patient Information">
+                            <template if:true={isPhoneLayout}>
+                            <div class="payform container">
+                                    <lightning-input
+                                        label="First Name"
+                                        value={getPatientFirstName}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Middle Initial"
+                                        value={getPatientMiddleInitial}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Last Name"
+                                        value={getPatientLastName}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Birthdate"
+                                        value={getPatientBirthDate}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Home Phone"
+                                        value={getPatientHomePhone}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Email Address"
+                                        value={getPatientEmailAddress}
+                                        readonly
+                                    ></lightning-input>
+                            </div>
+                            </template>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                    <lightning-accordion active-section-name="Contact Information" allow-multiple-sections-open>
+                        <lightning-accordion-section name="Contact Information" label="Contact Information">
+                            <template if:true={isPhoneLayout}>
+                            <div class="payform container">
+                                    <lightning-input
+                                        label="Contact’s Call Back Number"
+                                        value={contactsCallBackNumber}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Contact’s Reply Email address"
+                                        value={contactsReplyEmail}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Caller's Name"
+                                        value={getCallerName}
+                                        readonly
+                                    ></lightning-input>
+                                    <lightning-input
+                                        label="Reply Type"
+                                        value={getRepayType}
+                                        readonly
+                                    ></lightning-input>
+                            </div>  
+                            </template>     
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                    <lightning-accordion active-section-name="Messages" allow-multiple-sections-open>
+                        <lightning-accordion-section name="Messages" label="Messages">
+                            <template if:true={isPhoneLayout}>
+                                <div class="custom-textareaPh slds-m-bottom_small slds-size_1-of-1">
+                                    <lightning-textarea 
+                                        value={getCaseMessages}
+                                        readonly
+                                    ></lightning-textarea>
+                                </div>
+                            </template>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                    <lightning-accordion active-section-name="Images" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Images" label="Images">
+                        <div class="payform container">
+                            <template for:each={imageUrls} for:item="imageUrl">
+                                <div key={imageUrl} class="slds-m-bottom_small slds-size_3-of-4">
+                                    <img src={imageUrl}/>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                    <lightning-accordion>
+                        <lightning-accordion-section name="Case Actions" label="Case Actions">
+                                <template if:true={isPhoneLayout}>
+                                    <div class="payform container">
+                                        <lightning-input
+                                            label="Name/Network ID"
+                                            value={caseGetNetworkId}
+                                            onchange={handleInputChange}
+                                            required
+                                        ></lightning-input>
+                                    </div>
+                                </template>
+                                <div class="slds-m-left_medium">
+                                    <lightning-radio-group name="radioGroup"
+                                        label="Select a Case Action"
+                                        options={radioOptions}
+                                        required
+                                        onchange={handleInputChange}
+                                        type="radio">
+                                    </lightning-radio-group>
+                                    <template if:true={showNotes}>
+                                        <div class="slds-m-left_medium slds-m-top_small">
+                                            <div>Please add a reason for Send Back</div>
+                                            <lightning-textarea onchange={handleNotesInputChange} maxlength="255" required>
+                                            </lightning-textarea>
+                                        </div>
+                                    </template>
+                                </div>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                    <div>
+                        <center>
+                        <template if:true={isPhoneLayout}>
+                            <button class="pillShapeButtonPh" onclick={handleSubmit}>
+                                Submit
+                            </button>
+                        </template>
+                        </center>
+                    </div>
+                </div>
+            </template>
+
+            <template if:false={isPhoneLayout}>
+            <div class="slds-m-bottom_medium"> 
+                <img src={sentaraLogoUrl} alt="Logo" class="logo" />
+            </div>
+            <div>
+                <h1 class="heading_Submit heading_center slds-m-bottom_small dummy">Patient Advocate Portal</h1>
+            </div>
+            <div class="background_color">
+                <lightning-accordion active-section-name="Case Information" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Case Information" label="Case Information" class="slds-m-top_medium">
+                        <template if:false={isPhoneLayout}>
+                        <div class="payform">
+                                <lightning-input
+                                    label="Region"
+                                    value={caseRegion}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Facility"
+                                    value={getFacility}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Patient Promise Type"
+                                    value={caseCallType}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Status"
+                                    value={getStatus}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Subject"
+                                    value={getSubject}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Channel"
+                                    value={getChannel}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-textarea label="Comments"
+                                    value={getComments}
+                                    readonly
+                                ></lightning-textarea>
+                                <lightning-input
+                                    label="Visit/Incident Date"
+                                    value={getVisitIncidentsDate}
+                                    readonly
+                                class="slds-m-top_small"></lightning-input>
+                                <lightning-input
+                                    label="Visit/Incident Time"
+                                    value={getVisitIncidentTime}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Case Number"
+                                    value={getCaseNumber}
+                                    readonly
+                                ></lightning-input>
+                        </div>
+                        </template>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <lightning-accordion active-section-name="Patient Information" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Patient Information" label="Patient Information">
+                        <template if:false={isPhoneLayout}>
+                        <div class="payform">
+                                <lightning-input
+                                    label="First Name"
+                                    value={getPatientFirstName}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Middle Initial"
+                                    value={getPatientMiddleInitial}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Last Name"
+                                    value={getPatientLastName}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Birthdate"
+                                    value={getPatientBirthDate}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Home Phone"
+                                    value={getPatientHomePhone}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Email Address"
+                                    value={getPatientEmailAddress}
+                                    readonly
+                                ></lightning-input>
+                        </div>
+                        </template>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <lightning-accordion active-section-name="Contact Information" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Contact Information" label="Contact Information">    
+                        <template if:false={isPhoneLayout}>
+                        <div class="payform">
+                                <lightning-input
+                                    label="Contact’s Call Back Number"
+                                    value={contactsCallBackNumber}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Contact’s Reply Email address"
+                                    value={contactsReplyEmail}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Caller's Name"
+                                    value={getCallerName}
+                                    readonly
+                                ></lightning-input>
+                                <lightning-input
+                                    label="Reply Type"
+                                    value={getRepayType}
+                                    readonly
+                                ></lightning-input>
+                        </div>  
+                        </template> 
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <lightning-accordion active-section-name="Messages" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Messages" label="Messages">
+                        <template if:false={isPhoneLayout}>
+                            <div class="custom-textarea slds-m-bottom_small slds-size_1-of-1">
+                                <lightning-textarea 
+                                    value={getCaseMessages}
+                                    readonly
+                                ></lightning-textarea>
+                            </div>
+                        </template>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <lightning-accordion active-section-name="Images" allow-multiple-sections-open>
+                    <lightning-accordion-section name="Images" label="Images">
+                        <div class="payform">
+                            <template for:each={imageUrls} for:item="imageUrl">
+                                <div key={imageUrl} class="slds-m-bottom_small slds-size_3-of-4">
+                                    <img src={imageUrl}/>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <lightning-accordion>
+                    <lightning-accordion-section name="Case Actions" label="Case Actions">
+                            <template if:false={isPhoneLayout}>
+                                <div class="slds-size_1-of-3 slds-m-left_medium slds-m-right_medium">
+                                    <lightning-input
+                                        label="Name/Network ID"
+                                        value={caseGetNetworkId}
+                                        onchange={handleInputChange}
+                                        required
+                                    ></lightning-input>
+                                </div>
+                            </template>
+                            <div class="slds-m-left_medium">
+                                <lightning-radio-group name="radioGroup"
+                                    label="Select a Case Action"
+                                    options={radioOptions}
+                                    required
+                                    onchange={handleInputChange}
+                                    type="radio">
+                                </lightning-radio-group>
+                                <template if:true={showNotes}>
+                                    <div class="slds-m-left_medium slds-m-top_small slds-size_1-of-3">
+                                        <div>Please add a reason for Send Back</div>
+                                        <lightning-textarea onchange={handleNotesInputChange} maxlength="255" required>
+                                        </lightning-textarea>
+                                    </div>
+                                </template>
+                            </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+                <div>
+                    <center>
+                        <template if:false={isPhoneLayout}>
+                            <button class="pillShapeButton" onclick={handleSubmit}>
+                                Submit
+                            </button>
+                        </template>
+                    </center>
+                </div>
+            </div>
+            </template>
+        </template>
+        <template if:false={isPhoneLayout}>
+            <template if:true={submitShowSuccess}>
+                <div class="slds-m-bottom_medium form_confirmDekstopLogo"> 
+                    <img src={sentaraLogoUrl} alt="Logo" class="logo" />
+                </div>
+                <div>
+                    <h1 class="heading_Submit heading_center slds-m-bottom_small  dummy">Patient Advocate Portal</h1>
+                </div>
+                <center>
+                    <div class="slds-m-bottom_medium slds-m-top_xx-large"> 
+                        <img src={checkBoxLogoUrl}/>
+                    </div>
+                    <h2 class="heading_SubmitPublicNew1">Thank you for updating the case!</h2>
+                </center>
+            </template>
+        </template>
+        <template if:true={isPhoneLayout}>
+            <template if:true={submitShowSuccess}>
+                <div class="logo-container slds-m-bottom_medium slds-m-left_small"> 
+                        <img src={sentaraLogoUrl}/>
+                    </div>
+                <h3 class="heading_Submit heading_centerPhone slds-m-bottom_xx-large dummy">Patient Advocate Portal</h3>
+                <center>
+                    <div class="slds-m-bottom_medium slds-m-top_xx-large"> 
+                        <img src={checkBoxLogoUrl}/>
+                    </div>
+                    <h1 class="fontBold">Thank you for updating the case!</h1>
+                </center>
+            </template>
+        </template>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading.." size="medium"></lightning-spinner>
+        </template>
+    </div>
+</template>

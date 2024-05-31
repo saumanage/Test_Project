@@ -1,0 +1,67 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <vlocity_ins-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </vlocity_ins-toast>
+</div>
+            <div if:true={showLoader} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: transparent; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col    slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-size_10-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " ><vlocity_ins-output-field data-style-id="state0element0block_element0_child"   record={record}  card={card}  merge-field="%3Cdiv%3E%3Cspan%20class=%22slds-text-heading_large%22%20style=%22color:%20#000000;%20font-size:%2024pt;%22%3ECurrent%20Plans%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12" data-rindex={rindex} style="" >
+    <vlocity_ins-custom-lwc-wrapper class="" element-name="c-q-e_-l-w-c-optima-data-table" property='\{"actions":"[   {     \"type\": \"ProductDetail\",     \"field\": \"ProductId\",     \"label\": \"View Plan\"   },   {     \"type\": \"ViewDependents\",     \"field\": \"\",     \"label\": \"View Dependents\"   } ]","columns":"[     {         \"visible\": true,         \"label\": \"Plan Name\",         \"fieldName\": \"PlanName\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Plan Type\",         \"fieldName\": \"PlanType\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Coverage\",         \"fieldName\": \"Coverage\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Start Date\",         \"fieldName\": \"EffectiveDate\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"End Date\",         \"fieldName\": \"EndDate\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Your Cost\",         \"fieldName\": \"StandardPremium\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Employer Cost\",         \"fieldName\": \"EmployerContribution\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"HSA\",         \"fieldName\": \"HSAElected\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Contributions\",         \"fieldName\": \"HSAAmount\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },         {         \"visible\": false,         \"label\": \"Who is Covered?\",         \"fieldName\": \"Dependents\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     } ]"}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-q-e_-l-w-c-optima-data-table   displayactions="true"  pagesize="10"  records={records}  recordsnode="records[0].Plan" ></c-q-e_-l-w-c-optima-data-table></vlocity_ins-custom-lwc-wrapper>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col    slds-size_12-of-12  condition-element" data-rindex={rindex} style="     : #ccc 1px solid; 
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' >
+    <vlocity_ins-block data-style-id="state0element0_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col   slds-size_10-of-12  " data-rindex={rindex} style="     : #ccc 1px solid; 
+         " ><vlocity_ins-output-field data-style-id="state0element0block_element0_child"   record={record}  card={card}  merge-field="%3Cdiv%3E%3Cspan%20class=%22slds-text-heading_large%22%20style=%22color:%20#000000;%20font-size:%2024pt;%22%3ECurrent%20Plans%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div></vlocity_ins-block>
+    </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12" data-rindex={rindex} style="" >
+    <vlocity_ins-custom-lwc-wrapper class="" element-name="c-q-e_-l-w-c-optima-data-table" property='\{"actions":"[   {     \"type\": \"ProductDetail\",     \"field\": \"ProductId\",     \"label\": \"View Plan\"   },   {     \"type\": \"ViewDependents\",     \"field\": \"\",     \"label\": \"View Dependents\"   } ]","columns":"[     {         \"visible\": true,         \"label\": \"Plan Name\",         \"fieldName\": \"PlanName\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Plan Type\",         \"fieldName\": \"PlanType\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Coverage\",         \"fieldName\": \"Coverage\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Start Date\",         \"fieldName\": \"EffectiveDate\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"End Date\",         \"fieldName\": \"EndDate\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },     {         \"visible\": true,         \"label\": \"Your Cost\",         \"fieldName\": \"StandardPremium\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Employer Cost\",         \"fieldName\": \"EmployerContribution\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"HSA\",         \"fieldName\": \"HSAElected\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },   {         \"visible\": true,         \"label\": \"Contributions\",         \"fieldName\": \"HSAAmount\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     },         {         \"visible\": false,         \"label\": \"Who is Covered?\",         \"fieldName\": \"Dependents\",         \"sortable\": true,         \"searchable\": true,         \"sortingEnabled\": true     } ]"}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-q-e_-l-w-c-optima-data-table   displayactions="true"  pagesize="10"  records={records}  recordsnode="records[0].Plan" ></c-q-e_-l-w-c-optima-data-table></vlocity_ins-custom-lwc-wrapper>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

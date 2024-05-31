@@ -1,0 +1,126 @@
+body * {
+    visibility: hidden;
+    overflow: auto !important;
+  }
+  
+  /* #print_logo>img {
+    display: inline;
+    visibility: visible;
+    width: 110px;
+    height: 50px;
+  }
+  
+  #print_logo>h2 {
+    display: inline;
+    visibility: visible;
+  } */
+  
+  template.nds-omniscript_stepform {
+    padding-top: 0px !important;
+  }
+  
+  .nds-page-header, pageh2 {
+    display: none !important;
+  }
+  
+  .nds-step_label {
+    visibility: visible;
+    display: none !important;
+  }
+  
+  .section-to-print, .section-to-print * {
+    visibility: visible;
+  }
+  
+  th {
+    padding-left: 0px !important;
+  }
+  
+  th, td {
+    width: 40%;
+  }
+  
+  td {
+    color: #3a3a3a;
+  }
+  
+  th {
+    color: #3a3a3a;
+    font-size: 13px;
+  }
+  
+  th.sub-head {
+    font-size: 11px;
+    color: #3a3a3a;
+  }
+  
+  .disclaimer {
+    color: #3a3a3a;
+  }
+  
+  /* @page{          
+         size: letter;
+         margin-bottom: 5mm;
+         margin-top:5mm;                         
+        }      */
+  
+  /* .vlocity {  */
+  
+  th, td {
+    width: 50%;
+  }
+  
+  td {
+    color: #3a3a3a;
+  }
+  
+  th {
+    color: #3a3a3a;
+    font-size: 15px;
+  }
+  
+  th.sub-head {
+    font-size: 13px;
+    color: #3a3a3a;
+  }
+  
+  table {
+    width: 70% !important;
+    margin-bottom: 2%;
+  }
+  
+  /* #print_logo {
+    display: none;
+  } */
+  
+  .disclaimer {
+    color: #3a3a3a;
+  }
+  
+  .cust-header {
+    color: #3A3A3A;
+    font-family: "Source Sans Pro";
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+  
+  .printableArea {
+    font-family: Source Sans Pro, Verdana, sans-serif;
+    /* background: #eff2f5; */
+    color: #3a3a3a;
+    padding: 1%;
+  }
+  
+  .disclaimer-font, .disclaimer-font>ol>li, .disclaimer-font>p>strong {
+    font-size: 14px !important;
+    font-family: Source Sans Pro, sans-serif;
+  }
+  
+  .disclaimer-font>p {
+    margin-bottom: 14px !important;
+  }
+
+  .padding8 {
+    padding: 5px 0px 10px 0;
+  }
