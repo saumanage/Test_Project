@@ -39,6 +39,9 @@ jobs:
         run: |
           sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
 
+      - name: Update the Project from source
+        run: |
+         vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1
 
       #- name: Deploy Vlocity Components using Manifest
        # run: |
