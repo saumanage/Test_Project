@@ -1,6 +1,6 @@
-projectPath: ./VlocityCard
-expansionPath: .
-buildFile: project-scratch-def.json
+projectPath: VlocityCard
+expansionPath:
+buildFile: package.json
 postStepApex:
   Deploy: 
     Product2: EPCProductJSONUpdate.cls      
