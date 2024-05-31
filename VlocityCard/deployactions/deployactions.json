@@ -30,7 +30,7 @@
                         {
                             "class": "slds-col ",
                             "element": "action",
-                            "elementLabel": "Action-0",
+                            "elementLabel": "Action-20",
                             "name": "Action",
                             "property": {
                                 "actionList": [
