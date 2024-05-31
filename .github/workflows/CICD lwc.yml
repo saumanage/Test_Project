@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy --projectPath package.json
+          vlocity packDeploy --projectPath .github/workflows/deployJob.yml
 
       #name: Deploy source code to DeployTestOrg Org
        #run: |
