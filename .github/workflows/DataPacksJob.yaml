@@ -1,6 +1,5 @@
 # DataPacksJob.yaml
 projectPath: ./VlocityCard
-expansionPath: ./VlocityCard/VlocityCard/test2/VlocityCard/test2/VlocityCard/datadeploy/datadeploy.json
 defaultJob: Deploy
 jobs:
   Deploy:
