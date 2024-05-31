@@ -46,7 +46,8 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy --projectPath .github/workflows/deployJob.yml
+          vlocity packDeploy -job .github/workflows/deployJob.yml -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1
+
 
       #name: Deploy source code to DeployTestOrg Org
        #run: |
