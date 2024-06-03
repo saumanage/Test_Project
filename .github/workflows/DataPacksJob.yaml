@@ -1,4 +1,3 @@
-# DataPacksJob.yaml
 projectPath: ./VlocityCard
 defaultJob: Deploy
 jobs:
@@ -7,10 +6,9 @@ jobs:
     postJobApex:
     postDeployApex:
     queries:
-    - VlocityCard:
-          # You can specify the specific card by its name or other criteria
-          VlocityMatchingKey: Name
-          Name: testdatadeploy
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: cfDatadeploy_1_data_deploy
     #- VlocityUITemplate
     #- VlocityCard
     #- VlocityAction
