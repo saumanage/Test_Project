@@ -38,6 +38,10 @@ jobs:
         id: verify_connection
         run: |
           sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
+          
+      - name: Deploy Vlocity Card DataPack
+        run: |
+          sfdx force:data:tree:import -f path/to/VlocityCard/testdatadeploy/testdatadeploy_DataPack.json
 
       - name: Update the Project from source
         run: |
