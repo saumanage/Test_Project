@@ -29,8 +29,8 @@
                     "children": [
                         {
                             "class": "slds-col ",
-                            "element": "action",
-                            "elementLabel": "Action-0",
+                            "element": "actiontest",
+                            "elementLabel": "Action-10",
                             "name": "Action",
                             "property": {
                                 "actionList": [
