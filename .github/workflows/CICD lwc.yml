@@ -41,7 +41,7 @@ jobs:
           
       - name: Deploy Vlocity Card DataPack
         run: |
-          sfdx force:data:tree:import -f VlocityCard/testdatadeploy -u sxbandi@sentara.com.sentarahealth.cicd1
+          sfdx force:data:tree:import -f VlocityCard/testdatadeploy/testdatadeploy_DataPack.json -u sxbandi@sentara.com.sentarahealth.cicd1
 
       - name: Update the Project from source
         run: |
