@@ -7,9 +7,13 @@ jobs:
     postJobApex:
     postDeployApex:
     queries:
-    - VlocityUITemplate
-    - VlocityCard
-    - VlocityAction
-    - VlocityIntegrationProcedure
-    - VlocityDataRaptor
-    - VlocityOmniScript
+    - VlocityCard:
+          # You can specify the specific card by its name or other criteria
+          VlocityMatchingKey: Name
+          Name: testdatadeploy
+    #- VlocityUITemplate
+    #- VlocityCard
+    #- VlocityAction
+    #- VlocityIntegrationProcedure
+    #- VlocityDataRaptor
+    #- VlocityOmniScript
