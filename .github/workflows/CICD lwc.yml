@@ -38,18 +38,14 @@ jobs:
         id: verify_connection
         run: |
           sfdx force:org:display -u sxbandi@sentara.com.sentarahealth.cicd1
-          
-      - name: Deploy Vlocity Card DataPack
-        run: |
-          sfdx force:data:tree:import -f VlocityCard/testdatadeploy/testdatadeploy.json -u sxbandi@sentara.com.sentarahealth.cicd1
 
       - name: Update the Project from source
         run: |
          vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1
 
-      #- name: Deploy Vlocity Components using Manifest
-       # run: |
-        #  vlocity packExport -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -job .github/workflows/DataPacksJob.yaml
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packExport -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -job .github/workflows/DataPacksJob.yaml
 
       - name: Deploy Vlocity Components using Manifest
         run: |
