@@ -1,4 +1,4 @@
-projectPath: ./VlocityCard
+projectPath: ./VlocityCard/testdatadeploy
 defaultJob: Deploy
 jobs:
   Deploy:
