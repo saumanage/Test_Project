@@ -31,16 +31,16 @@ jobs:
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
-         sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile  --username  --instanceurl 
+         sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com 
     
       - name: Verify Salesforce Connection
         id: verify_connection
         run: |
-          sfdx force:org:display -u s
+          sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
       - name: Update the Project from source
         run: |
-         vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username 
+         vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username bxkumar1@sentara.com.cicd2
 
       #- name: Deploy Vlocity Components using Manifest
         #run: |
@@ -48,8 +48,8 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username 
+          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
       - name: Deploy source code to DeployTestOrg Org
         run: |
-         sfdx force:source:deploy -p force-app -w 10 -u 
+         sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
