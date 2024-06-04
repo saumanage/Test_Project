@@ -4,6 +4,7 @@ queries:
       query: "%vlocity_namespace%__VlocityCard__c"
       whereClause: "Name = 'testdemo'"
 job:
+ deploy:
   activate: true
   default: true
   maxDepth: 0
