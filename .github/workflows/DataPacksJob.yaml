@@ -5,25 +5,6 @@ jobs:
     preJobApex:
     postJobApex:
     postDeployApex:
-    queries:
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: datadeploy
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: deployactions
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: kumartest
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: manage
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: test2
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: testdatadeploy
-      - VlocityCard:
-          VlocityMatchingKey: DeveloperName
-          DeveloperName: testdemo
+queries:
+  - DataRaptor
+  - OmniScript
