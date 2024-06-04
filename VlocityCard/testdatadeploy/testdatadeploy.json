@@ -30,7 +30,7 @@
                         {
                             "class": "slds-col ",
                             "element": "action",
-                            "elementLabel": "Action-0",
+                            "elementLabel": "Action-111",
                             "name": "Action",
                             "property": {
                                 "actionList": [
@@ -65,7 +65,7 @@
                         {
                             "class": "slds-col ",
                             "element": "action",
-                            "elementLabel": "Test Action",
+                            "elementLabel": "Test Action 111",
                             "name": "Action",
                             "property": {
                                 "actionList": [
