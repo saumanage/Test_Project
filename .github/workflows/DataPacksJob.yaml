@@ -1,10 +1,16 @@
-projectPath: ./VlocityCard/testdatadeploy
-defaultJob: Deploy
-jobs:
-  Deploy:
-    preJobApex:
-    postJobApex:
-    postDeployApex:
+projectPath: ./VlocityCard/testdemo
 queries:
-  - DataRaptor
-  - OmniScript
+  - VlocityCard:
+      query: "%vlocity_namespace%__VlocityCard__c"
+      whereClause: "Name = 'testdemo'"
+job:
+  activate: true
+  default: true
+  maxDepth: 0
+  delete: false
+  export: false
+  maxRetries: 3
+  continueOnError: true
+  processMultiple: false
+manifest:
+  - "%vlocity_namespace%__VlocityCard__c/testdemo"
