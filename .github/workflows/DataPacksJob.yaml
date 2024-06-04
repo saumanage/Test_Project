@@ -8,10 +8,22 @@ jobs:
     queries:
       - VlocityCard:
           VlocityMatchingKey: DeveloperName
-          DeveloperName: cfDatadeploy_1_data_deploy
-    #- VlocityUITemplate
-    #- VlocityCard
-    #- VlocityAction
-    #- VlocityIntegrationProcedure
-    #- VlocityDataRaptor
-    #- VlocityOmniScript
+          DeveloperName: datadeploy
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: deployactions
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: kumartest
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: manage
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: test2
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: testdatadeploy
+      - VlocityCard:
+          VlocityMatchingKey: DeveloperName
+          DeveloperName: testdemo
