@@ -1,4 +1,4 @@
-projectPath: ./VlocityCard/testdemo
+projectPath: ./VlocityCard
 queries:
   VlocityCard:
     query: "%vlocity_namespace%__VlocityCard__c"
