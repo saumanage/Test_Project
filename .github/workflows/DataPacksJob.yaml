@@ -7,6 +7,6 @@ jobs:
     postDeployApex:
     queries:
       - VlocityCard:
-          query: "%vlocity_namespace%__VlocityCard__c"
-          whereClause: "DeveloperName = 'testdemo'"
+          query: "%vlocity_namespace%__FlexCard__c"
+          whereClause: "DeveloperName = 'cfTestdemo_1_kumar1'"
           VlocityMatchingKey: 0Rb7c000000DPplCAG
