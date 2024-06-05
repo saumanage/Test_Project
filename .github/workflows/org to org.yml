@@ -37,21 +37,24 @@ jobs:
         id: verify_connection
         run: |
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
+    
+      - name: Import Data to Org B
+        run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
       #- name: Update the Project from source
        # run: |
         # vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username bxkumar1@sentara.com.cicd2
 
-      - name: Deploy Vlocity Components using Manifest
-        run: |
-          vlocity packExport -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml
+     # - name: Deploy Vlocity Components using Manifest
+      #  run: |
+       #   vlocity packExport -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml
 
      # - name: Deploy DataPack
         #run: vlocity -propertyfile .github/workflows/DataPacksJob.yaml packDeploy -job deploy
 
-      - name: Deploy Vlocity Components using Manifest
-        run: |
-          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+     # - name: Deploy Vlocity Components using Manifest
+       # run: |
+        #  vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
     #  - name: Deploy source code to DeployTestOrg Org
       #  run: |
