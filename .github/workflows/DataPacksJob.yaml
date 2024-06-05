@@ -1,12 +1,9 @@
 projectPath: ./VlocityCard
-defaultJob: Deploy
-jobs:
-  Deploy:
-    preJobApex:
-    postJobApex:
-    postDeployApex:
-    queries:
-      - VlocityCard:
-          query: "%vlocity_namespace%__FlexCard__c"
-          whereClause: "DeveloperName = 'cfTestdemo_1_kumar1'"
-          VlocityMatchingKey: 0Rb7c000000DPplCAG
+import:
+  VlocityDataPackType:
+    - OmniScript
+    - OmniScript_Action
+    - OmniScript_Element
+    - OmniScript_IntegrationProcedure
+    - DataRaptor
+    - OmniStudioFlexCard
