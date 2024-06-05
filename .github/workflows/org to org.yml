@@ -42,9 +42,9 @@ jobs:
        # run: |
         # vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username bxkumar1@sentara.com.cicd2
 
-     # - name: Deploy Vlocity Components using Manifest
-      #  run: |
-      #    vlocity packExport -sfdx.username  -job .github/workflows/DataPacksJob.yaml
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packExport -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml
 
      # - name: Deploy DataPack
         #run: vlocity -propertyfile .github/workflows/DataPacksJob.yaml packDeploy -job deploy
