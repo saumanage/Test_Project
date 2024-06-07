@@ -1,19 +1,10 @@
-projectPath: VlocityCard
+projectPath: ./VlocityCard
 
-# Salesforce Org username
 sfdxUsername: bxkumar1@sentara.com.cicd2
 
-# Specifying the manifest for deployment
 manifest:
   - OmniStudioFlexCard
-  - OmniScript
-  - DataRaptor
 
-# Optionally, you can specify explicit data packs by folder or name
 queries:
   OmniStudioFlexCard:
     - Name: Kumartest
-    - Name: testdemo
-
-# Additional options
-fullDeploy: true
