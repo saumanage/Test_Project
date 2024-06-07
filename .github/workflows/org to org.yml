@@ -42,8 +42,8 @@ jobs:
         run: |
          sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
     
-      #- name: Import Data to Org B
-       # run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+      - name: Import Data to Org B
+        run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
       #- name: Update the Project from source
        # run: |
@@ -56,8 +56,8 @@ jobs:
      # - name: Deploy DataPack
         #run: vlocity -propertyfile .github/workflows/DataPacksJob.yaml packDeploy -job deploy
 
-     # - name: Deploy Vlocity Components using Manifest
-       # run: |
-        #  vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
 
