@@ -1,10 +1,21 @@
 projectPath: ./VlocityCard
 
-sfdxUsername: bxkumar1@sentara.com.cicd2
-
-manifest:
-  - OmniStudioFlexCard
-
 queries:
-  OmniStudioFlexCard:
-    - Name: Kumartest
+  - VlocityDataPackType: VlocityCard
+    query: SELECT Id, Name FROM VlocityCard__c
+
+expansionPath: VlocityCard
+name: manage component
+ignoreDependencies: false
+
+VlocityDataPackKeys:
+  - VlocityCard/Kumar
+
+VlocityTypesToFetch:
+  - VlocityCard
+
+SalesforceTypesToFetch:
+  # If there are Salesforce types you need to fetch, list them here.
+  # Example:
+  # - Account
+  # - Contact
