@@ -1,4 +1,8 @@
-projectPath: ./VlocityCard
-queries: 
-  - VlocityDataPackType: OmniStudioFlexCard
-    query: Select Id from %vlocity_namespace%__DRBundle__c where Name = 'OmniStudioFlexCard Migration' LIMIT 1
+expansionPath: vlocity
+Name: manage component
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/Kumar
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
