@@ -1,9 +1,4 @@
 projectPath: ./VlocityCard
-import:
-  VlocityDataPackType:
-    - OmniScript
-    - OmniScript_Action
-    - OmniScript_Element
-    - OmniScript_IntegrationProcedure
-    - DataRaptor
-    - OmniStudioFlexCard
+queries: 
+  - VlocityDataPackType: OmniStudioFlexCard
+    query: Select Id from %vlocity_namespace%__DRBundle__c where Name = 'OmniStudioFlexCard Migration' LIMIT 1
