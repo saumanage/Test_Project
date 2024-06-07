@@ -1,4 +1,4 @@
-projectPath: ./VlocityCard
+projectPath: VlocityCard
 
 queries:
   - VlocityDataPackType: VlocityCard
@@ -9,7 +9,7 @@ name: manage component
 ignoreDependencies: false
 
 VlocityDataPackKeys:
-  - VlocityCard/Kumar
+  - VlocityCard
 
 VlocityTypesToFetch:
   - VlocityCard
