@@ -22,6 +22,10 @@ jobs:
     - name: Install Vlocity Build Tool
       run: npm install -g vlocity
 
+    - name: Install Salesforce CLI
+      run: |
+         npm install -g sfdx-cli --global
+
     - name: Authorize Salesforce Source Org
       run: |
         echo "Authorize Salesforce Source Org"
@@ -55,6 +59,10 @@ jobs:
 
     - name: Install Vlocity Build Tool
       run: npm install -g vlocity
+      
+    - name: Install Salesforce CLI
+      run: |
+         npm install -g sfdx-cli --global
 
     - name: Authorize Salesforce Target Org
       run: |
