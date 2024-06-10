@@ -1,25 +1,8 @@
-projectPath: ./VlocityCard # Path where the data packs are stored
-defaultJob: ExportAndDeploy
-manifestOnly: false
-
-ExportAndDeploy:
-  export:
-    - FlexCard
-  exportAllDefault: true
-  deploy:
-    - FlexCard
-  query:
-    FlexCard:
-      VlocityDataPackType: FlexCard
-  manifest:
-    FlexCard:
-      - testdemo
-  source: sfdx
-  loginTimeout: 120000
-  jobName: ExportAndDeployJob
-  apiVersion: 51.0
-  versionControl: git
-  gitRemoteUrl: https://github.com/saumanage/Test_Project.git
-  gitBranch: Kumar_Test
-  gitUsername: bathiniarunkumar525@gmail.com
-  gitPassword: 9848612183@Ab
+projectPath: VlocityCard
+jobName: ExportOmniStudioFlexCard
+maxDepth: 0
+strict: false
+manifestOnly: true
+queries:
+  - VlocityCard:
+      - Name: testdemo
