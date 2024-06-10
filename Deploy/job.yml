@@ -1,0 +1,7 @@
+Name: manage component
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/testdemo
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
