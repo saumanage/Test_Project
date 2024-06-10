@@ -1,31 +1,6 @@
 projectPath: VlocityCard
-
-queries:
-  - VlocityDataPackType: VlocityCard
-    query: SELECT Id, Name FROM VlocityCard__c
-
-expansionPath: VlocityCard
-name: manage component
-ignoreDependencies: false
-
-VlocityDataPackKeys:
-  - VlocityCard
-
-VlocityTypesToFetch:
-  - VlocityCard
-
-SalesforceTypesToFetch:
-  # If there are Salesforce types you need to fetch, list them here.
-  # Example:
-  # - Account
-  # - Contact
-
-# Additional configuration to specify subdirectories
-subdirectories:
-  - datadeploy
-  - deployactions
-  - kumartest
-  - manage
-  - test2
-  - testdatadeploy
-  - testdemo
+sfOrgAlias: bxkumar1@sentara.com.cicd2
+jobType: Deploy
+manifest: 
+  - Omniscript
+  - FlexCard
