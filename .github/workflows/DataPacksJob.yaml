@@ -19,3 +19,13 @@ SalesforceTypesToFetch:
   # Example:
   # - Account
   # - Contact
+
+# Additional configuration to specify subdirectories
+subdirectories:
+  - datadeploy
+  - deployactions
+  - kumartest
+  - manage
+  - test2
+  - testdatadeploy
+  - testdemo
