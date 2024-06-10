@@ -29,20 +29,20 @@ jobs:
     - name: Authorize Salesforce Source Org
       run: |
         echo "Authorize Salesforce Source Org"
-        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com
+        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI6vZIrCN_7_X5mdOeaTOSTMUO7Oym_kP7pfLV.ztJHYhNfKiRY0yLzBAwfp71k.VDbvsiFi --jwtkeyfile Bin/key.pem --username bxkumar1@sentara.com.cicd1 --instanceurl https://sentarahealth--cicd1.sandbox.my.salesforce.com
 
     - name: Verify Salesforce Source Org Connection
       run: |
         echo "Verify Salesforce Source Org Connection"
-        sfdx force:org:display -u bxkumar1@sentara.com.cicd2
+        sfdx force:org:display -u bxkumar1@sentara.com.cicd1
 
     - name: Export Vlocity Data
       run: |
-        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packExport
+        vlocity -sfdx.username bxkumar1@sentara.com.cicd1 -job .github/workflows/DataPacksJob.yaml packExport
 
-    - name: Retry Failed Export (if any)
-      run: |
-        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packRetry
+   # - name: Retry Failed Export (if any)
+   #   run: |
+     #   vlocity -sfdx.username bxkumar1@sentara.com.cicd1 -job .github/workflows/DataPacksJob.yaml packRetry
 
   deploy:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
     - name: Authorize Salesforce Target Org
       run: |
         echo "Authorize Salesforce Target Org"
-        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username target_org@vlocity.com --instanceurl https://target_org.sandbox.my.salesforce.com
+        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com
 
     - name: Verify Salesforce Target Org Connection
       run: |
@@ -76,8 +76,8 @@ jobs:
 
     - name: Deploy Vlocity Data
       run: |
-        vlocity -sfdx.username target_org@vlocity.com -job .github/workflows/DataPacksJob.yaml packDeploy
+        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packDeploy
 
-    - name: Retry Failed Deploy (if any)
-      run: |
-        vlocity -sfdx.username target_org@vlocity.com -job .github/workflows/DataPacksJob.yaml packRetry
+   # - name: Retry Failed Deploy (if any)
+     # run: |
+      #  vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packRetry
