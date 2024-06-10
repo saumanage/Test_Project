@@ -72,7 +72,7 @@ jobs:
     - name: Verify Salesforce Target Org Connection
       run: |
         echo "Verify Salesforce Target Org Connection"
-        sfdx force:org:display -u target_org@vlocity.com
+        sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
     - name: Deploy Vlocity Data
       run: |
