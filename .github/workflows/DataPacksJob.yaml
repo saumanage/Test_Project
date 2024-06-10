@@ -1,31 +1,31 @@
-projectPath: VlocityCard
+projectPath: ./vlocity_build # Path where the data packs are stored
+defaultJob: ExportAndDeploy
+manifestOnly: false
 
-queries:
-  - VlocityDataPackType: VlocityCard
-    query: SELECT Id, Name FROM VlocityCard__c
-
-expansionPath: VlocityCard
-name: manage component
-ignoreDependencies: false
-
-VlocityDataPackKeys:
-  - VlocityCard
-
-VlocityTypesToFetch:
-  - VlocityCard
-
-SalesforceTypesToFetch:
-  # If there are Salesforce types you need to fetch, list them here.
-  # Example:
-  # - Account
-  # - Contact
-
-# Additional configuration to specify subdirectories
-subdirectories:
-  - datadeploy
-  - deployactions
-  - kumartest
-  - manage
-  - test2
-  - testdatadeploy
-  - testdemo
+ExportAndDeploy:
+  export:
+    - FlexCard
+  exportAllDefault: true
+  deploy:
+    - FlexCard
+  query:
+    FlexCard:
+      VlocityDataPackType: FlexCard
+  manifest:
+    FlexCard:
+      - datadeploy
+      - deployactions
+      - kumartest
+      - manage
+      - test2
+      - testdatadeploy
+      - testdemo
+  source: sfdx
+  loginTimeout: 120000
+  jobName: ExportAndDeployJob
+  apiVersion: 51.0
+  versionControl: git
+  gitRemoteUrl: https://github.com/saumanage/Test_Project.git
+  gitBranch: Kumar_Test
+  gitUsername: bathiniarunkumar525@gmail.com
+  gitPassword: 9848612183@Ab
