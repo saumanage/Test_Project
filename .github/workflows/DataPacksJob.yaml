@@ -4,5 +4,5 @@ maxDepth: 0
 strict: false
 manifestOnly: true
 queries:
-  - VlocityCard:
-      - Name: testdemo
+  VlocityDataPackKeys:
+    - VlocityCard/testdemo
