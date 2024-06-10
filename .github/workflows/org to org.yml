@@ -25,9 +25,9 @@ jobs:
       - name: Install Vlocity Build Tool
         run: npm install -g vlocity
     
-      - name: Use SOAP API for Deployment
-        run: |
-          sfdx config:set restDeploy=false --global
+  #    - name: Use SOAP API for Deployment
+    #    run: |
+    #      sfdx config:set restDeploy=false --global
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
@@ -42,8 +42,8 @@ jobs:
     #    run: |
      #    sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
     
-      - name: Import Data to Org B
-        run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+    #  - name: Import Data to Org B
+      #  run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
       #- name: Update the Project from source
        # run: |
@@ -58,6 +58,6 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packDeploy -job Deploy -sfdx.username bxkumar1@sentara.com.cicd2
 
 
