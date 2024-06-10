@@ -1,4 +1,4 @@
-projectPath: ./vlocity_build # Path where the data packs are stored
+projectPath: ./VlocityCard # Path where the data packs are stored
 defaultJob: ExportAndDeploy
 manifestOnly: false
 
@@ -13,12 +13,6 @@ ExportAndDeploy:
       VlocityDataPackType: FlexCard
   manifest:
     FlexCard:
-      - datadeploy
-      - deployactions
-      - kumartest
-      - manage
-      - test2
-      - testdatadeploy
       - testdemo
   source: sfdx
   loginTimeout: 120000
