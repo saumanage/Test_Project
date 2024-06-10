@@ -1,5 +1,5 @@
 projectPath: VlocityCard
-jobName: ExportOmniStudioFlexCard
+jobName: ExportAndDeployOmniStudioFlexCard
 maxDepth: 0
 strict: false
 manifestOnly: true
