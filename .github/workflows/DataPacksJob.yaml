@@ -1,6 +1,9 @@
 projectPath: VlocityCard
-sfOrgAlias: bxkumar1@sentara.com.cicd2
-jobType: Deploy
-manifest: 
-  - Omniscript
-  - FlexCard
+Name: manage component
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/testdemo
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
+
