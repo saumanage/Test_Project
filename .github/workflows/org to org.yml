@@ -3,7 +3,7 @@ name: Salesforce CICD
 on:
   push:
     branches:
-      - main
+      - Kumar_Test
 
 jobs:
   Authenticate:
