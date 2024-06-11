@@ -1,23 +1,10 @@
 projectPath: VlocityCard
-tempFolder: VlocityCard
-main:
-  vlocityNamespace: %vlocity_namespace%
-  sfdxUsername: bxkumar1@sentara.com.cicd2
-  defaultSalesforceApiVersion: 52.0
-
-manifest:
-  # Specify the DataPackType and IDs for the deployment
-  - DataPackType: "OmniStudioFlexCard"
-    Id: "0Rb7c000000DPplCAG"  # Replace with your actual FlexCard Id
-
-deployOptions:
-  checkOnly: false
-  ignoreWarnings: false
-  continueOnError: false
-  maxRetries: 3
-
-#queries:
-  # Example query to fetch specific DataPacks
- # - query: "SELECT Id, Name FROM OmniStudioFlexCard__c"
+Name: manage component
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
 
 

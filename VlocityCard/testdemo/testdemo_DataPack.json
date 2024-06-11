@@ -1,5 +1,5 @@
 {
-    "%vlocity_namespace%__Author__c": "kumar1",
+    "%vlocity_namespace%__Author__c": "kumar1", 
     "%vlocity_namespace%__CardType__c": "flex",
     "%vlocity_namespace%__Datasource__c": {
         "dataSource": {
@@ -11,7 +11,8 @@
             "value": {
             }
         }
-    },
+    }, 
+    //Kumar
     "%vlocity_namespace%__Definition__c": "testdemo.json",
     "%vlocity_namespace%__Description__c": "",
     "%vlocity_namespace%__GlobalKey__c": "testdemo/kumar1/1/1717443873854",
