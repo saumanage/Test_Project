@@ -1,9 +1,7 @@
 name: Salesforce CICD
 
 on:
-  push:
-    branches:
-      - Kumar_Test
+  workflow_dispatch:
 
 jobs:
   VlocityDeployment:
