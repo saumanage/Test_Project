@@ -2,7 +2,7 @@ projectPath: VlocityCard
 Name: manage component
 ignoreDependencies: false
 VlocityDataPackKeys:
-    - VlocityCard/testdemo
+    - VlocityCard
 VlocityTypesToFetch:
     - VlocityCard
 SalesforceTypesToFetch:
