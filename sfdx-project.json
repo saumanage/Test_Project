@@ -90,7 +90,7 @@
     "preferGlobal": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/vlocityinc/vlocity_build.git"
+        "url": "https://github.com/saumanage/Test_Project.git"
     },
     "scripts": {
         "start": "vlocity help",
