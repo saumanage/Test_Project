@@ -45,9 +45,9 @@ jobs:
     #  - name: Import Data to Org B
       #  run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
-      #- name: Update the Project from source
-       # run: |
-        # vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username bxkumar1@sentara.com.cicd2
+      - name: Update the Project from source
+        run: |
+         vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml validateLocalData --fixLocalGlobalKeys
 
      # - name: Deploy Vlocity Components using Manifest
       #  run: |
