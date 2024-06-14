@@ -24,10 +24,6 @@ jobs:
     
       - name: Install Vlocity Build Tool
         run: npm install -g vlocity
-    
-  #    - name: Use SOAP API for Deployment
-    #    run: |
-    #      sfdx config:set restDeploy=false --global
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
@@ -39,8 +35,16 @@ jobs:
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
       - name: Validate Vlocity Components
-        run: |
-          vlocity -propertyfile package.json -job validate.yaml
+        id: validate
+        run: vlocity -propertyfile build.properties -job validate.yaml
+
+      - name: Deploy Vlocity Components
+        if: steps.validate.outcome == 'success'
+        run: vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml
+
+      - name: Verify Deployment
+        if: steps.validate.outcome == 'success'
+        run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
 
     #  - name: Deploy source code to DeployTestOrg Org
      #   run: |
