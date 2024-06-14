@@ -38,6 +38,10 @@ jobs:
         run: |
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
+      - name: Validate Vlocity Components
+        run: |
+          vlocity -propertyfile package.json -job validate.yaml
+
     #  - name: Deploy source code to DeployTestOrg Org
      #   run: |
      #    sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
@@ -45,9 +49,9 @@ jobs:
     #  - name: Import Data to Org B
       #  run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
-      - name: Update the Project from source
-        run: |
-         vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml validateLocalData --fixLocalGlobalKeys
+      #- name: Update the Project from source
+      #  run: |
+        # vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml validate
 
      # - name: Deploy Vlocity Components using Manifest
       #  run: |
