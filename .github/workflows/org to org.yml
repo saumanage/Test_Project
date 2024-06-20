@@ -34,17 +34,15 @@ jobs:
         run: |
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
-      - name: Validate Vlocity Components
-        id: validate
-        run: vlocity -propertyfile build.properties -job validate.yaml
+    #  - name: Validate Vlocity Components
+    #    id: validate
+    #    run: vlocity -propertyfile build.properties -job .vlocity/vlocitydx.yaml
 
-      - name: Deploy Vlocity Components
-        if: steps.validate.outcome == 'success'
-        run: vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml
-
-      - name: Verify Deployment
-        if: steps.validate.outcome == 'success'
-        run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
+   #   if: steps.validate.outcome == 'success'
+     #   run: vlocity -propertyfile package.json -job .vlocity/vlocitydx.yaml
+    #  - name: Verify Deployment
+     #   if: steps.validate.outcome == 'success'
+     #   run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
 
     #  - name: Deploy source code to DeployTestOrg Org
      #   run: |
@@ -66,6 +64,6 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packDeploy -job .vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
 
