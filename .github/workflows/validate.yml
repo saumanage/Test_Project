@@ -1,0 +1,5 @@
+projectPath: VlocityCard
+job: 
+  TestJob
+preStepApex: 
+  - TestValidation

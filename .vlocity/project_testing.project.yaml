@@ -1,0 +1,7 @@
+Name: project testing
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/kumarflexcardtoday
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:

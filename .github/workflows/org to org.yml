@@ -22,10 +22,6 @@ jobs:
     
       - name: Install Vlocity Build Tool
         run: npm install -g vlocity
-    
-  #    - name: Use SOAP API for Deployment
-    #    run: |
-    #      sfdx config:set restDeploy=false --global
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
@@ -36,16 +32,26 @@ jobs:
         run: |
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
-      - name: Deploy source code to DeployTestOrg Org
-        run: |
-         sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
+    #  - name: Validate Vlocity Components
+    #    id: validate
+    #    run: vlocity -propertyfile build.properties -job .vlocity/vlocitydx.yaml
+
+   #   if: steps.validate.outcome == 'success'
+     #   run: vlocity -propertyfile package.json -job .vlocity/vlocitydx.yaml
+    #  - name: Verify Deployment
+     #   if: steps.validate.outcome == 'success'
+     #   run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
+
+    #  - name: Deploy source code to DeployTestOrg Org
+     #   run: |
+     #    sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
     
     #  - name: Import Data to Org B
       #  run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
       #- name: Update the Project from source
-       # run: |
-        # vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username bxkumar1@sentara.com.cicd2
+      #  run: |
+        # vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml validate
 
      # - name: Deploy Vlocity Components using Manifest
       #  run: |
@@ -56,6 +62,6 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packDeploy -job .vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
 

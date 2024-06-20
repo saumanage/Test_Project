@@ -1,0 +1,7 @@
+Name: flexpage2
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/datadeploy
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
