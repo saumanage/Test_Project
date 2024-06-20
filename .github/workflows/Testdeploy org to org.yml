@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Allows manual trigger from GitHub Actions UI
   push:
     branches:
-      - Kumar_Test
+      - main
       
 jobs:
   export:
