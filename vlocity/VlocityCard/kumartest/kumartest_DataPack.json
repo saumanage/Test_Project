@@ -15,7 +15,7 @@
     "%vlocity_namespace%__Definition__c": "kumartest.json",
     "%vlocity_namespace%__Description__c": "",
     "%vlocity_namespace%__GlobalKey__c": "kumartest/Optima/1/1717021261637",
-    "%vlocity_namespace%__IsChildCard__c": false,
+    "%vlocity_namespace%__IsChildCard__c": true,
     "%vlocity_namespace%__ParentID__c": "",
     "%vlocity_namespace%__SampleData__c": "",
     "%vlocity_namespace%__Styles__c": "",
