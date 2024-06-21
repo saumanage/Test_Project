@@ -44,23 +44,9 @@ jobs:
      #   if: steps.validate.outcome == 'success'
      #   run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
 
-    #  - name: Deploy source code to DeployTestOrg Org
-     #   run: |
-     #    sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
-    
-    #  - name: Import Data to Org B
-      #  run: vlocity -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
-
-      #- name: Update the Project from source
-      #  run: |
-        # vlocity -propertyfile package.json -job .github/workflows/DataPacksJob.yaml validate
-
-     # - name: Deploy Vlocity Components using Manifest
-      #  run: |
-       #   vlocity packExport -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml
-
-     # - name: Deploy DataPack
-        #run: vlocity -propertyfile .github/workflows/DataPacksJob.yaml packDeploy -job deploy
+      - name: Deploy source code to DeployTestOrg Org
+        run: |
+         sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
 
       - name: Deploy Vlocity Components using Manifest
         run: |
