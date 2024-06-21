@@ -1,0 +1,13 @@
+projectPath: vlocity
+queries: # Queries to get vlocity datapacks
+  - VlocityDataPackType: IntegrationProcedure
+    query: SELECT Id,vlocity_ins__SubType__c,vlocity_ins__Type__c FROM vlocity_ins__OmniScript__c WHERE vlocity_ins__IsActive__c = true AND vlocity_ins__IsProcedure__c =  true AND vlocity_ins__SubType__c  IN ('IPExtractProposalData','ApproveMembership')
+
+  - VlocityDataPackType: DataRaptor 
+    query: Select Id from vlocity_ins__DRBundle__c where name IN ('DRExt_GetContractRecords','DR_ExtractRenewalQuote','QE_DRTransformAdditionalFields','QE_DRExtractRenewalProposal_Ext1','QE_DRTransformSGMMRenewalTemplete','QE_DRGetQuoteDetails','QE_TransformSGQuoteJSON_renewal','QE_DrTADExtract','QE_PrepareUploadMemberShipUserInput_SG') 
+  
+
+manifestOnly: true
+oauthConnection: true
+activate: true
+maxDepth: 0
