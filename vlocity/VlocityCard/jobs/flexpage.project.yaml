@@ -1,7 +1,0 @@
-Name: vlocity
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - VlocityCard/datadeploy
-VlocityTypesToFetch:
-    - VlocityCard
-SalesforceTypesToFetch:
