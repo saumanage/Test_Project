@@ -1,25 +1,11 @@
 name: OmniStudio FlexCards Export and Deploy
 
-#on:
-#  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
-#  push:
-#    branches:
- #     - main
-      
 on:
-  workflow_dispatch:
-    inputs:
-      Envrt:
-        description: 'Environment:'
-        required: true
-        default: DEV
-        type: choice
-        options:
-          - DEV
-          - QA
-          - REG
-          - UAT
-          - PROD
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+  push:
+    branches:
+      - main
+      
 
 jobs:
   export:
