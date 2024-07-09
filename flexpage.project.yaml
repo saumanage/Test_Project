@@ -1,8 +1,6 @@
 projectPath: vlocity
 queries: Queries to get vlocity datapacks
-#  - VlocityDataPackType: IntegrationProcedure
-  #  query: SELECT Id,vlocity_ins__SubType__c,vlocity_ins__Type__c FROM vlocity_ins__OmniScript__c WHERE vlocity_ins__IsActive__c = true AND vlocity_ins__IsProcedure__c =  true AND vlocity_ins__SubType__c  IN ('IPExtractProposalData','ApproveMembership')
- 
+VlocityCard:
   - VlocityDataPackType: VlocityCard
     query: SELECT Id, Name FROM %vlocity_namespace%__VlocityCard__c where %vlocity_namespace%__Active__c = true
 
