@@ -1,14 +1,17 @@
-projectPath: vlocity
-queries: Queries to get vlocity datapacks
-VlocityCard:
-  - VlocityDataPackType: VlocityCard
-    query: SELECT Id, Name FROM %vlocity_namespace%__VlocityCard__c where %vlocity_namespace%__Active__c = true
+projectPath: ./vlocity
+
+#queries: Queries to get vlocity datapacks
+
+
+#VlocityCard:
+#  - VlocityDataPackType: VlocityCard
+#    query: SELECT Id, Name FROM %vlocity_namespace%__VlocityCard__c where %vlocity_namespace%__Active__c = true
 
 #  - VlocityDataPackType: DataRaptor 
- #   query: Select Id from vlocity_ins__DRBundle__c where name IN ('DRExt_GetContractRecords','DR_ExtractRenewalQuote','QE_DRTransformAdditionalFields','QE_DRExtractRenewalProposal_Ext1','QE_DRTransformSGMMRenewalTemplete','QE_DRGetQuoteDetails','QE_TransformSGQuoteJSON_renewal','QE_DrTADExtract','QE_PrepareUploadMemberShipUserInput_SG') 
+#   query: Select Id from vlocity_ins__DRBundle__c where name IN ('DRExt_GetContractRecords','DR_ExtractRenewalQuote','QE_DRTransformAdditionalFields','QE_DRExtractRenewalProposal_Ext1','QE_DRTransformSGMMRenewalTemplete','QE_DRGetQuoteDetails','QE_TransformSGQuoteJSON_renewal','QE_DrTADExtract','QE_PrepareUploadMemberShipUserInput_SG') 
   
 
-manifestOnly: true
-oauthConnection: true
-activate: true
-maxDepth: 0
+#manifestOnly: true
+#oauthConnection: true
+#activate: true
+#maxDepth: 0
