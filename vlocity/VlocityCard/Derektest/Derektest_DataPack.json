@@ -24,6 +24,6 @@
     "Name": "Derektest",
     "VlocityDataPackType": "SObject",
     "VlocityRecordSObjectType": "%vlocity_namespace%__VlocityCard__c",
-    "VlocityRecordSourceKey": "%vlocity_namespace%__VlocityCard__c/Derektest",
+    "VlocityRecordSourceKey": "Derektest",
     "testing__c": ""
 }
