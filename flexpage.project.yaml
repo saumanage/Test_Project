@@ -1,4 +1,4 @@
-projectPath: vlocity
+projectPath: 
 queries:
 - VlocityDataPackType: VlocityCard
   query: SELECT Id,NAME,vlocity_ins__Active__c FROM vlocity_ins__VlocityCard__c WHERE NAME = 'manager11567'
