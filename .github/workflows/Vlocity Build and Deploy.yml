@@ -48,12 +48,12 @@ jobs:
      #   run: |
       #   sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
 
-     # - name: Deploy Vlocity Components using Manifest
-#        run: |
-     #     vlocity packDeploy -job flexpage.project.yaml -sfdx.username bxkumar1@sentara.com.cicd2
-
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity -propertyfile package.json -job flexpage.project.yaml packExport -depth 0
+          vlocity packDeploy -job flexpage.project.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+
+  #    - name: Deploy Vlocity Components using Manifest
+#        run: |
+   #       vlocity -propertyfile package.json -job flexpage.project.yaml 
 
 
