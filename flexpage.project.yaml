@@ -1,4 +1,4 @@
 projectPath: ./vlocity
 queries:
 - VlocityDataPackType: VlocityCard
-   query: SELECT Id, FROM %vlocity_namespace%__VlocityCard__c where Name LIKE 'kumarflexcardtoday' LIMIT 1
+   query: SELECT Id, FROM vlocity_namespace__VlocityCard__c where Name LIKE 'kumarflexcardtoday' LIMIT 1
