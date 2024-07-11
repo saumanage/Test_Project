@@ -1,7 +1,7 @@
 projectPath: ./
 expansionpath: vlocity
 delete:true
-active:
-manifest:
-query:
+active:true
+manifest:null
+query: null
 maxDepth: 0
