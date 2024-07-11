@@ -1,3 +1,4 @@
 projectPath: ./vlocity
-manifest:
- - Derektest/Derektest/OptimaHealth/1/1719945598141
+queries:
+- VlocityDataPackType: VlocityCard
+   query: SELECT Id, FROM %vlocity_namespace%__VlocityCard__c where Name LIKE 'kumarflexcardtoday' LIMIT 1
