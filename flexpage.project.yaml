@@ -1,4 +1,4 @@
 projectPath: 
 queries:
 - VlocityDataPackType: VlocityCard
-  query: SELECT Id,NAME,vlocity_ins__Active__c FROM vlocity_ins__VlocityCard__c WHERE NAME = 'manager11567'
+  query: SELECT Id, Name FROM %vlocity_namespace%__ParentID__c where manager115/OptimaHealth/1/1719431030003
