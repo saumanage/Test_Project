@@ -23,7 +23,7 @@
     "%vlocity_namespace%__Version__c": 1,
     "Name": "Derektest",
     "VlocityDataPackType": "SObject",
-    "VlocityRecordSObjectType": "%vlocity_namespace%__VlocityCard__c",
+    "VlocityRecordSObjectType": "Derektest",
     "VlocityRecordSourceKey": "Derektest",
     "testing__c": ""
 }
