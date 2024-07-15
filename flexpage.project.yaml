@@ -1,7 +1,7 @@
 # flexpage.project.yaml
 
 settings:
-  projectPath: ./VlocityCard
+  projectPath: ./Vlocity_B
   buildVersion: 1.0
 
 jobs:
