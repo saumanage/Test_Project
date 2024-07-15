@@ -1,3 +1,4 @@
+projectPath:./vlocity
 datapacks:
-  - name: Arun
+  - name: VlocityCard/Arun
     type: SObject
