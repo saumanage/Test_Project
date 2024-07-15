@@ -1,4 +1,4 @@
-projectPath: ./vlocity_build
+projectPath: ./VlocityCard
 expandFilePaths: false
 manifest:
-  - OmniStudioFlexCards: 'testJundeploy'
+  - OmniStudioFlexCards: 'Arun'
