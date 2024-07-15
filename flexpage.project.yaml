@@ -1,4 +1,4 @@
-projectPath:./vlocity
-datapacks:
-  - name: VlocityCard/Arun
-    type: SObject
+projectPath: ./vlocity_build
+expandFilePaths: false
+manifest:
+  - OmniStudioFlexCards: 'Arun'
