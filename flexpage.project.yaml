@@ -1,17 +1,4 @@
-# job.yml
 projectPath: ./vlocity
-
-sfApiVersion: 52.0
-
-# Define the job information for deployment
-jobInfo:
-  org: mySalesforceOrg
-  process: Deploy
-  datapackSourcePath: ./vlocity/VlocityCard/Derektest
-  activate: true
-  manifestOnly: true
-
-# Define deployment options
-deployOptions:
-  includeDependencies: false
-  manifestOnly: true
+expandFilePaths: false
+manifest:
+  - VlocityCard: 'testJundeploy'
