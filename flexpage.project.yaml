@@ -1,4 +1,15 @@
-projectPath: ./VlocityCard
-expandFilePaths: false
-manifest:
-  - OmniStudioFlexCards: 'Arun'
+# flexpage.project.yaml
+
+settings:
+  projectPath: .
+  buildVersion: 1.0
+
+jobs:
+  - job: DeployFlexCards
+    steps:
+      - activate:
+          path: VlocityCard/Arun
+          type: OmniStudioFlexCard
+   #   - activate:
+      #    path: VlocityCard/ArunB
+     #     type: OmniStudioFlexCard
