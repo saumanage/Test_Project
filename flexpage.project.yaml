@@ -1,5 +1,4 @@
-projectPath: ./vlocity_project
-export:
-  queries:
-    - query: SELECT Id, Name FROM vlocity_ins__VlocityCard__c WHERE Name = 'Derektest'
-      VlocityDataPackType: VlocityCard
+projectPath: ./vlocity_build
+IgnoreDependencies: false
+manifest:
+    - OmniStudioFlexCards/Derektest
