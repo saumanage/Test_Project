@@ -1,4 +1,5 @@
 projectPath: ./vlocity_build
-IgnoreDependencies: false
-manifest:
-    - OmniStudioFlexCards/Derektest
+defaultJob:
+    IgnoreDependencies: false
+    manifest:
+        - OmniStudioFlexCards/Derektest
