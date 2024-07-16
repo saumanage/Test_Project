@@ -74,10 +74,14 @@ jobs:
         echo "Verify Salesforce Target Org Connection"
         sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
-    - name: Deploy Vlocity Data
-      run: |
-        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job flexpage.project.yaml packDeploy
+   # - name: Deploy Vlocity Data
+   #   run: |
+   #     vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job flexpage.project.yaml packDeploy
 
+    - name: Deploy Retrived Componet 
+      run: |
+        sfdx force:source:deploy -u bxkumar1@sentara.com.cicd2 -x flexpage.project.yaml -w 10
+    
    # - name: Retry Failed Deploy (if any)
      # run: |
-      #  vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packRetry
+      #  vlocity -sfd.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packRetry
