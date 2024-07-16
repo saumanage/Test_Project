@@ -1,6 +1,7 @@
-projectPath: ./vlocity_build/DataPacks/OmniStudioFlexCards
-export:
-  flexCards:
-    - name: Derektest
-      version: 1.0
-      query: SELECT Id, Name, vlocity_ins__Version__c, vlocity_ins__Active__c, vlocity_ins__Author__c, vlocity_ins__CardType__c, vlocity_ins__Datasource__c, vlocity_ins__Definition__c, vlocity_ins__GlobalKey__c, vlocity_ins__IsChildCard__c, vlocity_ins__ParentID__c, vlocity_ins__SampleData__c, vlocity_ins__Styles__c, vlocity_ins__Type__c, vlocity_ins__Description__c FROM vlocity_ins__VlocityCard__c WHERE Name = 'Derektest'
+projectPath: ./vlocity_build/DataPacks/OmniStudioFlexCards/Arun
+queries: 
+  - VlocityDataPackType: VlocityCard 
+    query: SELECT Id FROM vlocity_ins__VlocityCard__c WHERE Id = 'a7v7c000000DqKEAA0'
+
+   
+  
