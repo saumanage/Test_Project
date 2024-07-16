@@ -38,7 +38,7 @@ jobs:
 
     - name: Export Vlocity Data
       run: |
-        vlocity -sfdx.username bxkumar1@sentara.com.sentarahealth.cicd1 -job flexpage.project.yaml packExportSingle
+        vlocity -sfdx.username bxkumar1@sentara.com.sentarahealth.cicd1 -job flexpage.project.yaml packExport
 
    # - name: Retry Failed Export (if any)
    #   run: |
