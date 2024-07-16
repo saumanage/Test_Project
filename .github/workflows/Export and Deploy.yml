@@ -76,7 +76,7 @@ jobs:
 
     - name: Deploy Vlocity Data
       run: |
-        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packDeploy
+        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job flexpage.project.yaml packDeploy
 
    # - name: Retry Failed Deploy (if any)
      # run: |
