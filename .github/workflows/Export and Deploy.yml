@@ -1,0 +1,83 @@
+name: OmniStudio FlexCards Export and Deploy
+
+on:
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+  push:
+    branches:
+      - Kumar_Test
+      
+jobs:
+  export:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18.x'
+
+    - name: Install Vlocity Build Tool
+      run: npm install -g vlocity
+
+    - name: Install Salesforce CLI
+      run: |
+         npm install -g sfdx-cli --global
+
+    - name: Authorize Salesforce Source Org
+      run: |
+        echo "Authorize Salesforce Source Org"
+        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5.8XvlvG4aHz1XRZm5OagUtRszv05iT2E6z0bOPJXhFjuEOBJmHhfsJa6bLy2y4v0rzUva --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.sentarahealth.cicd1 --instanceurl https://sentarahealth--cicd1.sandbox.my.salesforce.com
+
+    - name: Verify Salesforce Source Org Connection
+      run: |
+        echo "Verify Salesforce Source Org Connection"
+        sfdx force:org:display -u bxkumar1@sentara.com.sentarahealth.cicd1
+
+    - name: Export Vlocity Data
+      run: |
+        vlocity -sfdx.username bxkumar1@sentara.com.sentarahealth.cicd1 -job flexpage.project.yaml packExportSingle
+
+   # - name: Retry Failed Export (if any)
+   #   run: |
+     #   vlocity -sfdx.username bxkumar1@sentara.com.cicd1 -job .github/workflows/DataPacksJob.yaml packRetry
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: export
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+          node-version: '18.x'
+
+    - name: Install Vlocity Build Tool
+      run: npm install -g vlocity
+      
+    - name: Install Salesforce CLI
+      run: |
+         npm install -g sfdx-cli --global
+
+    - name: Authorize Salesforce Target Org
+      run: |
+        echo "Authorize Salesforce Target Org"
+        sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com
+
+    - name: Verify Salesforce Target Org Connection
+      run: |
+        echo "Verify Salesforce Target Org Connection"
+        sfdx force:org:display -u bxkumar1@sentara.com.cicd2
+
+    - name: Deploy Vlocity Data
+      run: |
+        vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packDeploy
+
+   # - name: Retry Failed Deploy (if any)
+     # run: |
+      #  vlocity -sfdx.username bxkumar1@sentara.com.cicd2 -job .github/workflows/DataPacksJob.yaml packRetry

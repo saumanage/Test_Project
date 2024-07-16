@@ -1,4 +1,10 @@
 projectPath: ./vlocity_build
-expandFilePaths: false
-manifest:
-  - OmniStudioFlexCards: 'Arun'
+autoUpdateSettings: true
+
+queries:
+  - VlocityDataPackType: VlocityCard
+    query: SELECT Id,Name FROM vlocity_ins__VlocityCard__c WHERE Name = 'Derektest'
+maxDepth: -1
+defaultMaxParallel: 10
+exportPacksMaxSize: 10
+useAllRelationships: fals
