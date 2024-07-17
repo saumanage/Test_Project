@@ -1,0 +1,7 @@
+Name: smarttesting
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/arun33
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
