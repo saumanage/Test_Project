@@ -1,8 +1,9 @@
-
-name: Salesforce CICD Deploy
+name: Salesforce CICD
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - Kumar_Test
 
 jobs:
   VlocityDeployment:
@@ -36,23 +37,9 @@ jobs:
         run: |
           sfdx force:org:display -u bxkumar1@sentara.com.cicd2
 
-    #  - name: Validate Vlocity Components
-    #    id: validate
-    #    run: vlocity -propertyfile build.properties -job .vlocity/vlocitydx.yaml
-
-   #   if: steps.validate.outcome == 'success'
-     #   run: vlocity -propertyfile package.json -job .vlocity/vlocitydx.yaml
-    #  - name: Verify Deployment
-     #   if: steps.validate.outcome == 'success'
-     #   run: vlocity packExport -job .github/workflows/DataPacksJob.yaml -type VlocityCard
-
-     # - name: Deploy source code to DeployTestOrg Org
-     #   run: |
-      #   sfdx force:source:deploy -p force-app -w 10 -u bxkumar1@sentara.com.cicd2
-
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job flexpage.project.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packDeploy -job VlocityJobFile.yml -sfdx.username bxkumar1@sentara.com.cicd2
 
   #    - name: Deploy Vlocity Components using Manifest
 #        run: |

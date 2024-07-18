@@ -1,0 +1,11 @@
+Name: success2flexcard
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/customdatacard
+    - VlocityCard/manager1234
+    - lwc/cfCustomdatacard_1_OptimaHealth
+    - lwc/cfManager1234_1_OptimaHealth
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
+    - LightningComponentBundle

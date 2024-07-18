@@ -1,0 +1,7 @@
+projectPath: ./vlocity_build/DataPacks/OmniStudioFlexCards/Arun
+queries: 
+  - VlocityDataPackType: VlocityCard 
+    query: SELECT Id FROM vlocity_ins__VlocityCard__c WHERE Id = 'a7v7c000000DqKEAA0'
+
+   
+  

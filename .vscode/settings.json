@@ -4,6 +4,6 @@
     "**/bower_components": true,
     "**/.sfdx": true
   },
+
   "vlocity.sfdxUsername": "sxbandi@sentara.com.sentarahealth.cicd1",
-  "vlocity.projectPath": "/Users/arunkumarbathini/Arun/Test_Project"
 }

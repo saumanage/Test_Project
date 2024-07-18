@@ -11,10 +11,10 @@
     "enableLwc": true,
     "isFlex": true,
     "lwc": {
-        "DeveloperName": "cfTestdatadeploy_1_OptimaHealth",
-        "Id": "0Rb7c000000DPnuCAG",
+        "DeveloperName": "cfArunB_1_OptimaHealth",
+        "Id": "0Rb7c000000DQW6CAO",
         "ManageableState": "unmanaged",
-        "MasterLabel": "cfTestdatadeploy_1_OptimaHealth",
+        "MasterLabel": "cfArunB_1_OptimaHealth",
         "NamespacePrefix": "c"
     },
     "selectableMode": "Multi",
@@ -30,7 +30,7 @@
                         {
                             "class": "slds-col ",
                             "element": "action",
-                            "elementLabel": "Action-111",
+                            "elementLabel": "Action-0",
                             "name": "Action",
                             "property": {
                                 "actionList": [
@@ -61,42 +61,6 @@
                                 "sizeClass": "slds-size_12-of-12"
                             },
                             "type": "element"
-                        },
-                        {
-                            "class": "slds-col ",
-                            "element": "action",
-                            "elementLabel": "Test Action 111",
-                            "name": "Action",
-                            "property": {
-                                "actionList": [
-                                    {
-                                        "stateAction": {
-                                            "Web Page": {
-                                                "targetName": "/apex"
-                                            },
-                                            "id": "test-action",
-                                            "openUrlIn": "Current Window",
-                                            "targetType": "Web Page",
-                                            "type": "Custom"
-                                        }
-                                    }
-                                ],
-                                "card": "{card}",
-                                "iconName": "standard-default",
-                                "label": "Action",
-                                "record": "{record}",
-                                "stateObj": "{record}"
-                            },
-                            "size": {
-                                "default": "12",
-                                "isResponsive": false
-                            },
-                            "stateIndex": 0,
-                            "styleObject": {
-                                "sizeClass": "slds-size_12-of-12"
-                            },
-                            "type": "element",
-                            "userUpdatedElementLabel": true
                         }
                     ]
                 }
@@ -147,7 +111,7 @@
         }
     ],
     "theme": "slds",
-    "title": "testdatadeploy",
+    "title": "ArunB",
     "xmlJson": [
         {
             "@attributes": {
@@ -184,10 +148,10 @@
     ],
     "xmlObject": {
         "apiVersion": 56,
-        "id": "0Rb7c000000DPnzCAG",
+        "id": "0Rb7c000000DQWBCA4",
         "isExplicitImport": false,
         "isExposed": true,
-        "masterLabel": "testdatadeploy",
+        "masterLabel": "ArunB",
         "targetConfigs": "PHRhcmdldENvbmZpZyB0YXJnZXRzPSJsaWdodG5pbmdfX0FwcFBhZ2UiPgogICAgICAgICAgICAgICAgICAgICAgPHByb3BlcnR5IG5hbWU9ImRlYnVnIiB0eXBlPSJCb29sZWFuIj48L3Byb3BlcnR5PgogICAgICAgICAgICAgICAgICAgICAgPHByb3BlcnR5IG5hbWU9InJlY29yZElkIiB0eXBlPSJTdHJpbmciPjwvcHJvcGVydHk+CiAgICAgICAgICAgICAgICAgIDwvdGFyZ2V0Q29uZmlnPgogICAgICAgICAgICAgICAgICA8dGFyZ2V0Q29uZmlnIHRhcmdldHM9ImxpZ2h0bmluZ19fUmVjb3JkUGFnZSI+CiAgICAgICAgICAgICAgICAgICAgICA8cHJvcGVydHkgbmFtZT0iZGVidWciIHR5cGU9IkJvb2xlYW4iPjwvcHJvcGVydHk+CiAgICAgICAgICAgICAgICAgIDwvdGFyZ2V0Q29uZmlnPg==",
         "targets": {
             "target": [
