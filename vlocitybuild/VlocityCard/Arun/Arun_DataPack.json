@@ -12,7 +12,11 @@
             }
         }
     },
+    
     "%vlocity_namespace%__Definition__c": "Arun.json",
+
+    //sainath
+    "%vlocity_namespace%__Definition__c": "test2.json",
     "%vlocity_namespace%__Description__c": "",
     "%vlocity_namespace%__GlobalKey__c": "Arun/OptimaHealth/1/1721062880209",
     "%vlocity_namespace%__IsChildCard__c": false,

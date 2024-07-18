@@ -1,7 +1,6 @@
-name: Salesforce CICD Deploy
+name: Salesforce CICD
 
 on:
-  #workflow_dispatch: # Allows manual trigger from GitHub Actions UI
   push:
     branches:
       - Kumar_Test
@@ -54,10 +53,8 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job VlocityJobFile.yml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
   #    - name: Deploy Vlocity Components using Manifest
 #        run: |
    #       vlocity -propertyfile package.json -job flexpage.project.yaml 
-
-
