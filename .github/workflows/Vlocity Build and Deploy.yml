@@ -1,7 +1,10 @@
 name: Salesforce CICD Deploy
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+  push:
+    branches:
+      - Kumar_Test
 
 jobs:
   VlocityDeployment:
