@@ -1,0 +1,7 @@
+Name: starbuckss
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/Derektestdatamassmaillingmanager
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
