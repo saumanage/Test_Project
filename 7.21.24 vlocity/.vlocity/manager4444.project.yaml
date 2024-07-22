@@ -1,0 +1,7 @@
+Name: manager4444
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/Derektestdatamassmailling
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
