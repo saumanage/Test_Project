@@ -26,10 +26,6 @@ jobs:
       - name: Install Puppeteer
         run: npm install puppeteer
 
-      - name : flexcard-Compiler
-        run: npm install @vlocity-ins/flexcard-compiler
-
-    
       - name: Install Vlocity Build Tool
         run: npm install -g vlocity
 
