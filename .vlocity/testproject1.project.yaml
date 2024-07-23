@@ -1,0 +1,8 @@
+Name: testproject1
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/consumer444
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
+    - LightningComponentBundle
