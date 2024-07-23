@@ -1,0 +1,7 @@
+Name: idxtest1
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/consumer4446666
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
