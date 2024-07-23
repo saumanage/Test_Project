@@ -12,18 +12,18 @@
             }
         }
     },
-    "%vlocity_namespace%__Definition__c": "ArunB.json",
+    "%vlocity_namespace%__Definition__c": "Derektestmissing.json",
     "%vlocity_namespace%__Description__c": "",
-    "%vlocity_namespace%__GlobalKey__c": "ArunB/OptimaHealth/1/1721063249889",
+    "%vlocity_namespace%__GlobalKey__c": "Derektestmissing/OptimaHealth/1/1721744892528",
     "%vlocity_namespace%__IsChildCard__c": false,
-    "%vlocity_namespace%__ParentID__c": "",
+    "%vlocity_namespace%__ParentID__c": "Derektest/OptimaHealth/1/1719945598141",
     "%vlocity_namespace%__SampleData__c": "",
     "%vlocity_namespace%__Styles__c": "",
     "%vlocity_namespace%__Type__c": "",
     "%vlocity_namespace%__Version__c": 1,
-    "Name": "ArunB",
+    "Name": "Derektestmissing",
     "VlocityDataPackType": "SObject",
     "VlocityRecordSObjectType": "%vlocity_namespace%__VlocityCard__c",
-    "VlocityRecordSourceKey": "%vlocity_namespace%__VlocityCard__c/ArunB",
+    "VlocityRecordSourceKey": "%vlocity_namespace%__VlocityCard__c/Derektestmissing",
     "testing__c": ""
 }
