@@ -22,12 +22,12 @@ jobs:
       - name: Install Salesforce CLI
         run: |
           npm install -g sfdx-cli --global
-          
-      - name: Install Puppeteer
-        run: npm install puppeteer
 
       - name: Install Vlocity Build Tool
         run: npm install -g vlocity
+      
+      - name: Install Puppeteer
+        run: npm install puppeteer
 
       - name: Authorize Salesforce DeployTestOrg Org
         run: |
@@ -40,6 +40,6 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job sfvlocitycards/.vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
+          vlocity packGetDiffsAndDeploy -job sfvlocitycards/.vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
 
 
