@@ -1,1 +1,7 @@
-projectPath: sfvlocitycards
+projectPath: ./sfvlocitycards
+queries:
+  - VlocityUITemplate
+  - VlocityCard
+  - VlocityOmniScript
+manifest:
+  - VlocityCard/countryusa
