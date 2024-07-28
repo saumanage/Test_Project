@@ -1,7 +1,0 @@
-Name: testing
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - VlocityCard/Derektestmissingcolage
-VlocityTypesToFetch:
-    - VlocityCard
-SalesforceTypesToFetch:
