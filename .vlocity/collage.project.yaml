@@ -1,9 +1,0 @@
-Name: collage
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - CalculationMatrix/design44
-    - VlocityCard/Derektestmissing
-VlocityTypesToFetch:
-    - CalculationMatrix
-    - VlocityCard
-SalesforceTypesToFetch:
