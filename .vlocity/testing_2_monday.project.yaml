@@ -1,0 +1,7 @@
+Name: Testing 2 Monday
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/countryusa
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
