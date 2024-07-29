@@ -1,0 +1,7 @@
+Name: Testing 1 Monday
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/Aruntest1
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:
