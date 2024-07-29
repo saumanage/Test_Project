@@ -1,7 +1,0 @@
-Name: flexcard11
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - VlocityCard/consumer
-VlocityTypesToFetch:
-    - VlocityCard
-SalesforceTypesToFetch:

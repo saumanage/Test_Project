@@ -1,9 +1,0 @@
-Name: confirm
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - CalculationMatrix/manager
-    - VlocityCard/Derektestdatamassmaillingmanager1222
-VlocityTypesToFetch:
-    - CalculationMatrix
-    - VlocityCard
-SalesforceTypesToFetch:

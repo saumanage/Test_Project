@@ -1,7 +1,0 @@
-Name: IDX Test 3
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - VlocityCard/Derektestmissing
-VlocityTypesToFetch:
-    - VlocityCard
-SalesforceTypesToFetch:

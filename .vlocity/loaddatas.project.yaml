@@ -1,7 +1,0 @@
-Name: loaddatas
-ignoreDependencies: false
-VlocityDataPackKeys:
-    - VlocityCard/consumer
-VlocityTypesToFetch:
-    - VlocityCard
-SalesforceTypesToFetch:
