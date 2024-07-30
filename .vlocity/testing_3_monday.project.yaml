@@ -1,0 +1,7 @@
+Name: Testing 3 Monday
+ignoreDependencies: false
+VlocityDataPackKeys:
+    - VlocityCard/SentaraVlocityFlex_WI0001
+VlocityTypesToFetch:
+    - VlocityCard
+SalesforceTypesToFetch:

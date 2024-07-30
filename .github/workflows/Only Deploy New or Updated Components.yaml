@@ -1,0 +1,71 @@
+name: Salesforce CICD Deploy
+# Allows manual trigger from GitHub Actions UI
+on:
+  workflow_dispatch: 
+  # push:
+  #   branches:
+  #     - Kumar_Test
+
+jobs:
+  VlocityDeployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install -g sfdx-cli --global
+
+      - name: Install Vlocity Build Tool
+        run: npm install -g vlocity
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Authorize Salesforce DeployTestOrg Org
+        run: |
+          sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com
+    
+      - name: Verify Salesforce Connection
+        id: verify_connection
+        run: |
+          sfdx force:org:display -u bxkumar1@sentara.com.cicd2
+
+      - name: Get list of changed files
+        id: changed-files
+        run: |
+          git fetch origin Kumar_Test
+          export GIT_DIFF=$(git diff --name-only origin/Kumar_Test HEAD^1..HEAD)
+          echo "changed_files=$GIT_DIFF" >> $GITHUB_ENV
+
+      - name: Filter Vlocity DataPacks
+        id: filter-vlocity
+        run: |
+          CHANGED_FILES=$(echo ${{ env.changed_files }} | tr " " "\n")
+          VLOCITY_FILES=$(echo "$CHANGED_FILES" | grep "vlocity/" | tr "\n" " ")
+          echo "vlocity_files=$VLOCITY_FILES" >> $GITHUB_ENV
+
+      - name: Check for Vlocity DataPacks changes
+        if: env.vlocity_files != ''
+        run: echo "Vlocity DataPacks changed: ${{ env.vlocity_files }}"
+
+      - name: Deploy Vlocity Components using Manifest
+        if: env.vlocity_files != ''
+        run: |
+          echo "Deploying Vlocity files: ${{ env.vlocity_files }}"
+          # Prepare a temporary job file for deployment
+          echo "projectPath: ./" > vlocity
+          echo "manifest: true" >> vlocity
+          echo "queries:" >> vlocity
+          for file in ${{ env.vlocity_files }}; do
+            echo "  - ${file}" >> vlocity
+          done
+          # Deploy using the temporary job file
+          vlocity packDeploy -job .vlocity/temp_vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
