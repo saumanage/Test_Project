@@ -1,1 +1,7 @@
-projectPath: .
+projectPath: vlocity
+queries:
+  - OmniScript
+  - IntegrationProcedure
+  - DataRaptor
+  - FlexCard
+gitCheck: true
