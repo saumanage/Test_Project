@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - Kumar_Test
-      
-scripts:
-  find_latest_flexcard_folder: |
-    latest_commit=$(git log -1 --pretty=format:"%H" -- FlexCards)
-    latest_folder=$(git diff-tree --no-commit-id --name-only -r $latest_commit | grep 'FlexCards/' | head -n 1 | xargs dirname)
-    echo "Latest FlexCard folder: $latest_folder"
 
 jobs:
   VlocityDeployment:
