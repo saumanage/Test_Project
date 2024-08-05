@@ -42,4 +42,4 @@ jobs:
 
       - name: Deploy Vlocity Components using Manifest
         run: |
-          vlocity packDeploy -job .vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cic
+          vlocity packDeploy -job .vlocity/vlocitydx.yaml -sfdx.username bxkumar1@sentara.com.cicd2
