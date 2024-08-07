@@ -1,4 +1,4 @@
-projectPath: ./sfvlocitycards
-
-manifest:
-  - VlocityCard/countryusa
+projectPath: ./vlocity
+gitCheck: true
+ignoreLWCActivationOS: true
+ignoreLWCActivationCards: true

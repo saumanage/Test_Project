@@ -1,0 +1,15 @@
+      - name: Update the Project from source
+        run: |
+         vlocity packUpdateSettings -projectPath ./VlocityCard -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1
+
+      #- name: Deploy Vlocity Components using Manifest
+        #run: |
+         # vlocity packExport -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1 -job .github/workflows/DataPacksJob.yaml
+
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packDeploy -job .github/workflows/DataPacksJob.yaml -sfdx.username sxbandi@sentara.com.sentarahealth.cicd1
+
+      - name: Deploy source code to DeployTestOrg Org
+        run: |
+         sfdx force:source:deploy -p force-app -w 10 -u sxbandi@sentara.com.sentarahealth.cicd1

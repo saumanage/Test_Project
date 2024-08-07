@@ -1,0 +1,44 @@
+name: Latest Commit Based Deployment
+
+on:
+  push:
+    branches:
+      - Kumar_Test
+
+jobs:
+  VlocityDeployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure full history is fetched
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install -g sfdx-cli --global
+
+      - name: Install Vlocity Build Tool
+        run: npm install -g vlocity
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Authorize Salesforce DeployTestOrg Org
+        run: |
+          sfdx force:auth:jwt:grant --clientid 3MVG9NYvTkhtdEI5Z9dZmBB.toZ_f9ZTkCtyPmQsts6QEJINuMe.ywRNgQcUztn1n6Aw8r8OZ0uJHhAIos7nX --jwtkeyfile mycerts/server.key --username bxkumar1@sentara.com.cicd2 --instanceurl https://sentarahealth--cicd2.sandbox.my.salesforce.com 
+
+      - name: Verify Salesforce Connection
+        id: verify_connection
+        run: |
+          sfdx force:org:display -u bxkumar1@sentara.com.cicd2
+
+      - name: Deploy Vlocity Components using Manifest
+        run: |
+          vlocity packDeploy -job flexpage.project.yaml -sfdx.username bxkumar1@sentara.com.cicd2
