@@ -1,5 +1,5 @@
-expansionPath: vlocity
 projectPath: .
+expansionPath: vlocity
 manifest:
 - VlocityCard/Aruntest1
 gitCheck: true
