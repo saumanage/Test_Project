@@ -1,5 +1,3 @@
 projectPath: .
-expansionPath: vlocity
-manifest:
-- VlocityCard/Aruntest1
+expansionPath: vlocity/VlocityCard/Aruntest1
 gitCheck: true
